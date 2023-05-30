@@ -45,21 +45,21 @@ public class Login extends javax.swing.JFrame {
         bg.add(logo, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 90, 290, 140));
 
         logoname.setBackground(new java.awt.Color(255, 255, 255));
-        logoname.setFont(new java.awt.Font("Roboto Black", 0, 18)); // NOI18N
+        logoname.setFont(new java.awt.Font("Roboto Black", 0, 36)); // NOI18N
         logoname.setForeground(new java.awt.Color(255, 255, 255));
         logoname.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        logoname.setText("HOSPITAL");
-        bg.add(logoname, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 250, 290, 20));
+        logoname.setText("BIENVENIDOS");
+        bg.add(logoname, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 240, 290, 40));
 
         fondoConLineas.setBackground(new java.awt.Color(95, 122, 219));
         fondoConLineas.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/images/Fondo Login.png"))); // NOI18N
         bg.add(fondoConLineas, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, 500));
 
-        msmBienvenida.setFont(new java.awt.Font("Roboto Black", 1, 24)); // NOI18N
+        msmBienvenida.setFont(new java.awt.Font("Roboto Black", 1, 18)); // NOI18N
         msmBienvenida.setForeground(new java.awt.Color(38, 41, 43));
         msmBienvenida.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/images/linea.png"))); // NOI18N
-        msmBienvenida.setText("BIENVENIDO");
-        bg.add(msmBienvenida, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 40, -1, 40));
+        msmBienvenida.setText("Cuidamos de ti como si fueras de nuestra familia...");
+        bg.add(msmBienvenida, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 40, -1, 40));
 
         txtIniciarSesion.setBackground(new java.awt.Color(38, 41, 43));
         txtIniciarSesion.setFont(new java.awt.Font("Roboto Black", 1, 24)); // NOI18N
@@ -92,7 +92,7 @@ public class Login extends javax.swing.JFrame {
         bg.add(txtConstraseña, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 290, 100, -1));
 
         passTxt.setForeground(new java.awt.Color(204, 204, 204));
-        passTxt.setText("********");
+        passTxt.setText("******************");
         passTxt.setBorder(null);
         passTxt.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mousePressed(java.awt.event.MouseEvent evt) {
