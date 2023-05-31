@@ -1,8 +1,6 @@
 package com.login;
 
 import java.awt.Color;
-import java.awt.event.FocusAdapter;
-import java.awt.event.FocusEvent;
 
 public class Login extends javax.swing.JFrame {
     
@@ -76,7 +74,7 @@ public class Login extends javax.swing.JFrame {
 
         userTxt.setFont(new java.awt.Font("Roboto", 0, 12)); // NOI18N
         userTxt.setForeground(new java.awt.Color(204, 204, 204));
-        userTxt.setText("Ingrese su nombre de usuario pruevaaq");
+        userTxt.setText("Ingrese su nombre de usuario");
         userTxt.setBorder(null);
         userTxt.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mousePressed(java.awt.event.MouseEvent evt) {
