@@ -4,9 +4,12 @@
  */
 package Hospital;
 
+import Paneles.Pacientes;
 import com.login.Login;
+import java.awt.BorderLayout;
 import java.awt.Color;
 import javax.swing.JOptionPane;
+import javax.swing.JPanel;
 
 /**
  *
@@ -19,7 +22,9 @@ public class Dashboard extends javax.swing.JFrame {
      */
     public Dashboard() {
         initComponents();
+        initContent();
     }
+
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -31,13 +36,14 @@ public class Dashboard extends javax.swing.JFrame {
     private void initComponents() {
 
         background = new javax.swing.JPanel();
+        content = new javax.swing.JPanel();
         fondopanelIz = new javax.swing.JPanel();
         nombreTitulo = new javax.swing.JLabel();
         fondoPacientes = new javax.swing.JPanel();
         textoPacientes = new javax.swing.JLabel();
         logo = new javax.swing.JLabel();
         fondoCitas = new javax.swing.JPanel();
-        textoPacientes1 = new javax.swing.JLabel();
+        textoCitas = new javax.swing.JLabel();
         informacion = new javax.swing.JLabel();
         btnCerrar = new javax.swing.JPanel();
         cerrarSesion = new javax.swing.JLabel();
@@ -45,6 +51,19 @@ public class Dashboard extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         background.setBackground(new java.awt.Color(255, 255, 255));
+
+        content.setBackground(new java.awt.Color(255, 255, 255));
+
+        javax.swing.GroupLayout contentLayout = new javax.swing.GroupLayout(content);
+        content.setLayout(contentLayout);
+        contentLayout.setHorizontalGroup(
+            contentLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 938, Short.MAX_VALUE)
+        );
+        contentLayout.setVerticalGroup(
+            contentLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 0, Short.MAX_VALUE)
+        );
 
         fondopanelIz.setBackground(new java.awt.Color(38, 41, 43));
 
@@ -63,6 +82,9 @@ public class Dashboard extends javax.swing.JFrame {
         textoPacientes.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/images/Personas.png"))); // NOI18N
         textoPacientes.setText("Crear, eliminar y actualizar");
         textoPacientes.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                textoPacientesMouseClicked(evt);
+            }
             public void mouseEntered(java.awt.event.MouseEvent evt) {
                 textoPacientesMouseEntered(evt);
             }
@@ -93,17 +115,20 @@ public class Dashboard extends javax.swing.JFrame {
 
         fondoCitas.setBackground(new java.awt.Color(46, 50, 57));
 
-        textoPacientes1.setFont(new java.awt.Font("Roboto Black", 0, 18)); // NOI18N
-        textoPacientes1.setForeground(new java.awt.Color(255, 255, 255));
-        textoPacientes1.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        textoPacientes1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/images/Calendario.png"))); // NOI18N
-        textoPacientes1.setText("Agendar, eliminar e historial");
-        textoPacientes1.addMouseListener(new java.awt.event.MouseAdapter() {
+        textoCitas.setFont(new java.awt.Font("Roboto Black", 0, 18)); // NOI18N
+        textoCitas.setForeground(new java.awt.Color(255, 255, 255));
+        textoCitas.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        textoCitas.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/images/Calendario.png"))); // NOI18N
+        textoCitas.setText("Agendar, eliminar e historial");
+        textoCitas.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                textoCitasMouseClicked(evt);
+            }
             public void mouseEntered(java.awt.event.MouseEvent evt) {
-                textoPacientes1MouseEntered(evt);
+                textoCitasMouseEntered(evt);
             }
             public void mouseExited(java.awt.event.MouseEvent evt) {
-                textoPacientes1MouseExited(evt);
+                textoCitasMouseExited(evt);
             }
         });
 
@@ -113,14 +138,14 @@ public class Dashboard extends javax.swing.JFrame {
             fondoCitasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(fondoCitasLayout.createSequentialGroup()
                 .addGap(39, 39, 39)
-                .addComponent(textoPacientes1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(textoCitas, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGap(17, 17, 17))
         );
         fondoCitasLayout.setVerticalGroup(
             fondoCitasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(fondoCitasLayout.createSequentialGroup()
                 .addGap(20, 20, 20)
-                .addComponent(textoPacientes1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(textoCitas, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGap(22, 22, 22))
         );
 
@@ -198,7 +223,7 @@ public class Dashboard extends javax.swing.JFrame {
                 .addGap(39, 39, 39)
                 .addComponent(fondoCitas, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(26, 26, 26)
-                .addComponent(informacion, javax.swing.GroupLayout.DEFAULT_SIZE, 101, Short.MAX_VALUE)
+                .addComponent(informacion, javax.swing.GroupLayout.DEFAULT_SIZE, 91, Short.MAX_VALUE)
                 .addGap(18, 18, 18)
                 .addComponent(btnCerrar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(10, 10, 10))
@@ -210,11 +235,13 @@ public class Dashboard extends javax.swing.JFrame {
             backgroundLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(backgroundLayout.createSequentialGroup()
                 .addComponent(fondopanelIz, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(930, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(content, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         backgroundLayout.setVerticalGroup(
             backgroundLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(fondopanelIz, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(content, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -232,6 +259,19 @@ public class Dashboard extends javax.swing.JFrame {
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
+    private void initContent() {
+        Pacientes pacientes = new Pacientes();
+    
+        // Configurar el tamaño y la ubicación del panel Pacientes
+        pacientes.setSize(938, 720);
+        pacientes.setLocation(0, 0);
+    
+        // Agregar el panel Pacientes al panel Dashboard
+        content.removeAll();
+        content.add(pacientes, BorderLayout.CENTER);
+        content.revalidate();
+        content.repaint();
+    }
     private void textoPacientesMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_textoPacientesMouseEntered
         fondoPacientes.setBackground(new Color(95, 122, 219));
         informacion.setText("<html>Puedes crear nuevos registros de pacientes,<br>eliminar los que ya no necesites o<br>actualizar sus datos personales</html>");
@@ -242,15 +282,15 @@ public class Dashboard extends javax.swing.JFrame {
         informacion.setText("Información...");
     }//GEN-LAST:event_textoPacientesMouseExited
 
-    private void textoPacientes1MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_textoPacientes1MouseEntered
+    private void textoCitasMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_textoCitasMouseEntered
         fondoCitas.setBackground(new Color(95, 122, 219));
         informacion.setText("<html>Puedes agendar nuevas citas para tus pacientes,<br>eliminar las que se hayan cancelado o<br>consultar el historial de las citas realizadas.</html>");
-    }//GEN-LAST:event_textoPacientes1MouseEntered
+    }//GEN-LAST:event_textoCitasMouseEntered
 
-    private void textoPacientes1MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_textoPacientes1MouseExited
+    private void textoCitasMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_textoCitasMouseExited
         fondoCitas.setBackground(new Color(46, 50, 57));
         informacion.setText("Información...");
-    }//GEN-LAST:event_textoPacientes1MouseExited
+    }//GEN-LAST:event_textoCitasMouseExited
 
     private void cerrarSesionMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_cerrarSesionMouseEntered
         btnCerrar.setBackground(new Color(95, 122, 219));
@@ -272,6 +312,14 @@ public class Dashboard extends javax.swing.JFrame {
 
         }
     }//GEN-LAST:event_cerrarSesionMouseClicked
+
+    private void textoPacientesMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_textoPacientesMouseClicked
+        nombreTitulo.setText("PACIENTES");
+    }//GEN-LAST:event_textoPacientesMouseClicked
+
+    private void textoCitasMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_textoCitasMouseClicked
+        nombreTitulo.setText("CITAS");
+    }//GEN-LAST:event_textoCitasMouseClicked
 
     /**
      * @param args the command line arguments
@@ -312,13 +360,18 @@ public class Dashboard extends javax.swing.JFrame {
     private javax.swing.JPanel background;
     private javax.swing.JPanel btnCerrar;
     private javax.swing.JLabel cerrarSesion;
+    private javax.swing.JPanel content;
     private javax.swing.JPanel fondoCitas;
     private javax.swing.JPanel fondoPacientes;
     private javax.swing.JPanel fondopanelIz;
     private javax.swing.JLabel informacion;
     private javax.swing.JLabel logo;
     private javax.swing.JLabel nombreTitulo;
+    private javax.swing.JLabel textoCitas;
     private javax.swing.JLabel textoPacientes;
-    private javax.swing.JLabel textoPacientes1;
     // End of variables declaration//GEN-END:variables
+
+    private void InitContent() {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    }
 }
