@@ -74,11 +74,16 @@ public class Login extends javax.swing.JFrame {
 
         userTxt.setFont(new java.awt.Font("Roboto", 0, 12)); // NOI18N
         userTxt.setForeground(new java.awt.Color(204, 204, 204));
-        userTxt.setText("Ingrese su nombre de usuario");
+        userTxt.setText("Ingrese su nombre de usuario pruevaaq");
         userTxt.setBorder(null);
         userTxt.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mousePressed(java.awt.event.MouseEvent evt) {
                 userTxtMousePressed(evt);
+            }
+        });
+        userTxt.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                userTxtActionPerformed(evt);
             }
         });
         bg.add(userTxt, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 230, 410, 30));
@@ -289,6 +294,10 @@ public class Login extends javax.swing.JFrame {
         exitBtn.setBackground(Color.white);
         exitTxt.setForeground(Color.black);
     }//GEN-LAST:event_exitTxtMouseExited
+
+    private void userTxtActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_userTxtActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_userTxtActionPerformed
 
     /**
      * @param args the command line arguments
