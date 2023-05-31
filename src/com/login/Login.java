@@ -1,13 +1,15 @@
 package com.login;
 
 import java.awt.Color;
+import java.awt.event.FocusAdapter;
+import java.awt.event.FocusEvent;
 
 public class Login extends javax.swing.JFrame {
     
     int xMouse, yMouse;
     
     public Login() {
-        initComponents();
+        initComponents();  
     }
     
     @SuppressWarnings("unchecked")
@@ -246,13 +248,13 @@ public class Login extends javax.swing.JFrame {
             userTxt.setForeground(Color.black);
         }
         if (String.valueOf(passTxt.getPassword()).isEmpty()) {
-            passTxt.setText("********");
+            passTxt.setText("******************");
             passTxt.setForeground(Color.gray);
         }
     }//GEN-LAST:event_userTxtMousePressed
 
     private void passTxtMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_passTxtMousePressed
-        if (String.valueOf(passTxt.getPassword()).equals("********")) {
+        if (String.valueOf(passTxt.getPassword()).equals("******************")) {
             passTxt.setText("");
             passTxt.setForeground(Color.black);
         }
