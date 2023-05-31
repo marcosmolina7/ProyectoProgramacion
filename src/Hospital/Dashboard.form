@@ -45,7 +45,7 @@
           <Group type="103" groupAlignment="0" attributes="0">
               <Group type="102" alignment="0" attributes="0">
                   <Component id="fondopanelIz" min="-2" max="-2" attributes="0"/>
-                  <EmptySpace min="0" pref="930" max="32767" attributes="0"/>
+                  <EmptySpace pref="930" max="32767" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
@@ -73,20 +73,22 @@
                           <Group type="102" attributes="0">
                               <EmptySpace min="-2" pref="26" max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="0" attributes="0">
-                                  <Component id="logo" min="-2" pref="290" max="-2" attributes="0"/>
-                                  <Component id="nombreTitulo" min="-2" pref="290" max="-2" attributes="0"/>
+                                  <Component id="logo" max="32767" attributes="0"/>
+                                  <Component id="nombreTitulo" max="32767" attributes="0"/>
                               </Group>
                           </Group>
                           <Group type="102" alignment="0" attributes="0">
                               <EmptySpace min="-2" pref="27" max="-2" attributes="0"/>
-                              <Component id="informacion" min="-2" pref="285" max="-2" attributes="0"/>
+                              <Component id="informacion" max="32767" attributes="0"/>
+                              <EmptySpace min="4" pref="4" max="-2" attributes="0"/>
                           </Group>
                           <Group type="102" alignment="0" attributes="0">
                               <EmptySpace min="-2" pref="116" max="-2" attributes="0"/>
-                              <Component id="btnCerrar" min="-2" max="-2" attributes="0"/>
+                              <Component id="btnCerrar" max="32767" attributes="0"/>
+                              <EmptySpace min="-2" pref="95" max="-2" attributes="0"/>
                           </Group>
                       </Group>
-                      <EmptySpace max="32767" attributes="0"/>
+                      <EmptySpace min="-2" pref="34" max="-2" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
@@ -94,18 +96,18 @@
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" alignment="0" attributes="0">
                       <EmptySpace min="-2" pref="24" max="-2" attributes="0"/>
-                      <Component id="logo" min="-2" pref="140" max="-2" attributes="0"/>
+                      <Component id="logo" pref="140" max="32767" attributes="0"/>
                       <EmptySpace min="-2" pref="43" max="-2" attributes="0"/>
-                      <Component id="nombreTitulo" min="-2" pref="40" max="-2" attributes="0"/>
+                      <Component id="nombreTitulo" pref="40" max="32767" attributes="0"/>
                       <EmptySpace min="-2" pref="72" max="-2" attributes="0"/>
                       <Component id="fondoPacientes" min="-2" max="-2" attributes="0"/>
                       <EmptySpace min="-2" pref="39" max="-2" attributes="0"/>
                       <Component id="fondoCitas" min="-2" max="-2" attributes="0"/>
                       <EmptySpace min="-2" pref="26" max="-2" attributes="0"/>
-                      <Component id="informacion" min="-2" pref="101" max="-2" attributes="0"/>
-                      <EmptySpace type="separate" max="-2" attributes="0"/>
+                      <Component id="informacion" pref="101" max="32767" attributes="0"/>
+                      <EmptySpace type="separate" min="-2" max="-2" attributes="0"/>
                       <Component id="btnCerrar" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace pref="10" max="32767" attributes="0"/>
+                      <EmptySpace min="-2" pref="10" max="-2" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
@@ -137,8 +139,8 @@
                 <DimensionLayout dim="0">
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Group type="102" alignment="1" attributes="0">
-                          <EmptySpace max="32767" attributes="0"/>
-                          <Component id="textoPacientes" min="-2" pref="284" max="-2" attributes="0"/>
+                          <EmptySpace min="-2" pref="36" max="-2" attributes="0"/>
+                          <Component id="textoPacientes" max="32767" attributes="0"/>
                           <EmptySpace min="-2" pref="30" max="-2" attributes="0"/>
                       </Group>
                   </Group>
@@ -146,8 +148,8 @@
                 <DimensionLayout dim="1">
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Group type="102" alignment="1" attributes="0">
-                          <EmptySpace pref="20" max="32767" attributes="0"/>
-                          <Component id="textoPacientes" min="-2" max="-2" attributes="0"/>
+                          <EmptySpace min="-2" pref="20" max="-2" attributes="0"/>
+                          <Component id="textoPacientes" max="32767" attributes="0"/>
                           <EmptySpace min="-2" pref="16" max="-2" attributes="0"/>
                       </Group>
                   </Group>
@@ -198,7 +200,7 @@
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Group type="102" attributes="0">
                           <EmptySpace min="-2" pref="39" max="-2" attributes="0"/>
-                          <Component id="textoPacientes1" pref="294" max="32767" attributes="0"/>
+                          <Component id="textoPacientes1" max="32767" attributes="0"/>
                           <EmptySpace min="-2" pref="17" max="-2" attributes="0"/>
                       </Group>
                   </Group>
@@ -259,8 +261,8 @@
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Group type="102" alignment="0" attributes="0">
                           <EmptySpace min="-2" pref="15" max="-2" attributes="0"/>
-                          <Component id="cerrarSesion" min="-2" max="-2" attributes="0"/>
-                          <EmptySpace pref="18" max="32767" attributes="0"/>
+                          <Component id="cerrarSesion" max="32767" attributes="0"/>
+                          <EmptySpace min="-2" pref="18" max="-2" attributes="0"/>
                       </Group>
                   </Group>
                 </DimensionLayout>
