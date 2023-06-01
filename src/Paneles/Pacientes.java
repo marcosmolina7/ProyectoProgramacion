@@ -320,9 +320,9 @@ public class Pacientes extends javax.swing.JPanel {
                 .addComponent(btnMostrar, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
 
-        comboBoxSexo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Mujer", "Hombre", "S/E" }));
+        comboBoxSexo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Femenino", "Masculino", "S/E" }));
 
-        comboBoxSexoModi.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Mujer", "Hombre", "S/E" }));
+        comboBoxSexoModi.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Femenino", "Masculino", "S/E" }));
 
         javax.swing.GroupLayout bgLayout = new javax.swing.GroupLayout(bg);
         bg.setLayout(bgLayout);
@@ -357,14 +357,14 @@ public class Pacientes extends javax.swing.JPanel {
                                     .addComponent(boxNombres)
                                     .addComponent(boxApellidos)
                                     .addComponent(boxEdad)
-                                    .addGroup(bgLayout.createSequentialGroup()
-                                        .addComponent(comboBoxSexo, 0, 68, Short.MAX_VALUE)
-                                        .addGap(197, 197, 197))
                                     .addComponent(boxDireccion)
                                     .addGroup(bgLayout.createSequentialGroup()
-                                        .addComponent(boxTelefono)
+                                        .addComponent(boxTelefono, javax.swing.GroupLayout.DEFAULT_SIZE, 153, Short.MAX_VALUE)
                                         .addGap(112, 112, 112))
-                                    .addComponent(boxEmail))))
+                                    .addComponent(boxEmail)
+                                    .addGroup(bgLayout.createSequentialGroup()
+                                        .addComponent(comboBoxSexo, javax.swing.GroupLayout.PREFERRED_SIZE, 116, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addGap(0, 0, Short.MAX_VALUE)))))
                         .addGap(39, 39, 39)
                         .addGroup(bgLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(bgLayout.createSequentialGroup()
@@ -389,13 +389,10 @@ public class Pacientes extends javax.swing.JPanel {
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                 .addGroup(bgLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addGroup(bgLayout.createSequentialGroup()
-                                        .addComponent(boxID)
+                                        .addComponent(boxID, javax.swing.GroupLayout.DEFAULT_SIZE, 133, Short.MAX_VALUE)
                                         .addGap(33, 33, 33)
                                         .addComponent(fondoBtnBuscar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                         .addGap(106, 106, 106))
-                                    .addGroup(bgLayout.createSequentialGroup()
-                                        .addComponent(comboBoxSexoModi, 0, 84, Short.MAX_VALUE)
-                                        .addGap(308, 308, 308))
                                     .addGroup(bgLayout.createSequentialGroup()
                                         .addGroup(bgLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                             .addComponent(boxDPIModi)
@@ -405,7 +402,10 @@ public class Pacientes extends javax.swing.JPanel {
                                             .addComponent(boxEdadModi)
                                             .addComponent(boxApellidosModi)
                                             .addComponent(boxNombresModi))
-                                        .addGap(147, 147, 147))))))))
+                                        .addGap(147, 147, 147))
+                                    .addGroup(bgLayout.createSequentialGroup()
+                                        .addComponent(comboBoxSexoModi, javax.swing.GroupLayout.PREFERRED_SIZE, 129, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))))))
             .addComponent(jScrollPane1)
         );
         bgLayout.setVerticalGroup(

@@ -4,6 +4,8 @@
  */
 package Paneles;
 
+import java.awt.Color;
+
 /**
  *
  * @author marco
@@ -29,33 +31,156 @@ public class Citas extends javax.swing.JPanel {
         bg = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
         jTable1 = new javax.swing.JTable();
+        tituloCrearCita = new javax.swing.JLabel();
+        txtId_Pacientes = new javax.swing.JLabel();
+        txtId_Doctor = new javax.swing.JLabel();
+        txtFecha = new javax.swing.JLabel();
+        txtHora = new javax.swing.JLabel();
+        boxIDPaciente = new javax.swing.JTextField();
+        comboBoxIdDoctor = new javax.swing.JComboBox<>();
+        jDateChooser1 = new com.toedter.calendar.JDateChooser();
+        comboBoxHora = new javax.swing.JComboBox<>();
+        jComboBox1 = new javax.swing.JComboBox<>();
+        fondoAgregar = new javax.swing.JPanel();
+        btnCrear = new javax.swing.JLabel();
 
         bg.setBackground(new java.awt.Color(255, 255, 255));
 
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null}
             },
             new String [] {
-                "Title 1", "Title 2", "Title 3", "Title 4"
+                "ID_Cita", "ID_Paciente", "ID_Doctor", "Fecha", "Hora"
             }
         ));
         jScrollPane1.setViewportView(jTable1);
+
+        tituloCrearCita.setFont(new java.awt.Font("Roboto Black", 0, 24)); // NOI18N
+        tituloCrearCita.setForeground(new java.awt.Color(38, 41, 43));
+        tituloCrearCita.setText("CREAR CITA");
+
+        txtId_Pacientes.setFont(new java.awt.Font("Roboto Medium", 0, 14)); // NOI18N
+        txtId_Pacientes.setForeground(new java.awt.Color(38, 41, 43));
+        txtId_Pacientes.setText("ID_Paciente:");
+
+        txtId_Doctor.setFont(new java.awt.Font("Roboto Medium", 0, 14)); // NOI18N
+        txtId_Doctor.setForeground(new java.awt.Color(38, 41, 43));
+        txtId_Doctor.setText("ID_Doctor:");
+
+        txtFecha.setFont(new java.awt.Font("Roboto Medium", 0, 14)); // NOI18N
+        txtFecha.setForeground(new java.awt.Color(38, 41, 43));
+        txtFecha.setText("Fecha:");
+
+        txtHora.setFont(new java.awt.Font("Roboto Medium", 0, 14)); // NOI18N
+        txtHora.setForeground(new java.awt.Color(38, 41, 43));
+        txtHora.setText("Hora:");
+
+        comboBoxIdDoctor.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "1  Roberto", "2  Juan", "3  Paola", "4  Sofía" }));
+
+        comboBoxHora.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13", "14", "15", "16", "17", "18", "19", "20", "21", "22", "23", "24" }));
+
+        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "00", "15", "30", "45" }));
+
+        fondoAgregar.setBackground(new java.awt.Color(95, 122, 219));
+
+        btnCrear.setFont(new java.awt.Font("Roboto Black", 0, 12)); // NOI18N
+        btnCrear.setForeground(new java.awt.Color(255, 255, 255));
+        btnCrear.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        btnCrear.setText("CREAR");
+        btnCrear.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnCrear.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                btnCrearMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                btnCrearMouseExited(evt);
+            }
+        });
+
+        javax.swing.GroupLayout fondoAgregarLayout = new javax.swing.GroupLayout(fondoAgregar);
+        fondoAgregar.setLayout(fondoAgregarLayout);
+        fondoAgregarLayout.setHorizontalGroup(
+            fondoAgregarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(fondoAgregarLayout.createSequentialGroup()
+                .addComponent(btnCrear, javax.swing.GroupLayout.PREFERRED_SIZE, 97, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE))
+        );
+        fondoAgregarLayout.setVerticalGroup(
+            fondoAgregarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(btnCrear, javax.swing.GroupLayout.DEFAULT_SIZE, 32, Short.MAX_VALUE)
+        );
 
         javax.swing.GroupLayout bgLayout = new javax.swing.GroupLayout(bg);
         bg.setLayout(bgLayout);
         bgLayout.setHorizontalGroup(
             bgLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 938, Short.MAX_VALUE)
+            .addGroup(bgLayout.createSequentialGroup()
+                .addGap(23, 23, 23)
+                .addGroup(bgLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(bgLayout.createSequentialGroup()
+                        .addComponent(tituloCrearCita, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addGap(713, 713, 713))
+                    .addGroup(bgLayout.createSequentialGroup()
+                        .addGroup(bgLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(txtHora, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(bgLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                .addComponent(txtId_Pacientes, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(txtId_Doctor, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(txtFecha, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                        .addGap(18, 18, 18)
+                        .addGroup(bgLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(bgLayout.createSequentialGroup()
+                                .addComponent(comboBoxHora, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(28, 28, 28)
+                                .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(bgLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                .addComponent(boxIDPaciente, javax.swing.GroupLayout.Alignment.LEADING)
+                                .addComponent(jDateChooser1, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(comboBoxIdDoctor, javax.swing.GroupLayout.Alignment.LEADING, 0, 228, Short.MAX_VALUE))
+                            .addComponent(fondoAgregar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 538, javax.swing.GroupLayout.PREFERRED_SIZE))))
         );
         bgLayout.setVerticalGroup(
             bgLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, bgLayout.createSequentialGroup()
-                .addGap(0, 428, Short.MAX_VALUE)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 292, javax.swing.GroupLayout.PREFERRED_SIZE))
+            .addGroup(bgLayout.createSequentialGroup()
+                .addGroup(bgLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(bgLayout.createSequentialGroup()
+                        .addGap(16, 16, 16)
+                        .addComponent(tituloCrearCita, javax.swing.GroupLayout.DEFAULT_SIZE, 35, Short.MAX_VALUE)
+                        .addGap(34, 34, 34)
+                        .addGroup(bgLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(bgLayout.createSequentialGroup()
+                                .addComponent(txtId_Pacientes, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addGap(8, 8, 8)
+                                .addComponent(txtId_Doctor, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(txtFecha)
+                                .addGap(5, 5, 5)
+                                .addComponent(txtHora, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                            .addGroup(bgLayout.createSequentialGroup()
+                                .addGap(1, 1, 1)
+                                .addGroup(bgLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addGroup(bgLayout.createSequentialGroup()
+                                        .addComponent(boxIDPaciente, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addGap(5, 5, 5)
+                                        .addComponent(comboBoxIdDoctor, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addGap(29, 29, 29))
+                                    .addGroup(bgLayout.createSequentialGroup()
+                                        .addGap(56, 56, 56)
+                                        .addComponent(jDateChooser1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                                .addGap(7, 7, 7)
+                                .addGroup(bgLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                    .addComponent(comboBoxHora)
+                                    .addComponent(jComboBox1))))
+                        .addGap(37, 37, 37)
+                        .addComponent(fondoAgregar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE))
+                .addGap(458, 458, 458))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
@@ -70,10 +195,30 @@ public class Citas extends javax.swing.JPanel {
         );
     }// </editor-fold>//GEN-END:initComponents
 
+    private void btnCrearMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnCrearMouseEntered
+        fondoAgregar.setBackground(new Color(46, 50, 57));
+    }//GEN-LAST:event_btnCrearMouseEntered
+
+    private void btnCrearMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnCrearMouseExited
+        fondoAgregar.setBackground(new Color(95, 122, 219));
+    }//GEN-LAST:event_btnCrearMouseExited
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel bg;
+    private javax.swing.JTextField boxIDPaciente;
+    private javax.swing.JLabel btnCrear;
+    private javax.swing.JComboBox<String> comboBoxHora;
+    private javax.swing.JComboBox<String> comboBoxIdDoctor;
+    private javax.swing.JPanel fondoAgregar;
+    private javax.swing.JComboBox<String> jComboBox1;
+    private com.toedter.calendar.JDateChooser jDateChooser1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable jTable1;
+    private javax.swing.JLabel tituloCrearCita;
+    private javax.swing.JLabel txtFecha;
+    private javax.swing.JLabel txtHora;
+    private javax.swing.JLabel txtId_Doctor;
+    private javax.swing.JLabel txtId_Pacientes;
     // End of variables declaration//GEN-END:variables
 }

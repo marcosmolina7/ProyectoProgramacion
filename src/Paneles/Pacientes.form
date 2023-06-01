@@ -68,16 +68,16 @@
                                       <Component id="boxNombres" max="32767" attributes="0"/>
                                       <Component id="boxApellidos" alignment="0" max="32767" attributes="0"/>
                                       <Component id="boxEdad" alignment="0" max="32767" attributes="0"/>
-                                      <Group type="102" alignment="0" attributes="0">
-                                          <Component id="comboBoxSexo" pref="68" max="32767" attributes="0"/>
-                                          <EmptySpace min="197" pref="197" max="-2" attributes="0"/>
-                                      </Group>
                                       <Component id="boxDireccion" alignment="0" max="32767" attributes="0"/>
                                       <Group type="102" alignment="0" attributes="0">
-                                          <Component id="boxTelefono" max="32767" attributes="0"/>
+                                          <Component id="boxTelefono" pref="153" max="32767" attributes="0"/>
                                           <EmptySpace min="112" pref="112" max="-2" attributes="0"/>
                                       </Group>
                                       <Component id="boxEmail" alignment="0" max="32767" attributes="0"/>
+                                      <Group type="102" alignment="0" attributes="0">
+                                          <Component id="comboBoxSexo" min="-2" pref="116" max="-2" attributes="0"/>
+                                          <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
+                                      </Group>
                                   </Group>
                               </Group>
                           </Group>
@@ -109,14 +109,10 @@
                                   <EmptySpace type="unrelated" min="-2" max="-2" attributes="0"/>
                                   <Group type="103" groupAlignment="0" attributes="0">
                                       <Group type="102" attributes="0">
-                                          <Component id="boxID" max="32767" attributes="0"/>
+                                          <Component id="boxID" pref="133" max="32767" attributes="0"/>
                                           <EmptySpace min="-2" pref="33" max="-2" attributes="0"/>
                                           <Component id="fondoBtnBuscar" min="-2" max="-2" attributes="0"/>
                                           <EmptySpace min="-2" pref="106" max="-2" attributes="0"/>
-                                      </Group>
-                                      <Group type="102" alignment="0" attributes="0">
-                                          <Component id="comboBoxSexoModi" pref="84" max="32767" attributes="0"/>
-                                          <EmptySpace min="-2" pref="308" max="-2" attributes="0"/>
                                       </Group>
                                       <Group type="102" attributes="0">
                                           <Group type="103" groupAlignment="0" attributes="0">
@@ -129,6 +125,10 @@
                                               <Component id="boxNombresModi" alignment="0" max="32767" attributes="0"/>
                                           </Group>
                                           <EmptySpace min="-2" pref="147" max="-2" attributes="0"/>
+                                      </Group>
+                                      <Group type="102" alignment="0" attributes="0">
+                                          <Component id="comboBoxSexoModi" min="-2" pref="129" max="-2" attributes="0"/>
+                                          <EmptySpace max="32767" attributes="0"/>
                                       </Group>
                                   </Group>
                               </Group>
@@ -795,8 +795,8 @@
           <Properties>
             <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
               <StringArray count="3">
-                <StringItem index="0" value="Mujer"/>
-                <StringItem index="1" value="Hombre"/>
+                <StringItem index="0" value="Femenino"/>
+                <StringItem index="1" value="Masculino"/>
                 <StringItem index="2" value="S/E"/>
               </StringArray>
             </Property>
@@ -827,8 +827,8 @@
           <Properties>
             <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
               <StringArray count="3">
-                <StringItem index="0" value="Mujer"/>
-                <StringItem index="1" value="Hombre"/>
+                <StringItem index="0" value="Femenino"/>
+                <StringItem index="1" value="Masculino"/>
                 <StringItem index="2" value="S/E"/>
               </StringArray>
             </Property>
