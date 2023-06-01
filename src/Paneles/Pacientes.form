@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 
-<Form version="1.3" maxVersion="1.9" type="org.netbeans.modules.form.forminfo.JPanelFormInfo">
+<Form version="1.5" maxVersion="1.9" type="org.netbeans.modules.form.forminfo.JPanelFormInfo">
   <AuxValues>
     <AuxValue name="FormSettings_autoResourcing" type="java.lang.Integer" value="0"/>
     <AuxValue name="FormSettings_autoSetComponentName" type="java.lang.Boolean" value="false"/>
@@ -36,7 +36,6 @@
       <Layout>
         <DimensionLayout dim="0">
           <Group type="103" groupAlignment="0" attributes="0">
-              <Component id="jScrollPane1" alignment="0" max="32767" attributes="0"/>
               <Group type="102" alignment="0" attributes="0">
                   <EmptySpace min="-2" pref="34" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="0" attributes="0">
@@ -47,72 +46,103 @@
                       </Group>
                       <Group type="102" attributes="0">
                           <Group type="103" groupAlignment="0" attributes="0">
-                              <Group type="102" alignment="1" attributes="0">
-                                  <Component id="dpi" max="32767" attributes="0"/>
-                                  <EmptySpace max="32767" attributes="0"/>
-                              </Group>
-                              <Group type="102" attributes="0">
-                                  <Group type="103" groupAlignment="0" attributes="0">
-                                      <Component id="apellidos" alignment="0" min="-2" pref="77" max="-2" attributes="0"/>
-                                      <Component id="edad" alignment="0" min="-2" pref="45" max="-2" attributes="0"/>
-                                      <Component id="sexo" alignment="0" min="-2" pref="45" max="-2" attributes="0"/>
-                                      <Component id="dirección" alignment="0" min="-2" max="-2" attributes="0"/>
-                                      <Component id="telefono" alignment="0" min="-2" pref="64" max="-2" attributes="0"/>
-                                      <Component id="email" alignment="0" min="-2" max="-2" attributes="0"/>
-                                  </Group>
-                                  <EmptySpace max="32767" attributes="0"/>
-                              </Group>
-                              <Group type="102" attributes="0">
-                                  <Component id="nombres" max="32767" attributes="0"/>
-                                  <EmptySpace max="32767" attributes="0"/>
-                              </Group>
                               <Group type="102" attributes="0">
                                   <Component id="fondoBtnAgregar" min="-2" max="-2" attributes="0"/>
                                   <EmptySpace min="-2" pref="62" max="-2" attributes="0"/>
                                   <Component id="fondoBtnMostrar" min="-2" max="-2" attributes="0"/>
-                                  <EmptySpace pref="123" max="32767" attributes="0"/>
+                              </Group>
+                              <Group type="102" attributes="0">
+                                  <Group type="103" groupAlignment="1" max="-2" attributes="0">
+                                      <Component id="dpi" max="32767" attributes="0"/>
+                                      <Component id="nombres" alignment="0" max="32767" attributes="0"/>
+                                      <Component id="apellidos" alignment="0" pref="77" max="32767" attributes="0"/>
+                                      <Component id="edad" alignment="0" max="32767" attributes="0"/>
+                                      <Component id="sexo" alignment="0" max="32767" attributes="0"/>
+                                      <Component id="dirección" alignment="0" max="32767" attributes="0"/>
+                                      <Component id="telefono" alignment="0" max="32767" attributes="0"/>
+                                      <Component id="email" alignment="0" max="32767" attributes="0"/>
+                                  </Group>
+                                  <EmptySpace type="separate" min="-2" max="-2" attributes="0"/>
+                                  <Group type="103" groupAlignment="0" attributes="0">
+                                      <Component id="boxDPI" max="32767" attributes="0"/>
+                                      <Component id="boxNombres" max="32767" attributes="0"/>
+                                      <Component id="boxApellidos" alignment="0" max="32767" attributes="0"/>
+                                      <Component id="boxEdad" alignment="0" max="32767" attributes="0"/>
+                                      <Group type="102" alignment="0" attributes="0">
+                                          <Component id="comboBoxSexo" pref="68" max="32767" attributes="0"/>
+                                          <EmptySpace min="197" pref="197" max="-2" attributes="0"/>
+                                      </Group>
+                                      <Component id="boxDireccion" alignment="0" max="32767" attributes="0"/>
+                                      <Group type="102" alignment="0" attributes="0">
+                                          <Component id="boxTelefono" max="32767" attributes="0"/>
+                                          <EmptySpace min="112" pref="112" max="-2" attributes="0"/>
+                                      </Group>
+                                      <Component id="boxEmail" alignment="0" max="32767" attributes="0"/>
+                                  </Group>
                               </Group>
                           </Group>
+                          <EmptySpace min="-2" pref="39" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="0" attributes="0">
-                              <Group type="102" alignment="0" attributes="0">
-                                  <Group type="103" groupAlignment="1" attributes="0">
-                                      <Component id="id_Paciente" pref="128" max="32767" attributes="0"/>
-                                      <Group type="102" alignment="0" attributes="0">
-                                          <Group type="103" groupAlignment="1" attributes="0">
-                                              <Group type="103" alignment="0" groupAlignment="1" max="-2" attributes="0">
-                                                  <Component id="telefonoM" alignment="0" max="32767" attributes="0"/>
-                                                  <Component id="direcciónM" alignment="0" max="32767" attributes="0"/>
-                                                  <Component id="nombresM" alignment="0" min="-2" max="-2" attributes="0"/>
-                                                  <Component id="apellidosM" alignment="0" pref="75" max="32767" attributes="0"/>
-                                                  <Component id="dpiM" alignment="0" min="-2" pref="39" max="-2" attributes="0"/>
-                                                  <Component id="edadM" alignment="0" min="-2" pref="61" max="-2" attributes="0"/>
-                                                  <Component id="sexoM" alignment="0" min="-2" pref="61" max="-2" attributes="0"/>
-                                              </Group>
-                                              <Component id="emailM" alignment="0" min="-2" pref="56" max="-2" attributes="0"/>
-                                          </Group>
-                                          <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
-                                      </Group>
-                                  </Group>
-                                  <EmptySpace min="-2" pref="77" max="-2" attributes="0"/>
-                                  <Component id="fondoBtnBuscar" min="-2" max="-2" attributes="0"/>
-                                  <EmptySpace min="-2" pref="163" max="-2" attributes="0"/>
-                              </Group>
                               <Group type="102" alignment="0" attributes="0">
                                   <Component id="fondoBtnGuardar" min="-2" max="-2" attributes="0"/>
                                   <EmptySpace min="-2" pref="73" max="-2" attributes="0"/>
                                   <Component id="fondoBtnEliminar" min="-2" max="-2" attributes="0"/>
                                   <EmptySpace max="32767" attributes="0"/>
                               </Group>
+                              <Group type="102" alignment="1" attributes="0">
+                                  <Group type="103" groupAlignment="0" attributes="0">
+                                      <Component id="telefonoM" alignment="0" max="32767" attributes="0"/>
+                                      <Component id="direcciónM" alignment="0" max="32767" attributes="0"/>
+                                      <Component id="apellidosM" alignment="0" max="32767" attributes="0"/>
+                                      <Component id="nombresM" alignment="0" max="32767" attributes="0"/>
+                                      <Group type="102" attributes="0">
+                                          <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                                              <Component id="id_Paciente" pref="98" max="32767" attributes="0"/>
+                                              <Component id="edadM" alignment="0" max="32767" attributes="0"/>
+                                              <Component id="sexoM" alignment="0" max="32767" attributes="0"/>
+                                              <Component id="emailM" alignment="0" max="32767" attributes="0"/>
+                                          </Group>
+                                          <EmptySpace min="0" pref="3" max="32767" attributes="0"/>
+                                      </Group>
+                                      <Component id="dpiM" max="32767" attributes="0"/>
+                                  </Group>
+                                  <EmptySpace type="unrelated" min="-2" max="-2" attributes="0"/>
+                                  <Group type="103" groupAlignment="0" attributes="0">
+                                      <Group type="102" attributes="0">
+                                          <Component id="boxID" max="32767" attributes="0"/>
+                                          <EmptySpace min="-2" pref="33" max="-2" attributes="0"/>
+                                          <Component id="fondoBtnBuscar" min="-2" max="-2" attributes="0"/>
+                                          <EmptySpace min="-2" pref="106" max="-2" attributes="0"/>
+                                      </Group>
+                                      <Group type="102" alignment="0" attributes="0">
+                                          <Component id="comboBoxSexoModi" pref="84" max="32767" attributes="0"/>
+                                          <EmptySpace min="-2" pref="308" max="-2" attributes="0"/>
+                                      </Group>
+                                      <Group type="102" attributes="0">
+                                          <Group type="103" groupAlignment="0" attributes="0">
+                                              <Component id="boxDPIModi" alignment="0" max="32767" attributes="0"/>
+                                              <Component id="boxEmailModi" alignment="0" max="32767" attributes="0"/>
+                                              <Component id="boxTelefonoModi" alignment="0" max="32767" attributes="0"/>
+                                              <Component id="boxDireccionModi" alignment="0" max="32767" attributes="0"/>
+                                              <Component id="boxEdadModi" alignment="0" max="32767" attributes="0"/>
+                                              <Component id="boxApellidosModi" alignment="0" max="32767" attributes="0"/>
+                                              <Component id="boxNombresModi" alignment="0" max="32767" attributes="0"/>
+                                          </Group>
+                                          <EmptySpace min="-2" pref="147" max="-2" attributes="0"/>
+                                      </Group>
+                                  </Group>
+                              </Group>
                           </Group>
                       </Group>
                   </Group>
               </Group>
+              <Component id="jScrollPane1" alignment="0" max="32767" attributes="0"/>
           </Group>
         </DimensionLayout>
         <DimensionLayout dim="1">
           <Group type="103" groupAlignment="0" attributes="0">
               <Group type="102" attributes="0">
-                  <EmptySpace max="-2" attributes="0"/>
+                  <EmptySpace min="-2" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
                       <Component id="tituloAgregarPaciente" alignment="3" max="32767" attributes="0"/>
                       <Component id="tituloAgregarPaciente1" alignment="3" max="32767" attributes="0"/>
@@ -123,6 +153,11 @@
                           <Group type="103" groupAlignment="3" attributes="0">
                               <Component id="dpi" alignment="3" min="-2" pref="23" max="-2" attributes="0"/>
                               <Component id="id_Paciente" alignment="3" max="32767" attributes="0"/>
+                              <Group type="102" alignment="3" attributes="0">
+                                  <EmptySpace min="1" pref="1" max="-2" attributes="0"/>
+                                  <Component id="boxDPI" min="-2" max="-2" attributes="0"/>
+                              </Group>
+                              <Component id="boxID" alignment="3" min="-2" max="-2" attributes="0"/>
                           </Group>
                       </Group>
                       <Group type="102" attributes="0">
@@ -130,54 +165,97 @@
                           <Component id="fondoBtnBuscar" min="-2" max="-2" attributes="0"/>
                       </Group>
                   </Group>
-                  <EmptySpace min="-2" max="-2" attributes="0"/>
+                  <EmptySpace max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Group type="102" alignment="0" attributes="0">
-                          <EmptySpace min="-2" pref="7" max="-2" attributes="0"/>
-                          <Component id="dpiM" pref="22" max="32767" attributes="0"/>
-                          <EmptySpace max="-2" attributes="0"/>
-                          <Component id="nombresM" pref="22" max="32767" attributes="0"/>
                           <EmptySpace min="-2" pref="12" max="-2" attributes="0"/>
-                          <Component id="apellidosM" pref="22" max="32767" attributes="0"/>
-                          <EmptySpace min="-2" pref="12" max="-2" attributes="0"/>
-                          <Component id="edadM" min="-2" pref="17" max="-2" attributes="0"/>
-                          <EmptySpace min="-2" pref="12" max="-2" attributes="0"/>
-                          <Component id="sexoM" pref="22" max="32767" attributes="0"/>
-                          <EmptySpace max="-2" attributes="0"/>
-                          <Component id="direcciónM" pref="22" max="32767" attributes="0"/>
-                          <EmptySpace min="-2" pref="12" max="-2" attributes="0"/>
-                          <Component id="telefonoM" pref="22" max="32767" attributes="0"/>
+                          <Group type="103" groupAlignment="3" attributes="0">
+                              <Component id="dpiM" alignment="3" max="32767" attributes="0"/>
+                              <Component id="boxDPIModi" alignment="3" max="32767" attributes="0"/>
+                          </Group>
                           <EmptySpace type="unrelated" min="-2" max="-2" attributes="0"/>
-                          <Component id="emailM" pref="23" max="32767" attributes="0"/>
-                          <EmptySpace min="-2" pref="18" max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="3" attributes="0">
+                              <Component id="boxNombresModi" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="nombresM" alignment="3" min="-2" pref="20" max="-2" attributes="0"/>
+                          </Group>
+                          <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="3" attributes="0">
+                              <Component id="boxApellidosModi" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="apellidosM" alignment="3" min="-2" max="-2" attributes="0"/>
+                          </Group>
+                          <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="3" attributes="0">
+                              <Component id="edadM" alignment="3" min="-2" pref="17" max="-2" attributes="0"/>
+                              <Component id="boxEdadModi" alignment="3" max="32767" attributes="0"/>
+                          </Group>
+                          <EmptySpace type="separate" max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="3" attributes="0">
+                              <Component id="sexoM" alignment="3" max="32767" attributes="0"/>
+                              <Component id="comboBoxSexoModi" alignment="3" max="32767" attributes="0"/>
+                          </Group>
+                          <EmptySpace type="separate" max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="3" attributes="0">
+                              <Component id="direcciónM" alignment="3" max="32767" attributes="0"/>
+                              <Component id="boxDireccionModi" alignment="3" max="32767" attributes="0"/>
+                          </Group>
+                          <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="3" attributes="0">
+                              <Component id="telefonoM" alignment="3" max="32767" attributes="0"/>
+                              <Component id="boxTelefonoModi" alignment="3" max="32767" attributes="0"/>
+                          </Group>
+                          <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="3" attributes="0">
+                              <Component id="emailM" alignment="3" max="32767" attributes="0"/>
+                              <Component id="boxEmailModi" alignment="3" max="32767" attributes="0"/>
+                          </Group>
+                          <EmptySpace min="-2" pref="30" max="-2" attributes="0"/>
                       </Group>
                       <Group type="102" attributes="0">
-                          <Component id="nombres" max="32767" attributes="0"/>
-                          <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                          <Component id="apellidos" max="32767" attributes="0"/>
+                          <Group type="103" groupAlignment="3" attributes="0">
+                              <Component id="nombres" alignment="3" max="32767" attributes="0"/>
+                              <Component id="boxNombres" alignment="3" max="32767" attributes="0"/>
+                          </Group>
+                          <EmptySpace type="unrelated" min="-2" max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="3" attributes="0">
+                              <Component id="apellidos" alignment="3" max="32767" attributes="0"/>
+                              <Component id="boxApellidos" alignment="0" max="32767" attributes="0"/>
+                          </Group>
                           <EmptySpace min="-2" pref="12" max="-2" attributes="0"/>
-                          <Component id="edad" max="32767" attributes="0"/>
+                          <Group type="103" groupAlignment="3" attributes="0">
+                              <Component id="edad" alignment="3" max="32767" attributes="0"/>
+                              <Component id="boxEdad" alignment="3" max="32767" attributes="0"/>
+                          </Group>
                           <EmptySpace type="unrelated" min="-2" max="-2" attributes="0"/>
-                          <Component id="sexo" max="32767" attributes="0"/>
+                          <Group type="103" groupAlignment="3" attributes="0">
+                              <Component id="sexo" alignment="3" max="32767" attributes="0"/>
+                              <Component id="comboBoxSexo" alignment="3" max="32767" attributes="0"/>
+                          </Group>
                           <EmptySpace type="unrelated" min="-2" max="-2" attributes="0"/>
-                          <Component id="dirección" max="32767" attributes="0"/>
+                          <Group type="103" groupAlignment="3" attributes="0">
+                              <Component id="dirección" alignment="3" max="32767" attributes="0"/>
+                              <Component id="boxDireccion" alignment="3" max="32767" attributes="0"/>
+                          </Group>
                           <EmptySpace type="unrelated" min="-2" max="-2" attributes="0"/>
-                          <Component id="telefono" max="32767" attributes="0"/>
+                          <Group type="103" groupAlignment="3" attributes="0">
+                              <Component id="telefono" alignment="3" max="32767" attributes="0"/>
+                              <Component id="boxTelefono" alignment="3" max="32767" attributes="0"/>
+                          </Group>
                           <EmptySpace type="unrelated" min="-2" max="-2" attributes="0"/>
-                          <Component id="email" max="32767" attributes="0"/>
-                          <EmptySpace min="-2" pref="37" max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="3" attributes="0">
+                              <Component id="email" alignment="3" max="32767" attributes="0"/>
+                              <Component id="boxEmail" alignment="3" max="32767" attributes="0"/>
+                          </Group>
+                          <EmptySpace min="-2" pref="85" max="-2" attributes="0"/>
                       </Group>
                   </Group>
                   <Group type="103" groupAlignment="0" attributes="0">
-                      <Group type="103" groupAlignment="0" attributes="0">
-                          <Component id="fondoBtnAgregar" alignment="0" min="-2" max="-2" attributes="0"/>
-                          <Component id="fondoBtnMostrar" alignment="0" min="-2" max="-2" attributes="0"/>
-                      </Group>
+                      <Component id="fondoBtnAgregar" alignment="0" min="-2" max="-2" attributes="0"/>
+                      <Component id="fondoBtnMostrar" alignment="0" min="-2" max="-2" attributes="0"/>
                       <Component id="fondoBtnGuardar" min="-2" max="-2" attributes="0"/>
                       <Component id="fondoBtnEliminar" alignment="0" min="-2" max="-2" attributes="0"/>
                   </Group>
-                  <EmptySpace min="-2" pref="12" max="-2" attributes="0"/>
-                  <Component id="jScrollPane1" pref="310" max="32767" attributes="0"/>
+                  <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                  <Component id="jScrollPane1" min="-2" pref="277" max="-2" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
@@ -705,6 +783,64 @@
             </Component>
           </SubComponents>
         </Container>
+        <Component class="javax.swing.JTextField" name="boxDPI">
+        </Component>
+        <Component class="javax.swing.JTextField" name="boxNombres">
+        </Component>
+        <Component class="javax.swing.JTextField" name="boxApellidos">
+        </Component>
+        <Component class="javax.swing.JTextField" name="boxEdad">
+        </Component>
+        <Component class="javax.swing.JComboBox" name="comboBoxSexo">
+          <Properties>
+            <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
+              <StringArray count="3">
+                <StringItem index="0" value="Mujer"/>
+                <StringItem index="1" value="Hombre"/>
+                <StringItem index="2" value="S/E"/>
+              </StringArray>
+            </Property>
+          </Properties>
+          <AuxValues>
+            <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
+          </AuxValues>
+        </Component>
+        <Component class="javax.swing.JTextField" name="boxDireccion">
+        </Component>
+        <Component class="javax.swing.JTextField" name="boxTelefono">
+        </Component>
+        <Component class="javax.swing.JTextField" name="boxEmail">
+        </Component>
+        <Component class="javax.swing.JTextField" name="boxID">
+        </Component>
+        <Component class="javax.swing.JTextField" name="boxDPIModi">
+        </Component>
+        <Component class="javax.swing.JTextField" name="boxNombresModi">
+        </Component>
+        <Component class="javax.swing.JTextField" name="boxApellidosModi">
+        </Component>
+        <Component class="javax.swing.JTextField" name="boxEdadModi">
+        </Component>
+        <Component class="javax.swing.JTextField" name="boxDireccionModi">
+        </Component>
+        <Component class="javax.swing.JComboBox" name="comboBoxSexoModi">
+          <Properties>
+            <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
+              <StringArray count="3">
+                <StringItem index="0" value="Mujer"/>
+                <StringItem index="1" value="Hombre"/>
+                <StringItem index="2" value="S/E"/>
+              </StringArray>
+            </Property>
+          </Properties>
+          <AuxValues>
+            <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
+          </AuxValues>
+        </Component>
+        <Component class="javax.swing.JTextField" name="boxTelefonoModi">
+        </Component>
+        <Component class="javax.swing.JTextField" name="boxEmailModi">
+        </Component>
       </SubComponents>
     </Container>
   </SubComponents>
