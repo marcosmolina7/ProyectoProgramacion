@@ -6,10 +6,7 @@ package BaseDeDatos;
 
 import java.sql.Connection;
 
-/**
- *
- * @author marco
- */
 public class Coneccion {
     protected Connection conexion;
+    
 }
