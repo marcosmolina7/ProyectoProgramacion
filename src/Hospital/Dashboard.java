@@ -4,6 +4,7 @@
  */
 package Hospital;
 
+import Paneles.Citas;
 import Paneles.Pacientes;
 import com.login.Login;
 import java.awt.BorderLayout;
@@ -260,15 +261,16 @@ public class Dashboard extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void initContent() {
-        Pacientes pacientes = new Pacientes();
+        ShowJPanel(new Pacientes());
+    }
     
-        // Configurar el tamaño y la ubicación del panel Pacientes
-        pacientes.setSize(938, 720);
-        pacientes.setLocation(0, 0);
+    private void ShowJPanel(JPanel p){
+        p.setSize(938, 720);
+        p.setLocation(0, 0);
     
         // Agregar el panel Pacientes al panel Dashboard
         content.removeAll();
-        content.add(pacientes, BorderLayout.CENTER);
+        content.add(p, BorderLayout.CENTER);
         content.revalidate();
         content.repaint();
     }
@@ -315,10 +317,12 @@ public class Dashboard extends javax.swing.JFrame {
 
     private void textoPacientesMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_textoPacientesMouseClicked
         nombreTitulo.setText("PACIENTES");
+        ShowJPanel(new Pacientes());
     }//GEN-LAST:event_textoPacientesMouseClicked
 
     private void textoCitasMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_textoCitasMouseClicked
         nombreTitulo.setText("CITAS");
+        ShowJPanel(new Citas());
     }//GEN-LAST:event_textoCitasMouseClicked
 
     /**

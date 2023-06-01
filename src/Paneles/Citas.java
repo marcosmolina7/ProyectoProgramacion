@@ -8,12 +8,12 @@ package Paneles;
  *
  * @author marco
  */
-public class Pacientes extends javax.swing.JPanel {
+public class Citas extends javax.swing.JPanel {
 
     /**
-     * Creates new form Pacientes
+     * Creates new form Citas
      */
-    public Pacientes() {
+    public Citas() {
         initComponents();
     }
 
@@ -31,23 +31,23 @@ public class Pacientes extends javax.swing.JPanel {
 
         bg.setBackground(new java.awt.Color(255, 255, 255));
 
-        jLabel1.setText("PACIENTESSSSSSSSS");
+        jLabel1.setText("CITASSSSSSSSSS");
 
         javax.swing.GroupLayout bgLayout = new javax.swing.GroupLayout(bg);
         bg.setLayout(bgLayout);
         bgLayout.setHorizontalGroup(
             bgLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(bgLayout.createSequentialGroup()
-                .addGap(407, 407, 407)
+                .addGap(408, 408, 408)
                 .addComponent(jLabel1)
-                .addContainerGap(424, Short.MAX_VALUE))
+                .addContainerGap(445, Short.MAX_VALUE))
         );
         bgLayout.setVerticalGroup(
             bgLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(bgLayout.createSequentialGroup()
-                .addGap(316, 316, 316)
+                .addGap(315, 315, 315)
                 .addComponent(jLabel1)
-                .addContainerGap(388, Short.MAX_VALUE))
+                .addContainerGap(389, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
