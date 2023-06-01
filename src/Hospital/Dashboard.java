@@ -73,6 +73,7 @@ public class Dashboard extends javax.swing.JFrame {
         textoPacientes.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         textoPacientes.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/images/Personas.png"))); // NOI18N
         textoPacientes.setText("Crear, eliminar y actualizar");
+        textoPacientes.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         textoPacientes.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 textoPacientesMouseClicked(evt);
@@ -89,17 +90,11 @@ public class Dashboard extends javax.swing.JFrame {
         fondoPacientes.setLayout(fondoPacientesLayout);
         fondoPacientesLayout.setHorizontalGroup(
             fondoPacientesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, fondoPacientesLayout.createSequentialGroup()
-                .addGap(36, 36, 36)
-                .addComponent(textoPacientes, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGap(30, 30, 30))
+            .addComponent(textoPacientes, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 317, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
         fondoPacientesLayout.setVerticalGroup(
             fondoPacientesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, fondoPacientesLayout.createSequentialGroup()
-                .addGap(20, 20, 20)
-                .addComponent(textoPacientes, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGap(16, 16, 16))
+            .addComponent(textoPacientes, javax.swing.GroupLayout.DEFAULT_SIZE, 70, Short.MAX_VALUE)
         );
 
         logo.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -112,6 +107,7 @@ public class Dashboard extends javax.swing.JFrame {
         textoCitas.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         textoCitas.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/images/Calendario.png"))); // NOI18N
         textoCitas.setText("Agendar, eliminar e historial");
+        textoCitas.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         textoCitas.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 textoCitasMouseClicked(evt);
@@ -128,17 +124,11 @@ public class Dashboard extends javax.swing.JFrame {
         fondoCitas.setLayout(fondoCitasLayout);
         fondoCitasLayout.setHorizontalGroup(
             fondoCitasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(fondoCitasLayout.createSequentialGroup()
-                .addGap(39, 39, 39)
-                .addComponent(textoCitas, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGap(17, 17, 17))
+            .addComponent(textoCitas, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 317, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
         fondoCitasLayout.setVerticalGroup(
             fondoCitasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(fondoCitasLayout.createSequentialGroup()
-                .addGap(20, 20, 20)
-                .addComponent(textoCitas, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGap(22, 22, 22))
+            .addComponent(textoCitas, javax.swing.GroupLayout.DEFAULT_SIZE, 70, Short.MAX_VALUE)
         );
 
         informacion.setFont(new java.awt.Font("Roboto Medium", 0, 12)); // NOI18N
@@ -169,7 +159,7 @@ public class Dashboard extends javax.swing.JFrame {
         btnCerrar.setLayout(btnCerrarLayout);
         btnCerrarLayout.setHorizontalGroup(
             btnCerrarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(cerrarSesion, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(cerrarSesion, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 89, Short.MAX_VALUE)
         );
         btnCerrarLayout.setVerticalGroup(
             btnCerrarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -193,13 +183,14 @@ public class Dashboard extends javax.swing.JFrame {
                             .addComponent(logo, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(nombreTitulo, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                     .addGroup(fondopanelIzLayout.createSequentialGroup()
-                        .addGap(27, 27, 27)
-                        .addComponent(informacion, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addGap(4, 4, 4))
-                    .addGroup(fondopanelIzLayout.createSequentialGroup()
-                        .addGap(116, 116, 116)
-                        .addComponent(btnCerrar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addGap(95, 95, 95)))
+                        .addGroup(fondopanelIzLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(fondopanelIzLayout.createSequentialGroup()
+                                .addGap(27, 27, 27)
+                                .addComponent(informacion, javax.swing.GroupLayout.PREFERRED_SIZE, 252, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(fondopanelIzLayout.createSequentialGroup()
+                                .addGap(116, 116, 116)
+                                .addComponent(btnCerrar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGap(0, 0, Short.MAX_VALUE)))
                 .addGap(34, 34, 34))
         );
         fondopanelIzLayout.setVerticalGroup(
@@ -208,7 +199,7 @@ public class Dashboard extends javax.swing.JFrame {
                 .addGap(24, 24, 24)
                 .addComponent(logo, javax.swing.GroupLayout.PREFERRED_SIZE, 133, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(26, 26, 26)
-                .addComponent(nombreTitulo, javax.swing.GroupLayout.DEFAULT_SIZE, 81, Short.MAX_VALUE)
+                .addComponent(nombreTitulo, javax.swing.GroupLayout.DEFAULT_SIZE, 119, Short.MAX_VALUE)
                 .addGap(52, 52, 52)
                 .addComponent(fondoPacientes, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(39, 39, 39)
