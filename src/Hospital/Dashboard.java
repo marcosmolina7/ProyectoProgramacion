@@ -74,7 +74,7 @@ public class Dashboard extends javax.swing.JFrame {
         nombreTitulo.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         nombreTitulo.setText("PACIENTES");
 
-        fondoPacientes.setBackground(new java.awt.Color(46, 50, 57));
+        fondoPacientes.setBackground(new java.awt.Color(95, 122, 219));
 
         textoPacientes.setBackground(new java.awt.Color(255, 255, 255));
         textoPacientes.setFont(new java.awt.Font("Roboto Black", 0, 18)); // NOI18N
@@ -275,22 +275,18 @@ public class Dashboard extends javax.swing.JFrame {
         content.repaint();
     }
     private void textoPacientesMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_textoPacientesMouseEntered
-        fondoPacientes.setBackground(new Color(95, 122, 219));
         informacion.setText("<html>Puedes crear nuevos registros de pacientes,<br>eliminar los que ya no necesites o<br>actualizar sus datos personales</html>");
     }//GEN-LAST:event_textoPacientesMouseEntered
 
     private void textoPacientesMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_textoPacientesMouseExited
-        fondoPacientes.setBackground(new Color(46, 50, 57));
         informacion.setText("Información...");
     }//GEN-LAST:event_textoPacientesMouseExited
 
     private void textoCitasMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_textoCitasMouseEntered
-        fondoCitas.setBackground(new Color(95, 122, 219));
         informacion.setText("<html>Puedes agendar nuevas citas para tus pacientes,<br>eliminar las que se hayan cancelado o<br>consultar el historial de las citas realizadas.</html>");
     }//GEN-LAST:event_textoCitasMouseEntered
 
     private void textoCitasMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_textoCitasMouseExited
-        fondoCitas.setBackground(new Color(46, 50, 57));
         informacion.setText("Información...");
     }//GEN-LAST:event_textoCitasMouseExited
 
@@ -317,11 +313,16 @@ public class Dashboard extends javax.swing.JFrame {
 
     private void textoPacientesMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_textoPacientesMouseClicked
         nombreTitulo.setText("PACIENTES");
+        fondoPacientes.setBackground(new Color(95, 122, 219));
+        fondoCitas.setBackground(new Color(46, 50, 57));
         ShowJPanel(new Pacientes());
     }//GEN-LAST:event_textoPacientesMouseClicked
 
     private void textoCitasMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_textoCitasMouseClicked
         nombreTitulo.setText("CITAS");
+        fondoPacientes.setBackground(new Color(46, 50, 57));
+        fondoCitas.setBackground(new Color(95, 122, 219));
+        
         ShowJPanel(new Citas());
     }//GEN-LAST:event_textoCitasMouseClicked
 
