@@ -1,6 +1,11 @@
 package com.login;
 
+import Hospital.Dashboard;
 import java.awt.Color;
+import java.util.Arrays;
+import java.util.HashMap;
+import java.util.Map;
+import javax.swing.JOptionPane;
 
 public class Login extends javax.swing.JFrame {
     
@@ -263,7 +268,23 @@ public class Login extends javax.swing.JFrame {
     }//GEN-LAST:event_passTxtMousePressed
 
     private void loginBtnTxtMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_loginBtnTxtMouseClicked
-        //AQUÍ SE ESCRIBE EL CODIGO
+        Map<String, String> userCredentials = new HashMap<>();
+        userCredentials.put("marcosmolina7", "contraseña1");
+        userCredentials.put("renealejandro11", "contraseña2");
+        userCredentials.put("carlosxu12", "contraseña3");
+        userCredentials.put("mariocardenas13", "contraseña4");
+        userCredentials.put("lourdesgomez14", "contraseña5");
+
+        String username = userTxt.getText();
+        String password = new String(passTxt.getPassword());
+
+        if (userCredentials.containsKey(username) && userCredentials.get(username).equals(password)) {
+            Dashboard dashboard = new Dashboard();
+            dashboard.setVisible(true); // Muestra la ventana de Dashboard
+            this.dispose(); // Cierra la ventana de inicio de sesión
+        } else {
+            JOptionPane.showMessageDialog(this, "El nombre de usuario o contraseña son incorrectos.", "Error", JOptionPane.ERROR_MESSAGE);
+        }
     }//GEN-LAST:event_loginBtnTxtMouseClicked
 
     private void headerMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_headerMousePressed
