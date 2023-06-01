@@ -23,6 +23,7 @@ public class Dashboard extends javax.swing.JFrame {
      */
     public Dashboard() {
         initComponents();
+        setSize(1280, 720); // establecer el tamaño de la ventana
         initContent();
     }
 
@@ -54,17 +55,7 @@ public class Dashboard extends javax.swing.JFrame {
         background.setBackground(new java.awt.Color(255, 255, 255));
 
         content.setBackground(new java.awt.Color(255, 255, 255));
-
-        javax.swing.GroupLayout contentLayout = new javax.swing.GroupLayout(content);
-        content.setLayout(contentLayout);
-        contentLayout.setHorizontalGroup(
-            contentLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 938, Short.MAX_VALUE)
-        );
-        contentLayout.setVerticalGroup(
-            contentLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 0, Short.MAX_VALUE)
-        );
+        content.setLayout(new java.awt.BorderLayout());
 
         fondopanelIz.setBackground(new java.awt.Color(38, 41, 43));
 
@@ -159,7 +150,9 @@ public class Dashboard extends javax.swing.JFrame {
 
         cerrarSesion.setFont(new java.awt.Font("Roboto Medium", 0, 12)); // NOI18N
         cerrarSesion.setForeground(new java.awt.Color(255, 255, 255));
+        cerrarSesion.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         cerrarSesion.setText("Cerrar Sesión");
+        cerrarSesion.setToolTipText("");
         cerrarSesion.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 cerrarSesionMouseClicked(evt);
@@ -176,10 +169,7 @@ public class Dashboard extends javax.swing.JFrame {
         btnCerrar.setLayout(btnCerrarLayout);
         btnCerrarLayout.setHorizontalGroup(
             btnCerrarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(btnCerrarLayout.createSequentialGroup()
-                .addGap(15, 15, 15)
-                .addComponent(cerrarSesion, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGap(18, 18, 18))
+            .addComponent(cerrarSesion, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         btnCerrarLayout.setVerticalGroup(
             btnCerrarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -216,15 +206,15 @@ public class Dashboard extends javax.swing.JFrame {
             fondopanelIzLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(fondopanelIzLayout.createSequentialGroup()
                 .addGap(24, 24, 24)
-                .addComponent(logo, javax.swing.GroupLayout.PREFERRED_SIZE, 140, Short.MAX_VALUE)
-                .addGap(43, 43, 43)
-                .addComponent(nombreTitulo, javax.swing.GroupLayout.PREFERRED_SIZE, 40, Short.MAX_VALUE)
-                .addGap(72, 72, 72)
+                .addComponent(logo, javax.swing.GroupLayout.PREFERRED_SIZE, 133, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(26, 26, 26)
+                .addComponent(nombreTitulo, javax.swing.GroupLayout.DEFAULT_SIZE, 81, Short.MAX_VALUE)
+                .addGap(52, 52, 52)
                 .addComponent(fondoPacientes, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(39, 39, 39)
                 .addComponent(fondoCitas, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(26, 26, 26)
-                .addComponent(informacion, javax.swing.GroupLayout.DEFAULT_SIZE, 91, Short.MAX_VALUE)
+                .addComponent(informacion, javax.swing.GroupLayout.PREFERRED_SIZE, 94, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(btnCerrar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(10, 10, 10))

@@ -11,7 +11,7 @@ package Paneles;
 public class Pacientes extends javax.swing.JPanel {
 
     /**
-     * Creates new form Pacientes
+     * Creates new form Pacientess
      */
     public Pacientes() {
         initComponents();
@@ -27,18 +27,149 @@ public class Pacientes extends javax.swing.JPanel {
     private void initComponents() {
 
         bg = new javax.swing.JPanel();
+        tituloAgregarPaciente = new javax.swing.JLabel();
+        tituloAgregarPaciente1 = new javax.swing.JLabel();
+        id_Paciente = new javax.swing.JLabel();
+        dpi = new javax.swing.JLabel();
+        nombres = new javax.swing.JLabel();
+        apellidos = new javax.swing.JLabel();
+        edad = new javax.swing.JLabel();
+        sexo = new javax.swing.JLabel();
+        dirección = new javax.swing.JLabel();
+        email = new javax.swing.JLabel();
+        telefono = new javax.swing.JLabel();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        jTable1 = new javax.swing.JTable();
 
         bg.setBackground(new java.awt.Color(255, 255, 255));
+
+        tituloAgregarPaciente.setFont(new java.awt.Font("Roboto Black", 0, 24)); // NOI18N
+        tituloAgregarPaciente.setForeground(new java.awt.Color(38, 41, 43));
+        tituloAgregarPaciente.setText("AGREGAR PACIENTE");
+
+        tituloAgregarPaciente1.setFont(new java.awt.Font("Roboto Black", 0, 24)); // NOI18N
+        tituloAgregarPaciente1.setForeground(new java.awt.Color(38, 41, 43));
+        tituloAgregarPaciente1.setText("MODIFICAR / ELIMINAR PACIENTES");
+
+        id_Paciente.setFont(new java.awt.Font("Roboto Medium", 0, 14)); // NOI18N
+        id_Paciente.setForeground(new java.awt.Color(38, 41, 43));
+        id_Paciente.setText("ID_Paciente:");
+
+        dpi.setFont(new java.awt.Font("Roboto Medium", 0, 14)); // NOI18N
+        dpi.setForeground(new java.awt.Color(38, 41, 43));
+        dpi.setText("DPI: ");
+
+        nombres.setFont(new java.awt.Font("Roboto Medium", 0, 14)); // NOI18N
+        nombres.setForeground(new java.awt.Color(38, 41, 43));
+        nombres.setText("Nombres: ");
+
+        apellidos.setFont(new java.awt.Font("Roboto Medium", 0, 14)); // NOI18N
+        apellidos.setForeground(new java.awt.Color(38, 41, 43));
+        apellidos.setText("Apellidos: ");
+
+        edad.setFont(new java.awt.Font("Roboto Medium", 0, 14)); // NOI18N
+        edad.setForeground(new java.awt.Color(38, 41, 43));
+        edad.setText("Edad:");
+
+        sexo.setFont(new java.awt.Font("Roboto Medium", 0, 14)); // NOI18N
+        sexo.setForeground(new java.awt.Color(38, 41, 43));
+        sexo.setText("Sexo:");
+
+        dirección.setFont(new java.awt.Font("Roboto Medium", 0, 14)); // NOI18N
+        dirección.setForeground(new java.awt.Color(38, 41, 43));
+        dirección.setText("Dirección:");
+
+        email.setFont(new java.awt.Font("Roboto Medium", 0, 14)); // NOI18N
+        email.setForeground(new java.awt.Color(38, 41, 43));
+        email.setText("Email:");
+
+        telefono.setFont(new java.awt.Font("Roboto Medium", 0, 14)); // NOI18N
+        telefono.setForeground(new java.awt.Color(38, 41, 43));
+        telefono.setText("Teléfono:");
+
+        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null, null}
+            },
+            new String [] {
+                "Id_Paciente", "DPI", "Nombres", "Apellidos", "Edad", "Sexo", "Dirección", "Teléfono", "Email", "Fecha_Registro"
+            }
+        ));
+        jScrollPane1.setViewportView(jTable1);
 
         javax.swing.GroupLayout bgLayout = new javax.swing.GroupLayout(bg);
         bg.setLayout(bgLayout);
         bgLayout.setHorizontalGroup(
             bgLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 938, Short.MAX_VALUE)
+            .addGroup(bgLayout.createSequentialGroup()
+                .addGap(34, 34, 34)
+                .addGroup(bgLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(bgLayout.createSequentialGroup()
+                        .addGroup(bgLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(tituloAgregarPaciente, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addGroup(bgLayout.createSequentialGroup()
+                                .addComponent(telefono, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addGap(166, 166, 166))
+                            .addGroup(bgLayout.createSequentialGroup()
+                                .addComponent(email, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addGap(188, 188, 188))
+                            .addGroup(bgLayout.createSequentialGroup()
+                                .addComponent(dpi, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addGap(199, 199, 199))
+                            .addGroup(bgLayout.createSequentialGroup()
+                                .addComponent(sexo, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addGap(193, 193, 193))
+                            .addGroup(bgLayout.createSequentialGroup()
+                                .addComponent(dirección, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addGap(164, 164, 164)))
+                        .addGap(248, 248, 248)
+                        .addGroup(bgLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(tituloAgregarPaciente1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addGroup(bgLayout.createSequentialGroup()
+                                .addComponent(id_Paciente, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addGap(313, 313, 313))))
+                    .addGroup(bgLayout.createSequentialGroup()
+                        .addComponent(edad, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addGap(833, 833, 833))
+                    .addGroup(bgLayout.createSequentialGroup()
+                        .addComponent(nombres, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addGap(804, 804, 804))
+                    .addGroup(bgLayout.createSequentialGroup()
+                        .addComponent(apellidos, javax.swing.GroupLayout.PREFERRED_SIZE, 77, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 792, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(35, 35, 35))
+            .addComponent(jScrollPane1)
         );
         bgLayout.setVerticalGroup(
             bgLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 720, Short.MAX_VALUE)
+            .addGroup(bgLayout.createSequentialGroup()
+                .addGap(23, 23, 23)
+                .addGroup(bgLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(tituloAgregarPaciente, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(tituloAgregarPaciente1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(15, 15, 15)
+                .addGroup(bgLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(dpi, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(id_Paciente, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(nombres, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(apellidos, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGap(12, 12, 12)
+                .addComponent(edad, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(sexo, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(dirección, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(telefono, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(email, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGap(104, 104, 104)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 339, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
@@ -55,6 +186,19 @@ public class Pacientes extends javax.swing.JPanel {
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JLabel apellidos;
     private javax.swing.JPanel bg;
+    private javax.swing.JLabel dirección;
+    private javax.swing.JLabel dpi;
+    private javax.swing.JLabel edad;
+    private javax.swing.JLabel email;
+    private javax.swing.JLabel id_Paciente;
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JTable jTable1;
+    private javax.swing.JLabel nombres;
+    private javax.swing.JLabel sexo;
+    private javax.swing.JLabel telefono;
+    private javax.swing.JLabel tituloAgregarPaciente;
+    private javax.swing.JLabel tituloAgregarPaciente1;
     // End of variables declaration//GEN-END:variables
 }
