@@ -81,8 +81,28 @@ public class Citas extends javax.swing.JPanel {
             new String [] {
                 "ID_Cita", "ID_Paciente", "Nombres_Paciente", "Apellidos Paciente", "ID_Doctor", "Nombres_Doctor", "Apellidos_Doctor", "Fecha", "Hora"
             }
-        ));
+        ) {
+            boolean[] canEdit = new boolean [] {
+                false, false, false, false, false, false, false, false, false
+            };
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
+        tableCita.getTableHeader().setReorderingAllowed(false);
         jScrollPane1.setViewportView(tableCita);
+        if (tableCita.getColumnModel().getColumnCount() > 0) {
+            tableCita.getColumnModel().getColumn(0).setResizable(false);
+            tableCita.getColumnModel().getColumn(1).setResizable(false);
+            tableCita.getColumnModel().getColumn(2).setResizable(false);
+            tableCita.getColumnModel().getColumn(3).setResizable(false);
+            tableCita.getColumnModel().getColumn(4).setResizable(false);
+            tableCita.getColumnModel().getColumn(5).setResizable(false);
+            tableCita.getColumnModel().getColumn(6).setResizable(false);
+            tableCita.getColumnModel().getColumn(7).setResizable(false);
+            tableCita.getColumnModel().getColumn(8).setResizable(false);
+        }
 
         tituloCrearCita.setFont(new java.awt.Font("Roboto Black", 0, 24)); // NOI18N
         tituloCrearCita.setForeground(new java.awt.Color(38, 41, 43));
@@ -269,8 +289,29 @@ public class Citas extends javax.swing.JPanel {
             new String [] {
                 "ID_Receta", "ID_Cita", "ID_Paciente", "Nombres_Paciente", "Apellidos_Paciente", "ID_Doctor", "Nombres_Doctor", "Apellidos_Doctor", "Fecha", "Hora"
             }
-        ));
+        ) {
+            boolean[] canEdit = new boolean [] {
+                false, false, false, false, false, false, false, false, false, false
+            };
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
+        tableRecetas.getTableHeader().setReorderingAllowed(false);
         jScrollPane2.setViewportView(tableRecetas);
+        if (tableRecetas.getColumnModel().getColumnCount() > 0) {
+            tableRecetas.getColumnModel().getColumn(0).setResizable(false);
+            tableRecetas.getColumnModel().getColumn(1).setResizable(false);
+            tableRecetas.getColumnModel().getColumn(2).setResizable(false);
+            tableRecetas.getColumnModel().getColumn(3).setResizable(false);
+            tableRecetas.getColumnModel().getColumn(4).setResizable(false);
+            tableRecetas.getColumnModel().getColumn(5).setResizable(false);
+            tableRecetas.getColumnModel().getColumn(6).setResizable(false);
+            tableRecetas.getColumnModel().getColumn(7).setResizable(false);
+            tableRecetas.getColumnModel().getColumn(8).setResizable(false);
+            tableRecetas.getColumnModel().getColumn(9).setResizable(false);
+        }
 
         fondoMostrarTodo.setBackground(new java.awt.Color(95, 122, 219));
 
