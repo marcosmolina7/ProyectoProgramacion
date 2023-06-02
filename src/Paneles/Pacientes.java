@@ -25,6 +25,32 @@ public class Pacientes extends javax.swing.JPanel {
      */
     public Pacientes() {
         initComponents();
+        try {
+            Conexion con = new Conexion();
+
+            DefaultTableModel model = (DefaultTableModel) tablaGeneral.getModel();
+            model.setRowCount(0);
+
+            String query = "SELECT * FROM Pacientes";
+            PreparedStatement preparedStatement = con.prepareStatement(query);
+            ResultSet rs = preparedStatement.executeQuery();
+
+            while (rs.next()) {
+                int id_paciente = rs.getInt("id_paciente");
+                String DPI = rs.getString("DPI");
+                String nombres = rs.getString("nombres");
+                String apellidos = rs.getString("apellidos");
+                int edad = rs.getInt("edad");
+                String sexo = rs.getString("sexo");
+                String direccion = rs.getString("direccion");
+                String telefono = rs.getString("telefono");
+                String email = rs.getString("email");
+                Date fecha_registro = rs.getDate("fecha_registro");
+
+                model.addRow(new Object[]{id_paciente, DPI, nombres, apellidos, edad, sexo, direccion, telefono, email, fecha_registro});
+            }
+        } catch (Exception e) {
+        }
     }
 
     /**
@@ -52,8 +78,8 @@ public class Pacientes extends javax.swing.JPanel {
         btnAgregar = new javax.swing.JLabel();
         fondoBtnBuscar = new javax.swing.JPanel();
         btnBuscar = new javax.swing.JLabel();
-        fondoBtnMostrar = new javax.swing.JPanel();
-        btnMostrar = new javax.swing.JLabel();
+        fondoBtnLimpiar = new javax.swing.JPanel();
+        btnLimpiar = new javax.swing.JLabel();
         boxDPI = new javax.swing.JTextField();
         boxNombres = new javax.swing.JTextField();
         boxApellidos = new javax.swing.JTextField();
@@ -64,6 +90,8 @@ public class Pacientes extends javax.swing.JPanel {
         boxEmail = new javax.swing.JTextField();
         fondoBtnModificar = new javax.swing.JPanel();
         btnModificar = new javax.swing.JLabel();
+        fondoBtnBorrar = new javax.swing.JPanel();
+        btnBorrar = new javax.swing.JLabel();
 
         bg.setBackground(new java.awt.Color(255, 255, 255));
 
@@ -206,36 +234,36 @@ public class Pacientes extends javax.swing.JPanel {
             .addComponent(btnBuscar, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
 
-        fondoBtnMostrar.setBackground(new java.awt.Color(95, 122, 219));
+        fondoBtnLimpiar.setBackground(new java.awt.Color(95, 122, 219));
 
-        btnMostrar.setFont(new java.awt.Font("Roboto Black", 0, 12)); // NOI18N
-        btnMostrar.setForeground(new java.awt.Color(255, 255, 255));
-        btnMostrar.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        btnMostrar.setText("VER PACIENTES");
-        btnMostrar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        btnMostrar.addMouseListener(new java.awt.event.MouseAdapter() {
+        btnLimpiar.setFont(new java.awt.Font("Roboto Black", 0, 12)); // NOI18N
+        btnLimpiar.setForeground(new java.awt.Color(255, 255, 255));
+        btnLimpiar.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        btnLimpiar.setText("LIMPIAR");
+        btnLimpiar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnLimpiar.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                btnMostrarMouseClicked(evt);
+                btnLimpiarMouseClicked(evt);
             }
             public void mouseEntered(java.awt.event.MouseEvent evt) {
-                btnMostrarMouseEntered(evt);
+                btnLimpiarMouseEntered(evt);
             }
             public void mouseExited(java.awt.event.MouseEvent evt) {
-                btnMostrarMouseExited(evt);
+                btnLimpiarMouseExited(evt);
             }
         });
 
-        javax.swing.GroupLayout fondoBtnMostrarLayout = new javax.swing.GroupLayout(fondoBtnMostrar);
-        fondoBtnMostrar.setLayout(fondoBtnMostrarLayout);
-        fondoBtnMostrarLayout.setHorizontalGroup(
-            fondoBtnMostrarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(btnMostrar, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 126, Short.MAX_VALUE)
+        javax.swing.GroupLayout fondoBtnLimpiarLayout = new javax.swing.GroupLayout(fondoBtnLimpiar);
+        fondoBtnLimpiar.setLayout(fondoBtnLimpiarLayout);
+        fondoBtnLimpiarLayout.setHorizontalGroup(
+            fondoBtnLimpiarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(btnLimpiar, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 105, Short.MAX_VALUE)
         );
-        fondoBtnMostrarLayout.setVerticalGroup(
-            fondoBtnMostrarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(fondoBtnMostrarLayout.createSequentialGroup()
-                .addComponent(btnMostrar, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, Short.MAX_VALUE))
+        fondoBtnLimpiarLayout.setVerticalGroup(
+            fondoBtnLimpiarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, fondoBtnLimpiarLayout.createSequentialGroup()
+                .addGap(0, 0, Short.MAX_VALUE)
+                .addComponent(btnLimpiar, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
 
         comboBoxSexo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Femenino", "Masculino", "S/E" }));
@@ -263,16 +291,48 @@ public class Pacientes extends javax.swing.JPanel {
         fondoBtnModificar.setLayout(fondoBtnModificarLayout);
         fondoBtnModificarLayout.setHorizontalGroup(
             fondoBtnModificarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(fondoBtnModificarLayout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(btnModificar, javax.swing.GroupLayout.DEFAULT_SIZE, 102, Short.MAX_VALUE)
-                .addContainerGap())
+            .addComponent(btnModificar, javax.swing.GroupLayout.DEFAULT_SIZE, 105, Short.MAX_VALUE)
         );
         fondoBtnModificarLayout.setVerticalGroup(
             fondoBtnModificarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, fondoBtnModificarLayout.createSequentialGroup()
+                .addComponent(btnModificar, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE))
+        );
+
+        fondoBtnBorrar.setBackground(new java.awt.Color(95, 122, 219));
+
+        btnBorrar.setFont(new java.awt.Font("Roboto Black", 0, 12)); // NOI18N
+        btnBorrar.setForeground(new java.awt.Color(255, 255, 255));
+        btnBorrar.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        btnBorrar.setText("BORRAR");
+        btnBorrar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnBorrar.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnBorrarMouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                btnBorrarMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                btnBorrarMouseExited(evt);
+            }
+        });
+
+        javax.swing.GroupLayout fondoBtnBorrarLayout = new javax.swing.GroupLayout(fondoBtnBorrar);
+        fondoBtnBorrar.setLayout(fondoBtnBorrarLayout);
+        fondoBtnBorrarLayout.setHorizontalGroup(
+            fondoBtnBorrarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, fondoBtnBorrarLayout.createSequentialGroup()
+                .addGap(9, 9, 9)
+                .addComponent(btnBorrar, javax.swing.GroupLayout.DEFAULT_SIZE, 99, Short.MAX_VALUE)
+                .addContainerGap())
+        );
+        fondoBtnBorrarLayout.setVerticalGroup(
+            fondoBtnBorrarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, fondoBtnBorrarLayout.createSequentialGroup()
                 .addGap(0, 0, Short.MAX_VALUE)
-                .addComponent(btnModificar, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addComponent(btnBorrar, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
 
         javax.swing.GroupLayout bgLayout = new javax.swing.GroupLayout(bg);
@@ -281,22 +341,10 @@ public class Pacientes extends javax.swing.JPanel {
             bgLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(jScrollPane1)
             .addGroup(bgLayout.createSequentialGroup()
-                .addGap(129, 129, 129)
                 .addGroup(bgLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(bgLayout.createSequentialGroup()
+                        .addGap(279, 279, 279)
                         .addGroup(bgLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(fondoBtnAgregar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGroup(bgLayout.createSequentialGroup()
-                                .addGap(150, 150, 150)
-                                .addComponent(fondoBtnMostrar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addGap(143, 143, 143)
-                        .addComponent(fondoBtnBuscar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addComponent(fondoBtnModificar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(bgLayout.createSequentialGroup()
-                        .addGap(150, 150, 150)
-                        .addGroup(bgLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(tituloAgregarPaciente, javax.swing.GroupLayout.PREFERRED_SIZE, 350, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGroup(bgLayout.createSequentialGroup()
                                 .addGroup(bgLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                                     .addComponent(dpi, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -318,14 +366,28 @@ public class Pacientes extends javax.swing.JPanel {
                                     .addGroup(bgLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                                         .addComponent(boxEmail, javax.swing.GroupLayout.Alignment.LEADING)
                                         .addComponent(comboBoxSexo, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 116, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addComponent(boxTelefono, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 276, javax.swing.GroupLayout.PREFERRED_SIZE)))))))
-                .addContainerGap(145, Short.MAX_VALUE))
+                                        .addComponent(boxTelefono, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 276, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                            .addComponent(tituloAgregarPaciente, javax.swing.GroupLayout.PREFERRED_SIZE, 350, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addGroup(bgLayout.createSequentialGroup()
+                        .addGap(79, 79, 79)
+                        .addComponent(fondoBtnAgregar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(219, 219, 219)
+                        .addComponent(fondoBtnBuscar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(56, 56, 56)
+                        .addComponent(fondoBtnModificar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(52, 52, 52)
+                        .addComponent(fondoBtnBorrar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, bgLayout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(fondoBtnLimpiar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(498, 498, 498)))
+                .addContainerGap(79, Short.MAX_VALUE))
         );
         bgLayout.setVerticalGroup(
             bgLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(bgLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(tituloAgregarPaciente, javax.swing.GroupLayout.DEFAULT_SIZE, 38, Short.MAX_VALUE)
+                .addComponent(tituloAgregarPaciente, javax.swing.GroupLayout.DEFAULT_SIZE, 45, Short.MAX_VALUE)
                 .addGap(33, 33, 33)
                 .addGroup(bgLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(bgLayout.createSequentialGroup()
@@ -338,7 +400,7 @@ public class Pacientes extends javax.swing.JPanel {
                     .addComponent(boxNombres))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(bgLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(boxApellidos, javax.swing.GroupLayout.DEFAULT_SIZE, 32, Short.MAX_VALUE)
+                    .addComponent(boxApellidos, javax.swing.GroupLayout.DEFAULT_SIZE, 38, Short.MAX_VALUE)
                     .addComponent(apellidos))
                 .addGap(12, 12, 12)
                 .addGroup(bgLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -360,15 +422,18 @@ public class Pacientes extends javax.swing.JPanel {
                 .addGroup(bgLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(email, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(boxEmail))
-                .addGap(54, 54, 54)
+                .addGap(29, 29, 29)
                 .addGroup(bgLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, bgLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                        .addComponent(fondoBtnAgregar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(fondoBtnMostrar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                    .addComponent(fondoBtnBuscar, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(fondoBtnModificar, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 279, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(bgLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                        .addGroup(bgLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                            .addComponent(fondoBtnBuscar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(fondoBtnModificar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGroup(bgLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                            .addComponent(fondoBtnAgregar, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(fondoBtnLimpiar, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addComponent(fondoBtnBorrar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 285, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
@@ -399,13 +464,13 @@ public class Pacientes extends javax.swing.JPanel {
         fondoBtnBuscar.setBackground(new Color(95, 122, 219));
     }//GEN-LAST:event_btnBuscarMouseExited
 
-    private void btnMostrarMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnMostrarMouseEntered
-        fondoBtnMostrar.setBackground(new Color(46, 50, 57));
-    }//GEN-LAST:event_btnMostrarMouseEntered
+    private void btnLimpiarMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnLimpiarMouseEntered
+        fondoBtnLimpiar.setBackground(new Color(46, 50, 57));
+    }//GEN-LAST:event_btnLimpiarMouseEntered
 
-    private void btnMostrarMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnMostrarMouseExited
-        fondoBtnMostrar.setBackground(new Color(95, 122, 219));
-    }//GEN-LAST:event_btnMostrarMouseExited
+    private void btnLimpiarMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnLimpiarMouseExited
+        fondoBtnLimpiar.setBackground(new Color(95, 122, 219));
+    }//GEN-LAST:event_btnLimpiarMouseExited
 
     private void btnAgregarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnAgregarMouseClicked
         try {
@@ -444,35 +509,15 @@ public class Pacientes extends javax.swing.JPanel {
         }
     }//GEN-LAST:event_btnAgregarMouseClicked
 
-    private void btnMostrarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnMostrarMouseClicked
-        try {
-        Conexion con = new Conexion();
-
-        DefaultTableModel model = (DefaultTableModel) tablaGeneral.getModel();
-        model.setRowCount(0);
-
-        String query = "SELECT * FROM Pacientes";
-        PreparedStatement preparedStatement = con.prepareStatement(query);
-        ResultSet rs = preparedStatement.executeQuery();
-
-        while (rs.next()) {
-            int id_paciente = rs.getInt("id_paciente");
-            String DPI = rs.getString("DPI");
-            String nombres = rs.getString("nombres");
-            String apellidos = rs.getString("apellidos");
-            int edad = rs.getInt("edad");
-            String sexo = rs.getString("sexo");
-            String direccion = rs.getString("direccion");
-            String telefono = rs.getString("telefono");
-            String email = rs.getString("email");
-            Date fecha_registro = rs.getDate("fecha_registro");
-
-            model.addRow(new Object[]{id_paciente, DPI, nombres, apellidos, edad, sexo, direccion, telefono, email, fecha_registro});
-        }
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-    }//GEN-LAST:event_btnMostrarMouseClicked
+    private void btnLimpiarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnLimpiarMouseClicked
+            boxDPI.setText("");
+            boxNombres.setText("");
+            boxApellidos.setText("");
+            boxEdad.setText("");
+            boxDireccion.setText("");
+            boxTelefono.setText("");
+            boxEmail.setText("");
+    }//GEN-LAST:event_btnLimpiarMouseClicked
 
     private void btnBuscarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnBuscarMouseClicked
         String input = JOptionPane.showInputDialog(this, "Ingrese DPI:");
@@ -527,43 +572,76 @@ public class Pacientes extends javax.swing.JPanel {
     }//GEN-LAST:event_btnBuscarMouseClicked
 
     private void btnModificarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnModificarMouseClicked
-        try {
-            Conexion con = new Conexion();
-            String DPI = boxDPI.getText();
-            String nombres = boxNombres.getText();
-            String apellidos = boxApellidos.getText();
-            int edad = Integer.parseInt(boxEdad.getText());
-            String direccion = boxDireccion.getText();
-            String telefono = boxTelefono.getText();
-            String email = boxEmail.getText();
-            String sexo = comboBoxSexo.getSelectedItem().toString();
+        int selectedRow = tablaGeneral.getSelectedRow();
+        if (selectedRow != -1) {
+            String DPI = tablaGeneral.getValueAt(selectedRow, 1).toString();
+            String nombres = tablaGeneral.getValueAt(selectedRow, 2).toString();
+            String apellidos = tablaGeneral.getValueAt(selectedRow, 3).toString();
 
-            int selectedRow = tablaGeneral.getSelectedRow();
-            int id_Pacientes = (int) tablaGeneral.getValueAt(selectedRow, 0);
+            int confirm = JOptionPane.showConfirmDialog(this, "¿Está seguro de actualizar el registro de " + nombres + " " + apellidos + " con DPI " + DPI + "?", "Confirmar actualización", JOptionPane.YES_NO_OPTION);
+            if (confirm == JOptionPane.YES_OPTION) {
+                try {
+                    Conexion con = new Conexion();
+                    String DPI2 = boxDPI.getText();
+                    String nombres2 = boxNombres.getText();
+                    String apellidos2 = boxApellidos.getText();
+                    int edad = Integer.parseInt(boxEdad.getText());
+                    String direccion = boxDireccion.getText();
+                    String telefono = boxTelefono.getText();
+                    String email = boxEmail.getText();
+                    String sexo = comboBoxSexo.getSelectedItem().toString();
 
-            String query = "UPDATE Pacientes SET DPI=?, nombres=?, apellidos=?, edad=?, sexo=?, direccion=?, telefono=?, email=?, fecha_registro=CURRENT_DATE() WHERE id_paciente=?";
+                    int id_Pacientes = (int) tablaGeneral.getValueAt(selectedRow, 0);
 
-            PreparedStatement preparedStatement = con.prepareStatement(query);
-            preparedStatement.setString(1, DPI);
-            preparedStatement.setString(2, nombres);
-            preparedStatement.setString(3, apellidos);
-            preparedStatement.setInt(4, edad);
-            preparedStatement.setString(5, sexo);
-            preparedStatement.setString(6, direccion);
-            preparedStatement.setString(7, telefono);
-            preparedStatement.setString(8, email);
-            preparedStatement.setInt(9, id_Pacientes);
+                    String query = "UPDATE Pacientes SET DPI=?, nombres=?, apellidos=?, edad=?, sexo=?, direccion=?, telefono=?, email=?, fecha_registro=CURRENT_DATE() WHERE id_paciente=?";
 
-            preparedStatement.executeUpdate();
-            boxDPI.setText("");
-            boxNombres.setText("");
-            boxApellidos.setText("");
-            boxEdad.setText("");
-            boxDireccion.setText("");
-            boxTelefono.setText("");
-            boxEmail.setText("");
-        } catch (ClassNotFoundException | NumberFormatException | SQLException e) {
+                    PreparedStatement preparedStatement = con.prepareStatement(query);
+                    preparedStatement.setString(1, DPI2);
+                    preparedStatement.setString(2, nombres2);
+                    preparedStatement.setString(3, apellidos2);
+                    preparedStatement.setInt(4, edad);
+                    preparedStatement.setString(5, sexo);
+                    preparedStatement.setString(6, direccion);
+                    preparedStatement.setString(7, telefono);
+                    preparedStatement.setString(8, email);
+                    preparedStatement.setInt(9, id_Pacientes);
 
+                    preparedStatement.executeUpdate();
+                    boxDPI.setText("");
+                    boxNombres.setText("");
+                    boxApellidos.setText("");
+                    boxEdad.setText("");
+                    boxDireccion.setText("");
+                    boxTelefono.setText("");
+                    boxEmail.setText("");
+
+                    DefaultTableModel model = (DefaultTableModel) tablaGeneral.getModel();
+                    model.setRowCount(0);
+
+                    query = "SELECT * FROM Pacientes";
+                    preparedStatement = con.prepareStatement(query);
+                    ResultSet rs = preparedStatement.executeQuery();
+
+                    while (rs.next()) {
+                        int id_paciente = rs.getInt("id_paciente");
+                        String DPI3 = rs.getString("DPI");
+                        String nombres3 = rs.getString("nombres");
+                        String apellidos3 = rs.getString("apellidos");
+                        int edad2 = rs.getInt("edad");
+                        String sexo2 = rs.getString("sexo");
+                        String direccion2 = rs.getString("direccion");
+                        String telefono2 = rs.getString("telefono");
+                        String email2 = rs.getString("email");
+                        Date fecha_registro = rs.getDate("fecha_registro");
+
+                        model.addRow(new Object[]{id_paciente, DPI3, nombres3, apellidos3, edad2, sexo2, direccion2, telefono2, email2, fecha_registro});
+                    }
+                } catch (ClassNotFoundException | NumberFormatException | SQLException e) {
+
+                }
+            }
+        } else {
+            JOptionPane.showMessageDialog(this, "Por favor seleccione una fila en la tabla para actualizar.");
         }
     }//GEN-LAST:event_btnModificarMouseClicked
 
@@ -598,6 +676,71 @@ public class Pacientes extends javax.swing.JPanel {
         }
     }//GEN-LAST:event_tablaGeneralMouseClicked
 
+    private void btnBorrarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnBorrarMouseClicked
+        int selectedRow = tablaGeneral.getSelectedRow();
+        if (selectedRow != -1) {
+            String DPI = tablaGeneral.getValueAt(selectedRow, 1).toString();
+            String nombres = tablaGeneral.getValueAt(selectedRow, 2).toString();
+            String apellidos = tablaGeneral.getValueAt(selectedRow, 3).toString();
+
+            int confirm = JOptionPane.showConfirmDialog(this, "¿Está seguro de eliminar el registro de " + nombres + " " + apellidos + " con DPI " + DPI + "?", "Confirmar eliminación", JOptionPane.YES_NO_OPTION);
+            if (confirm == JOptionPane.YES_OPTION) {
+                try {
+                    Conexion con = new Conexion();
+
+                    int id_Pacientes = (int) tablaGeneral.getValueAt(selectedRow, 0);
+
+                    String query = "DELETE FROM Pacientes WHERE id_paciente=?";
+
+                    PreparedStatement preparedStatement = con.prepareStatement(query);
+                    preparedStatement.setInt(1, id_Pacientes);
+
+                    preparedStatement.executeUpdate();
+                    boxDPI.setText("");
+                    boxNombres.setText("");
+                    boxApellidos.setText("");
+                    boxEdad.setText("");
+                    boxDireccion.setText("");
+                    boxTelefono.setText("");
+                    boxEmail.setText("");
+
+                    DefaultTableModel model = (DefaultTableModel) tablaGeneral.getModel();
+                    model.setRowCount(0);
+
+                    query = "SELECT * FROM Pacientes";
+                    preparedStatement = con.prepareStatement(query);
+                    ResultSet rs = preparedStatement.executeQuery();
+
+                    while (rs.next()) {
+                        int id_paciente = rs.getInt("id_paciente");
+                        String DPI2 = rs.getString("DPI");
+                        String nombres2 = rs.getString("nombres");
+                        String apellidos2 = rs.getString("apellidos");
+                        int edad = rs.getInt("edad");
+                        String sexo = rs.getString("sexo");
+                        String direccion = rs.getString("direccion");
+                        String telefono = rs.getString("telefono");
+                        String email = rs.getString("email");
+                        Date fecha_registro = rs.getDate("fecha_registro");
+
+                        model.addRow(new Object[]{id_paciente, DPI2, nombres2, apellidos2, edad, sexo, direccion, telefono, email, fecha_registro});
+                    }
+                } catch (Exception e) {
+                }
+            }
+        } else {
+            JOptionPane.showMessageDialog(this, "Por favor seleccione una fila en la tabla para eliminar.");
+        }
+    }//GEN-LAST:event_btnBorrarMouseClicked
+
+    private void btnBorrarMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnBorrarMouseEntered
+        fondoBtnBorrar.setBackground(new Color(46, 50, 57));
+    }//GEN-LAST:event_btnBorrarMouseEntered
+
+    private void btnBorrarMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnBorrarMouseExited
+        fondoBtnBorrar.setBackground(new Color(95, 122, 219));
+    }//GEN-LAST:event_btnBorrarMouseExited
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel apellidos;
@@ -610,18 +753,20 @@ public class Pacientes extends javax.swing.JPanel {
     private javax.swing.JTextField boxNombres;
     private javax.swing.JTextField boxTelefono;
     private javax.swing.JLabel btnAgregar;
+    private javax.swing.JLabel btnBorrar;
     private javax.swing.JLabel btnBuscar;
+    private javax.swing.JLabel btnLimpiar;
     private javax.swing.JLabel btnModificar;
-    private javax.swing.JLabel btnMostrar;
     private javax.swing.JComboBox<String> comboBoxSexo;
     private javax.swing.JLabel dirección;
     private javax.swing.JLabel dpi;
     private javax.swing.JLabel edad;
     private javax.swing.JLabel email;
     private javax.swing.JPanel fondoBtnAgregar;
+    private javax.swing.JPanel fondoBtnBorrar;
     private javax.swing.JPanel fondoBtnBuscar;
+    private javax.swing.JPanel fondoBtnLimpiar;
     private javax.swing.JPanel fondoBtnModificar;
-    private javax.swing.JPanel fondoBtnMostrar;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JLabel nombres;
     private javax.swing.JLabel sexo;
