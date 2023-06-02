@@ -5,6 +5,13 @@
 package Paneles;
 
 import java.awt.Color;
+import java.sql.Date;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.swing.table.DefaultTableModel;
 
 /**
  *
@@ -41,7 +48,7 @@ public class Pacientes extends javax.swing.JPanel {
         email = new javax.swing.JLabel();
         telefono = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
+        tablaGeneral = new javax.swing.JTable();
         telefonoM = new javax.swing.JLabel();
         dpiM = new javax.swing.JLabel();
         nombresM = new javax.swing.JLabel();
@@ -124,8 +131,8 @@ public class Pacientes extends javax.swing.JPanel {
         telefono.setForeground(new java.awt.Color(38, 41, 43));
         telefono.setText("Teléfono:");
 
-        jTable1.setFont(new java.awt.Font("Roboto Medium", 0, 12)); // NOI18N
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+        tablaGeneral.setFont(new java.awt.Font("Roboto Medium", 0, 12)); // NOI18N
+        tablaGeneral.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null, null, null, null, null, null, null},
                 {null, null, null, null, null, null, null, null, null, null},
@@ -136,7 +143,7 @@ public class Pacientes extends javax.swing.JPanel {
                 "Id_Paciente", "DPI", "Nombres", "Apellidos", "Edad", "Sexo", "Dirección", "Teléfono", "Email", "Fecha_Registro"
             }
         ));
-        jScrollPane1.setViewportView(jTable1);
+        jScrollPane1.setViewportView(tablaGeneral);
 
         telefonoM.setFont(new java.awt.Font("Roboto Medium", 0, 14)); // NOI18N
         telefonoM.setForeground(new java.awt.Color(38, 41, 43));
@@ -178,6 +185,9 @@ public class Pacientes extends javax.swing.JPanel {
         btnAgregar.setText("AGREGAR");
         btnAgregar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btnAgregar.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnAgregarMouseClicked(evt);
+            }
             public void mouseEntered(java.awt.event.MouseEvent evt) {
                 btnAgregarMouseEntered(evt);
             }
@@ -237,6 +247,9 @@ public class Pacientes extends javax.swing.JPanel {
         btnGuardar.setText("GUARDAR");
         btnGuardar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btnGuardar.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnGuardarMouseClicked(evt);
+            }
             public void mouseEntered(java.awt.event.MouseEvent evt) {
                 btnGuardarMouseEntered(evt);
             }
@@ -299,6 +312,9 @@ public class Pacientes extends javax.swing.JPanel {
         btnMostrar.setText("MOSTRAR TODO");
         btnMostrar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btnMostrar.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnMostrarMouseClicked(evt);
+            }
             public void mouseEntered(java.awt.event.MouseEvent evt) {
                 btnMostrarMouseEntered(evt);
             }
@@ -551,6 +567,77 @@ public class Pacientes extends javax.swing.JPanel {
         fondoBtnMostrar.setBackground(new Color(95, 122, 219));
     }//GEN-LAST:event_btnMostrarMouseExited
 
+    private void btnAgregarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnAgregarMouseClicked
+        try {
+            Conexion con = new Conexion();
+            String DPI = boxDPI.getText();
+            String nombres = boxNombres.getText();
+            String apellidos = boxApellidos.getText();
+            int edad = Integer.parseInt(boxEdad.getText());
+            String direccion = boxDireccion.getText();
+            String telefono = boxTelefono.getText();
+            String email = boxEmail.getText();
+            String sexo = comboBoxSexo.getSelectedItem().toString();
+
+            String query = "INSERT INTO Pacientes (DPI, nombres, apellidos, edad, sexo, direccion, telefono, email, fecha_registro) VALUES (?, ?, ?, ?, ?, ?, ?, ?, CURRENT_DATE())";
+
+            PreparedStatement preparedStatement = con.prepareStatement(query);
+            preparedStatement.setString(1, DPI);
+            preparedStatement.setString(2, nombres);
+            preparedStatement.setString(3, apellidos);
+            preparedStatement.setInt(4, edad);
+            preparedStatement.setString(5, sexo);
+            preparedStatement.setString(6, direccion);
+            preparedStatement.setString(7, telefono);
+            preparedStatement.setString(8, email);
+
+            preparedStatement.executeUpdate();
+            boxDPI.setText("");
+            boxNombres.setText("");
+            boxApellidos.setText("");
+            boxEdad.setText("");
+            boxDireccion.setText("");
+            boxTelefono.setText("");
+            boxEmail.setText("");
+        } catch (ClassNotFoundException | NumberFormatException | SQLException e) {
+     
+        }
+    }//GEN-LAST:event_btnAgregarMouseClicked
+
+    private void btnMostrarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnMostrarMouseClicked
+        try {
+        Conexion con = new Conexion();
+
+        DefaultTableModel model = (DefaultTableModel) tablaGeneral.getModel();
+        model.setRowCount(0);
+
+        String query = "SELECT * FROM Pacientes";
+        PreparedStatement preparedStatement = con.prepareStatement(query);
+        ResultSet rs = preparedStatement.executeQuery();
+
+        while (rs.next()) {
+            int id_paciente = rs.getInt("id_paciente");
+            String DPI = rs.getString("DPI");
+            String nombres = rs.getString("nombres");
+            String apellidos = rs.getString("apellidos");
+            int edad = rs.getInt("edad");
+            String sexo = rs.getString("sexo");
+            String direccion = rs.getString("direccion");
+            String telefono = rs.getString("telefono");
+            String email = rs.getString("email");
+            Date fecha_registro = rs.getDate("fecha_registro");
+
+            model.addRow(new Object[]{id_paciente, DPI, nombres, apellidos, edad, sexo, direccion, telefono, email, fecha_registro});
+        }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }//GEN-LAST:event_btnMostrarMouseClicked
+
+    private void btnGuardarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnGuardarMouseClicked
+        
+    }//GEN-LAST:event_btnGuardarMouseClicked
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel apellidos;
@@ -593,11 +680,11 @@ public class Pacientes extends javax.swing.JPanel {
     private javax.swing.JPanel fondoBtnMostrar;
     private javax.swing.JLabel id_Paciente;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTable jTable1;
     private javax.swing.JLabel nombres;
     private javax.swing.JLabel nombresM;
     private javax.swing.JLabel sexo;
     private javax.swing.JLabel sexoM;
+    private javax.swing.JTable tablaGeneral;
     private javax.swing.JLabel telefono;
     private javax.swing.JLabel telefonoM;
     private javax.swing.JLabel tituloAgregarPaciente;
