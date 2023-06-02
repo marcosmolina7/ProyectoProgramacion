@@ -107,10 +107,7 @@ public class Pacientes extends javax.swing.JPanel {
         tablaGeneral.setFont(new java.awt.Font("Roboto Medium", 0, 12)); // NOI18N
         tablaGeneral.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null, null}
+
             },
             new String [] {
                 "Id_Paciente", "DPI", "Nombres", "Apellidos", "Edad", "Sexo", "Dirección", "Teléfono", "Email", "Fecha_Registro"

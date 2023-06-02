@@ -73,10 +73,7 @@ public class Citas extends javax.swing.JPanel {
 
         tableCita.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null}
+
             },
             new String [] {
                 "ID_Cita", "ID_Paciente", "Nombres_Paciente", "Apellidos Paciente", "ID_Doctor", "Nombres_Doctor", "Apellidos_Doctor", "Fecha", "Hora"
@@ -281,10 +278,7 @@ public class Citas extends javax.swing.JPanel {
 
         tableRecetas.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null, null}
+
             },
             new String [] {
                 "ID_Receta", "ID_Cita", "ID_Paciente", "Nombres_Paciente", "Apellidos_Paciente", "ID_Doctor", "Nombres_Doctor", "Apellidos_Doctor", "Fecha", "Hora"
