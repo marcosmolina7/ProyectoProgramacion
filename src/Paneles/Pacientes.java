@@ -9,8 +9,6 @@ import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
@@ -497,6 +495,33 @@ public class Pacientes extends javax.swing.JPanel {
             preparedStatement.setString(8, email);
 
             preparedStatement.executeUpdate();
+
+            // Mostrar ventana emergente
+            JOptionPane.showMessageDialog(this, "Paciente agregado correctamente.");
+
+            // Volver a cargar los datos en tablaGeneral
+            DefaultTableModel model = (DefaultTableModel) tablaGeneral.getModel();
+            model.setRowCount(0);
+
+            query = "SELECT * FROM Pacientes";
+            preparedStatement = con.prepareStatement(query);
+            ResultSet rs = preparedStatement.executeQuery();
+
+            while (rs.next()) {
+                int id_paciente = rs.getInt("id_paciente");
+                String DPI2 = rs.getString("DPI");
+                String nombres2 = rs.getString("nombres");
+                String apellidos2 = rs.getString("apellidos");
+                int edad2 = rs.getInt("edad");
+                String sexo2 = rs.getString("sexo");
+                String direccion2 = rs.getString("direccion");
+                String telefono2 = rs.getString("telefono");
+                String email2 = rs.getString("email");
+                Date fecha_registro = rs.getDate("fecha_registro");
+
+                model.addRow(new Object[]{id_paciente, DPI2, nombres2, apellidos2, edad2, sexo2, direccion2, telefono2, email2, fecha_registro});
+            }
+
             boxDPI.setText("");
             boxNombres.setText("");
             boxApellidos.setText("");
@@ -505,7 +530,7 @@ public class Pacientes extends javax.swing.JPanel {
             boxTelefono.setText("");
             boxEmail.setText("");
         } catch (ClassNotFoundException | NumberFormatException | SQLException e) {
-     
+
         }
     }//GEN-LAST:event_btnAgregarMouseClicked
 

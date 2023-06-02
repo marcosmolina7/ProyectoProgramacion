@@ -23,6 +23,28 @@ public class Citas extends javax.swing.JPanel {
      */
     public Citas() {
         initComponents();
+        try {
+            Conexion con = new Conexion();
+            Statement stmt = con.createStatement();
+
+            // Cargar datos en tableCita
+            ResultSet rs = stmt.executeQuery("SELECT Citas.id_cita, Citas.id_paciente, Pacientes.nombres, Pacientes.apellidos, Citas.id_doctor, Doctores.nombres_doctor, Doctores.apellidos_doctor, Citas.fecha, Citas.hora FROM Citas JOIN Pacientes ON Citas.id_paciente = Pacientes.id_paciente JOIN Doctores ON Citas.id_doctor = Doctores.id_doctor");
+            DefaultTableModel modelCita = new DefaultTableModel(new Object[]{"ID_Cita", "ID_Paciente", "Nombres_Paciente", "Apellidos_Paciente", "ID_Doctor", "Nombres_Doctor", "Apellidos_Doctor", "Fecha", "Hora"}, 0);
+            while (rs.next()) {
+                modelCita.addRow(new Object[]{rs.getInt("id_cita"), rs.getInt("id_paciente"), rs.getString("nombres"), rs.getString("apellidos"), rs.getInt("id_doctor"), rs.getString("nombres_doctor"), rs.getString("apellidos_doctor"), rs.getDate("fecha"), rs.getTime("hora")});
+            }
+            tableCita.setModel(modelCita);
+
+            // Cargar datos en tableRecetas
+            rs = stmt.executeQuery("SELECT Recetas.id_receta, Recetas.id_cita, Citas.id_paciente, Pacientes.nombres, Pacientes.apellidos, Recetas.id_doctor, Doctores.nombres_doctor, Doctores.apellidos_doctor, Recetas.fecha, Recetas.hora FROM Recetas JOIN Citas ON Recetas.id_cita = Citas.id_cita JOIN Pacientes ON Citas.id_paciente = Pacientes.id_paciente JOIN Doctores ON Recetas.id_doctor = Doctores.id_doctor");
+            DefaultTableModel modelRecetas = new DefaultTableModel(new Object[]{"ID_Receta", "ID_Cita", "ID_Paciente", "Nombres_Paciente", "Apellidos_Paciente", "ID_Doctor", "Nombres_Doctor", "Apellidos_Doctor", "Fecha", "Hora"}, 0);
+            while (rs.next()) {
+                modelRecetas.addRow(new Object[]{rs.getInt("id_receta"), rs.getInt("id_cita"), rs.getInt("id_paciente"), rs.getString("nombres"), rs.getString("apellidos"), rs.getInt("id_doctor"), rs.getString("nombres_doctor"), rs.getString("apellidos_doctor"), rs.getDate("fecha"), rs.getTime("hora")});
+            }
+            tableRecetas.setModel(modelRecetas);
+        } catch (ClassNotFoundException | SQLException e) {
+            e.printStackTrace();
+        }
     }
 
     /**
@@ -56,18 +78,26 @@ public class Citas extends javax.swing.JPanel {
         comboBoxIdDoctorRe = new javax.swing.JComboBox<>();
         fondoBuscar = new javax.swing.JPanel();
         btnBuscar = new javax.swing.JLabel();
+        fondoMofificarReceta = new javax.swing.JPanel();
+        btnModificarReceta = new javax.swing.JLabel();
+        fondoBorraReceta = new javax.swing.JPanel();
+        btnBorrarReceta = new javax.swing.JLabel();
         fondoCrearReceta = new javax.swing.JPanel();
         btnCrearReceta = new javax.swing.JLabel();
-        fondoVerRecetas = new javax.swing.JPanel();
-        btnVerReceta = new javax.swing.JLabel();
+        fondoLimpiarReceta = new javax.swing.JPanel();
+        btnLimpiarReceta = new javax.swing.JLabel();
         jScrollPane2 = new javax.swing.JScrollPane();
         tableRecetas = new javax.swing.JTable();
-        fondoMostrarTodo = new javax.swing.JPanel();
-        btnMostrarTodo = new javax.swing.JLabel();
+        fondoLimpiarCita = new javax.swing.JPanel();
+        btnLimpiarCita = new javax.swing.JLabel();
         txtDescripcion = new javax.swing.JLabel();
         boxDescripcion = new javax.swing.JTextField();
         fondoBuscarReceta = new javax.swing.JPanel();
         btnBuscarReceta = new javax.swing.JLabel();
+        fondoBorraCita = new javax.swing.JPanel();
+        btnBorrarCita = new javax.swing.JLabel();
+        fondoMofificarCita = new javax.swing.JPanel();
+        btnModificarCita = new javax.swing.JLabel();
 
         bg.setBackground(new java.awt.Color(255, 255, 255));
 
@@ -195,16 +225,71 @@ public class Citas extends javax.swing.JPanel {
         fondoBuscar.setLayout(fondoBuscarLayout);
         fondoBuscarLayout.setHorizontalGroup(
             fondoBuscarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, fondoBuscarLayout.createSequentialGroup()
-                .addGap(0, 0, Short.MAX_VALUE)
-                .addComponent(btnBuscar, javax.swing.GroupLayout.PREFERRED_SIZE, 97, javax.swing.GroupLayout.PREFERRED_SIZE))
+            .addComponent(btnBuscar, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 103, Short.MAX_VALUE)
         );
         fondoBuscarLayout.setVerticalGroup(
             fondoBuscarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(fondoBuscarLayout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(btnBuscar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addContainerGap())
+            .addComponent(btnBuscar, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 30, Short.MAX_VALUE)
+        );
+
+        fondoMofificarReceta.setBackground(new java.awt.Color(95, 122, 219));
+
+        btnModificarReceta.setFont(new java.awt.Font("Roboto Black", 0, 12)); // NOI18N
+        btnModificarReceta.setForeground(new java.awt.Color(255, 255, 255));
+        btnModificarReceta.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        btnModificarReceta.setText("MODIFICAR");
+        btnModificarReceta.setToolTipText("");
+        btnModificarReceta.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnModificarReceta.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                btnModificarRecetaMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                btnModificarRecetaMouseExited(evt);
+            }
+        });
+
+        javax.swing.GroupLayout fondoMofificarRecetaLayout = new javax.swing.GroupLayout(fondoMofificarReceta);
+        fondoMofificarReceta.setLayout(fondoMofificarRecetaLayout);
+        fondoMofificarRecetaLayout.setHorizontalGroup(
+            fondoMofificarRecetaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, fondoMofificarRecetaLayout.createSequentialGroup()
+                .addGap(0, 0, Short.MAX_VALUE)
+                .addComponent(btnModificarReceta, javax.swing.GroupLayout.PREFERRED_SIZE, 93, javax.swing.GroupLayout.PREFERRED_SIZE))
+        );
+        fondoMofificarRecetaLayout.setVerticalGroup(
+            fondoMofificarRecetaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(btnModificarReceta, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)
+        );
+
+        fondoBorraReceta.setBackground(new java.awt.Color(95, 122, 219));
+
+        btnBorrarReceta.setFont(new java.awt.Font("Roboto Black", 0, 12)); // NOI18N
+        btnBorrarReceta.setForeground(new java.awt.Color(255, 255, 255));
+        btnBorrarReceta.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        btnBorrarReceta.setText("BORRAR");
+        btnBorrarReceta.setToolTipText("");
+        btnBorrarReceta.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnBorrarReceta.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                btnBorrarRecetaMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                btnBorrarRecetaMouseExited(evt);
+            }
+        });
+
+        javax.swing.GroupLayout fondoBorraRecetaLayout = new javax.swing.GroupLayout(fondoBorraReceta);
+        fondoBorraReceta.setLayout(fondoBorraRecetaLayout);
+        fondoBorraRecetaLayout.setHorizontalGroup(
+            fondoBorraRecetaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, fondoBorraRecetaLayout.createSequentialGroup()
+                .addGap(0, 0, Short.MAX_VALUE)
+                .addComponent(btnBorrarReceta, javax.swing.GroupLayout.PREFERRED_SIZE, 97, javax.swing.GroupLayout.PREFERRED_SIZE))
+        );
+        fondoBorraRecetaLayout.setVerticalGroup(
+            fondoBorraRecetaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(btnBorrarReceta, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
 
         fondoCrearReceta.setBackground(new java.awt.Color(95, 122, 219));
@@ -231,49 +316,47 @@ public class Citas extends javax.swing.JPanel {
         fondoCrearReceta.setLayout(fondoCrearRecetaLayout);
         fondoCrearRecetaLayout.setHorizontalGroup(
             fondoCrearRecetaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(btnCrearReceta, javax.swing.GroupLayout.DEFAULT_SIZE, 106, Short.MAX_VALUE)
+            .addGroup(fondoCrearRecetaLayout.createSequentialGroup()
+                .addComponent(btnCrearReceta, javax.swing.GroupLayout.PREFERRED_SIZE, 99, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE))
         );
         fondoCrearRecetaLayout.setVerticalGroup(
             fondoCrearRecetaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, fondoCrearRecetaLayout.createSequentialGroup()
-                .addGap(0, 0, Short.MAX_VALUE)
-                .addComponent(btnCrearReceta, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE))
+            .addComponent(btnCrearReceta, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
 
-        fondoVerRecetas.setBackground(new java.awt.Color(95, 122, 219));
+        fondoLimpiarReceta.setBackground(new java.awt.Color(95, 122, 219));
 
-        btnVerReceta.setFont(new java.awt.Font("Roboto Black", 0, 12)); // NOI18N
-        btnVerReceta.setForeground(new java.awt.Color(255, 255, 255));
-        btnVerReceta.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        btnVerReceta.setText("VER RECETAS");
-        btnVerReceta.setToolTipText("");
-        btnVerReceta.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        btnVerReceta.addMouseListener(new java.awt.event.MouseAdapter() {
+        btnLimpiarReceta.setFont(new java.awt.Font("Roboto Black", 0, 12)); // NOI18N
+        btnLimpiarReceta.setForeground(new java.awt.Color(255, 255, 255));
+        btnLimpiarReceta.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        btnLimpiarReceta.setText("LIMPIAR");
+        btnLimpiarReceta.setToolTipText("");
+        btnLimpiarReceta.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnLimpiarReceta.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                btnVerRecetaMouseClicked(evt);
+                btnLimpiarRecetaMouseClicked(evt);
             }
             public void mouseEntered(java.awt.event.MouseEvent evt) {
-                btnVerRecetaMouseEntered(evt);
+                btnLimpiarRecetaMouseEntered(evt);
             }
             public void mouseExited(java.awt.event.MouseEvent evt) {
-                btnVerRecetaMouseExited(evt);
+                btnLimpiarRecetaMouseExited(evt);
             }
         });
 
-        javax.swing.GroupLayout fondoVerRecetasLayout = new javax.swing.GroupLayout(fondoVerRecetas);
-        fondoVerRecetas.setLayout(fondoVerRecetasLayout);
-        fondoVerRecetasLayout.setHorizontalGroup(
-            fondoVerRecetasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(fondoVerRecetasLayout.createSequentialGroup()
+        javax.swing.GroupLayout fondoLimpiarRecetaLayout = new javax.swing.GroupLayout(fondoLimpiarReceta);
+        fondoLimpiarReceta.setLayout(fondoLimpiarRecetaLayout);
+        fondoLimpiarRecetaLayout.setHorizontalGroup(
+            fondoLimpiarRecetaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(fondoLimpiarRecetaLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(btnVerReceta, javax.swing.GroupLayout.PREFERRED_SIZE, 95, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(btnLimpiarReceta, javax.swing.GroupLayout.PREFERRED_SIZE, 95, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
-        fondoVerRecetasLayout.setVerticalGroup(
-            fondoVerRecetasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, fondoVerRecetasLayout.createSequentialGroup()
-                .addGap(0, 0, Short.MAX_VALUE)
-                .addComponent(btnVerReceta, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE))
+        fondoLimpiarRecetaLayout.setVerticalGroup(
+            fondoLimpiarRecetaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(btnLimpiarReceta, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
 
         tableRecetas.setModel(new javax.swing.table.DefaultTableModel(
@@ -307,39 +390,39 @@ public class Citas extends javax.swing.JPanel {
             tableRecetas.getColumnModel().getColumn(9).setResizable(false);
         }
 
-        fondoMostrarTodo.setBackground(new java.awt.Color(95, 122, 219));
+        fondoLimpiarCita.setBackground(new java.awt.Color(95, 122, 219));
 
-        btnMostrarTodo.setFont(new java.awt.Font("Roboto Black", 0, 12)); // NOI18N
-        btnMostrarTodo.setForeground(new java.awt.Color(255, 255, 255));
-        btnMostrarTodo.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        btnMostrarTodo.setText("VER CITAS");
-        btnMostrarTodo.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        btnMostrarTodo.addMouseListener(new java.awt.event.MouseAdapter() {
+        btnLimpiarCita.setFont(new java.awt.Font("Roboto Black", 0, 12)); // NOI18N
+        btnLimpiarCita.setForeground(new java.awt.Color(255, 255, 255));
+        btnLimpiarCita.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        btnLimpiarCita.setText("LIMPIAR");
+        btnLimpiarCita.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnLimpiarCita.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                btnMostrarTodoMouseClicked(evt);
+                btnLimpiarCitaMouseClicked(evt);
             }
             public void mouseEntered(java.awt.event.MouseEvent evt) {
-                btnMostrarTodoMouseEntered(evt);
+                btnLimpiarCitaMouseEntered(evt);
             }
             public void mouseExited(java.awt.event.MouseEvent evt) {
-                btnMostrarTodoMouseExited(evt);
+                btnLimpiarCitaMouseExited(evt);
             }
         });
 
-        javax.swing.GroupLayout fondoMostrarTodoLayout = new javax.swing.GroupLayout(fondoMostrarTodo);
-        fondoMostrarTodo.setLayout(fondoMostrarTodoLayout);
-        fondoMostrarTodoLayout.setHorizontalGroup(
-            fondoMostrarTodoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(fondoMostrarTodoLayout.createSequentialGroup()
+        javax.swing.GroupLayout fondoLimpiarCitaLayout = new javax.swing.GroupLayout(fondoLimpiarCita);
+        fondoLimpiarCita.setLayout(fondoLimpiarCitaLayout);
+        fondoLimpiarCitaLayout.setHorizontalGroup(
+            fondoLimpiarCitaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(fondoLimpiarCitaLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(btnMostrarTodo, javax.swing.GroupLayout.PREFERRED_SIZE, 93, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(btnLimpiarCita, javax.swing.GroupLayout.PREFERRED_SIZE, 93, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
-        fondoMostrarTodoLayout.setVerticalGroup(
-            fondoMostrarTodoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, fondoMostrarTodoLayout.createSequentialGroup()
+        fondoLimpiarCitaLayout.setVerticalGroup(
+            fondoLimpiarCitaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, fondoLimpiarCitaLayout.createSequentialGroup()
                 .addGap(0, 0, Short.MAX_VALUE)
-                .addComponent(btnMostrarTodo, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addComponent(btnLimpiarCita, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
 
         txtDescripcion.setFont(new java.awt.Font("Roboto Medium", 0, 14)); // NOI18N
@@ -379,9 +462,69 @@ public class Citas extends javax.swing.JPanel {
         );
         fondoBuscarRecetaLayout.setVerticalGroup(
             fondoBuscarRecetaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, fondoBuscarRecetaLayout.createSequentialGroup()
+            .addGroup(fondoBuscarRecetaLayout.createSequentialGroup()
+                .addComponent(btnBuscarReceta, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE))
+        );
+
+        fondoBorraCita.setBackground(new java.awt.Color(95, 122, 219));
+
+        btnBorrarCita.setFont(new java.awt.Font("Roboto Black", 0, 12)); // NOI18N
+        btnBorrarCita.setForeground(new java.awt.Color(255, 255, 255));
+        btnBorrarCita.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        btnBorrarCita.setText("BORRAR");
+        btnBorrarCita.setToolTipText("");
+        btnBorrarCita.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnBorrarCita.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                btnBorrarCitaMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                btnBorrarCitaMouseExited(evt);
+            }
+        });
+
+        javax.swing.GroupLayout fondoBorraCitaLayout = new javax.swing.GroupLayout(fondoBorraCita);
+        fondoBorraCita.setLayout(fondoBorraCitaLayout);
+        fondoBorraCitaLayout.setHorizontalGroup(
+            fondoBorraCitaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, fondoBorraCitaLayout.createSequentialGroup()
                 .addGap(0, 0, Short.MAX_VALUE)
-                .addComponent(btnBuscarReceta, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addComponent(btnBorrarCita, javax.swing.GroupLayout.PREFERRED_SIZE, 97, javax.swing.GroupLayout.PREFERRED_SIZE))
+        );
+        fondoBorraCitaLayout.setVerticalGroup(
+            fondoBorraCitaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(btnBorrarCita, javax.swing.GroupLayout.DEFAULT_SIZE, 30, Short.MAX_VALUE)
+        );
+
+        fondoMofificarCita.setBackground(new java.awt.Color(95, 122, 219));
+
+        btnModificarCita.setFont(new java.awt.Font("Roboto Black", 0, 12)); // NOI18N
+        btnModificarCita.setForeground(new java.awt.Color(255, 255, 255));
+        btnModificarCita.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        btnModificarCita.setText("MODIFICAR");
+        btnModificarCita.setToolTipText("");
+        btnModificarCita.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnModificarCita.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                btnModificarCitaMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                btnModificarCitaMouseExited(evt);
+            }
+        });
+
+        javax.swing.GroupLayout fondoMofificarCitaLayout = new javax.swing.GroupLayout(fondoMofificarCita);
+        fondoMofificarCita.setLayout(fondoMofificarCitaLayout);
+        fondoMofificarCitaLayout.setHorizontalGroup(
+            fondoMofificarCitaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, fondoMofificarCitaLayout.createSequentialGroup()
+                .addGap(0, 0, Short.MAX_VALUE)
+                .addComponent(btnModificarCita, javax.swing.GroupLayout.PREFERRED_SIZE, 93, javax.swing.GroupLayout.PREFERRED_SIZE))
+        );
+        fondoMofificarCitaLayout.setVerticalGroup(
+            fondoMofificarCitaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(btnModificarCita, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
 
         javax.swing.GroupLayout bgLayout = new javax.swing.GroupLayout(bg);
@@ -389,126 +532,145 @@ public class Citas extends javax.swing.JPanel {
         bgLayout.setHorizontalGroup(
             bgLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(bgLayout.createSequentialGroup()
-                .addGap(22, 22, 22)
                 .addGroup(bgLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(bgLayout.createSequentialGroup()
+                        .addGap(22, 22, 22)
+                        .addGroup(bgLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(bgLayout.createSequentialGroup()
+                                .addComponent(tituloCrearCita, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addGap(87, 87, 87))
+                            .addGroup(bgLayout.createSequentialGroup()
+                                .addGroup(bgLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(bgLayout.createSequentialGroup()
+                                        .addGap(98, 98, 98)
+                                        .addComponent(comboBoxHora, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addGap(26, 26, 26)
+                                        .addComponent(comboBoxMin, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addGroup(bgLayout.createSequentialGroup()
+                                        .addGroup(bgLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addComponent(txtHora, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addGroup(bgLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                                .addComponent(txtId_Pacientes, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                                .addComponent(txtId_Doctor, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                                .addComponent(txtFecha, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                        .addGap(18, 18, 18)
+                                        .addGroup(bgLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addComponent(boxIDPaciente, javax.swing.GroupLayout.PREFERRED_SIZE, 228, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addComponent(dateChooser, javax.swing.GroupLayout.PREFERRED_SIZE, 228, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addComponent(comboBoxIdDoctor, javax.swing.GroupLayout.PREFERRED_SIZE, 228, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                                .addGap(76, 92, Short.MAX_VALUE))))
                     .addGroup(bgLayout.createSequentialGroup()
                         .addGroup(bgLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(bgLayout.createSequentialGroup()
-                                .addComponent(txtIdPacientesModi, javax.swing.GroupLayout.PREFERRED_SIZE, 74, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(14, 14, 14)
-                                .addComponent(comboBoxIdDoctorRe, javax.swing.GroupLayout.PREFERRED_SIZE, 240, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGap(23, 23, 23)
+                                .addComponent(fondoCrear, javax.swing.GroupLayout.PREFERRED_SIZE, 102, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(33, 33, 33)
+                                .addComponent(fondoLimpiarCita, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(31, 31, 31)
+                                .addComponent(fondoBuscar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(bgLayout.createSequentialGroup()
-                                .addComponent(txtDescripcion)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(boxDescripcion, javax.swing.GroupLayout.PREFERRED_SIZE, 288, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGap(95, 95, 95)
+                                .addComponent(fondoMofificarCita, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(46, 46, 46)
+                                .addComponent(fondoBorraCita, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(bgLayout.createSequentialGroup()
-                                .addComponent(txtIDCita, javax.swing.GroupLayout.PREFERRED_SIZE, 64, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(24, 24, 24)
-                                .addComponent(boxIdCita, javax.swing.GroupLayout.PREFERRED_SIZE, 240, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, bgLayout.createSequentialGroup()
-                                .addComponent(fondoCrearReceta, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(28, 28, 28)
-                                .addComponent(fondoVerRecetas, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(27, 27, 27)
-                                .addComponent(fondoBuscarReceta, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addGap(26, 26, 26))
-                    .addGroup(bgLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addGroup(bgLayout.createSequentialGroup()
-                            .addGroup(bgLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(tituloCrearCita1, javax.swing.GroupLayout.PREFERRED_SIZE, 351, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGroup(bgLayout.createSequentialGroup()
-                                    .addGap(98, 98, 98)
-                                    .addComponent(comboBoxHora, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addGap(26, 26, 26)
-                                    .addComponent(comboBoxMin, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addGroup(bgLayout.createSequentialGroup()
+                                .addGap(21, 21, 21)
+                                .addGroup(bgLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                                     .addGroup(bgLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                        .addComponent(txtHora, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addGroup(bgLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                            .addComponent(txtId_Pacientes, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                            .addComponent(txtId_Doctor, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                            .addComponent(txtFecha, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                                    .addGap(18, 18, 18)
+                                        .addGroup(bgLayout.createSequentialGroup()
+                                            .addComponent(fondoCrearReceta, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addGap(35, 35, 35)
+                                            .addComponent(fondoLimpiarReceta, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addGap(36, 36, 36)
+                                            .addComponent(fondoBuscarReceta, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                        .addGroup(bgLayout.createSequentialGroup()
+                                            .addGap(82, 82, 82)
+                                            .addComponent(fondoMofificarReceta, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addGap(43, 43, 43)
+                                            .addComponent(fondoBorraReceta, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                                     .addGroup(bgLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                        .addComponent(boxIDPaciente, javax.swing.GroupLayout.PREFERRED_SIZE, 228, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addComponent(dateChooser, javax.swing.GroupLayout.PREFERRED_SIZE, 228, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addComponent(comboBoxIdDoctor, javax.swing.GroupLayout.PREFERRED_SIZE, 228, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                            .addGap(51, 51, 51))
-                        .addGroup(bgLayout.createSequentialGroup()
-                            .addComponent(tituloCrearCita, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addGap(87, 87, 87))
-                        .addGroup(bgLayout.createSequentialGroup()
-                            .addComponent(fondoCrear, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGap(34, 34, 34)
-                            .addComponent(fondoMostrarTodo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(fondoBuscar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGap(21, 21, 21))))
+                                        .addGroup(bgLayout.createSequentialGroup()
+                                            .addComponent(txtIdPacientesModi, javax.swing.GroupLayout.PREFERRED_SIZE, 74, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addGap(14, 14, 14)
+                                            .addComponent(comboBoxIdDoctorRe, javax.swing.GroupLayout.PREFERRED_SIZE, 240, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                        .addGroup(bgLayout.createSequentialGroup()
+                                            .addComponent(txtDescripcion)
+                                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                            .addComponent(boxDescripcion, javax.swing.GroupLayout.PREFERRED_SIZE, 288, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                        .addGroup(bgLayout.createSequentialGroup()
+                                            .addComponent(txtIDCita, javax.swing.GroupLayout.PREFERRED_SIZE, 64, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addGap(24, 24, 24)
+                                            .addComponent(boxIdCita, javax.swing.GroupLayout.PREFERRED_SIZE, 240, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                        .addComponent(tituloCrearCita1, javax.swing.GroupLayout.PREFERRED_SIZE, 351, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                 .addGroup(bgLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 514, Short.MAX_VALUE)
-                    .addComponent(jScrollPane1)))
+                    .addComponent(jScrollPane2)
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 498, javax.swing.GroupLayout.PREFERRED_SIZE)))
         );
         bgLayout.setVerticalGroup(
             bgLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(bgLayout.createSequentialGroup()
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, bgLayout.createSequentialGroup()
+                .addGap(16, 16, 16)
+                .addComponent(tituloCrearCita)
+                .addGap(20, 20, 20)
                 .addGroup(bgLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(bgLayout.createSequentialGroup()
-                        .addGap(16, 16, 16)
-                        .addComponent(tituloCrearCita)
-                        .addGap(20, 20, 20)
-                        .addGroup(bgLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addGroup(bgLayout.createSequentialGroup()
-                                .addComponent(txtId_Pacientes, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 15, Short.MAX_VALUE)
-                                .addComponent(txtId_Doctor, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(18, 18, 18)
-                                .addComponent(txtFecha))
-                            .addGroup(bgLayout.createSequentialGroup()
-                                .addGap(1, 1, 1)
-                                .addComponent(boxIDPaciente, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(comboBoxIdDoctor, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(18, 18, 18)
-                                .addComponent(dateChooser, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addGroup(bgLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(txtHora, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGroup(bgLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                .addComponent(comboBoxHora, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(comboBoxMin, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addGap(40, 40, 40)
-                        .addGroup(bgLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(fondoCrear, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(fondoMostrarTodo, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(fondoBuscar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                        .addGap(34, 34, 34))
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE))
+                        .addComponent(txtId_Pacientes, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 17, Short.MAX_VALUE)
+                        .addComponent(txtId_Doctor, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(txtFecha))
+                    .addGroup(bgLayout.createSequentialGroup()
+                        .addGap(1, 1, 1)
+                        .addComponent(boxIDPaciente, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(comboBoxIdDoctor, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(dateChooser, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(bgLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(txtHora, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(bgLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(comboBoxHora, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(comboBoxMin, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(18, 18, 18)
+                .addGroup(bgLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(bgLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                        .addComponent(fondoCrear, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(fondoLimpiarCita, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(fondoBuscar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(bgLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(fondoBorraCita, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(fondoMofificarCita, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
                 .addComponent(tituloCrearCita1)
                 .addGap(23, 23, 23)
+                .addGroup(bgLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(txtIDCita)
+                    .addComponent(boxIdCita, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(bgLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(txtIdPacientesModi)
+                    .addComponent(comboBoxIdDoctorRe, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
                 .addGroup(bgLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 357, Short.MAX_VALUE)
-                    .addGroup(bgLayout.createSequentialGroup()
-                        .addGroup(bgLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(txtIDCita)
-                            .addComponent(boxIdCita, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addGroup(bgLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(txtIdPacientesModi)
-                            .addComponent(comboBoxIdDoctorRe, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(18, 18, 18)
-                        .addGroup(bgLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(bgLayout.createSequentialGroup()
-                                .addComponent(txtDescripcion, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                            .addGroup(bgLayout.createSequentialGroup()
-                                .addGap(0, 0, Short.MAX_VALUE)
-                                .addComponent(boxDescripcion, javax.swing.GroupLayout.PREFERRED_SIZE, 158, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(27, 27, 27)))
-                        .addGroup(bgLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(fondoCrearReceta, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(fondoBuscarReceta, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(fondoVerRecetas, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(61, 61, 61))))
+                    .addComponent(txtDescripcion, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(boxDescripcion, javax.swing.GroupLayout.PREFERRED_SIZE, 158, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(bgLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                    .addComponent(fondoLimpiarReceta, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(fondoBuscarReceta, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(fondoCrearReceta, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(bgLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(fondoMofificarReceta, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(fondoBorraReceta, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(18, Short.MAX_VALUE))
+            .addGroup(bgLayout.createSequentialGroup()
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 327, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
@@ -547,13 +709,13 @@ public class Citas extends javax.swing.JPanel {
         fondoBuscar.setBackground(new Color(95, 122, 219));
     }//GEN-LAST:event_btnBuscarMouseExited
 
-    private void btnVerRecetaMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnVerRecetaMouseEntered
-        fondoVerRecetas.setBackground(new Color(46, 50, 57));
-    }//GEN-LAST:event_btnVerRecetaMouseEntered
+    private void btnLimpiarRecetaMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnLimpiarRecetaMouseEntered
+        fondoLimpiarReceta.setBackground(new Color(46, 50, 57));
+    }//GEN-LAST:event_btnLimpiarRecetaMouseEntered
 
-    private void btnVerRecetaMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnVerRecetaMouseExited
-        fondoVerRecetas.setBackground(new Color(95, 122, 219));
-    }//GEN-LAST:event_btnVerRecetaMouseExited
+    private void btnLimpiarRecetaMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnLimpiarRecetaMouseExited
+        fondoLimpiarReceta.setBackground(new Color(95, 122, 219));
+    }//GEN-LAST:event_btnLimpiarRecetaMouseExited
 
     private void btnCrearMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnCrearMouseClicked
         try {
@@ -585,45 +747,27 @@ public class Citas extends javax.swing.JPanel {
         }
     }//GEN-LAST:event_btnCrearMouseClicked
 
-    private void btnMostrarTodoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnMostrarTodoMouseClicked
-        try {
-            Conexion con = new Conexion();
-            Statement stmt = con.createStatement();
-            ResultSet rs = stmt.executeQuery("SELECT Citas.id_cita, Citas.id_paciente, Pacientes.nombres, Pacientes.apellidos, Citas.id_doctor, Doctores.nombres_doctor, Doctores.apellidos_doctor, Citas.fecha, Citas.hora FROM Citas JOIN Pacientes ON Citas.id_paciente = Pacientes.id_paciente JOIN Doctores ON Citas.id_doctor = Doctores.id_doctor");
+    private void btnLimpiarCitaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnLimpiarCitaMouseClicked
+        boxIDPaciente.setText("");
+        comboBoxIdDoctor.setSelectedIndex(0);
+        dateChooser.setDate(null);
+        comboBoxHora.setSelectedIndex(0);
+        comboBoxMin.setSelectedIndex(0);
+    }//GEN-LAST:event_btnLimpiarCitaMouseClicked
 
-            DefaultTableModel model = new DefaultTableModel(new Object[]{"ID_Cita", "ID_Paciente", "Nombres_Paciente", "Apellidos_Paciente", "ID_Doctor", "Nombres_Doctor", "Apellidos_Doctor", "Fecha", "Hora"}, 0);
-            while (rs.next()) {
-                model.addRow(new Object[]{rs.getInt("id_cita"), rs.getInt("id_paciente"), rs.getString("nombres"), rs.getString("apellidos"), rs.getInt("id_doctor"), rs.getString("nombres_doctor"), rs.getString("apellidos_doctor"), rs.getDate("fecha"), rs.getTime("hora")});
-            }
-            tableCita.setModel(model);
-        } catch (ClassNotFoundException | SQLException e) {
-            e.printStackTrace();
-        }
-    }//GEN-LAST:event_btnMostrarTodoMouseClicked
+    private void btnLimpiarCitaMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnLimpiarCitaMouseEntered
+        fondoLimpiarCita.setBackground(new Color(46, 50, 57));
+    }//GEN-LAST:event_btnLimpiarCitaMouseEntered
 
-    private void btnMostrarTodoMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnMostrarTodoMouseEntered
-        fondoMostrarTodo.setBackground(new Color(46, 50, 57));
-    }//GEN-LAST:event_btnMostrarTodoMouseEntered
+    private void btnLimpiarCitaMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnLimpiarCitaMouseExited
+        fondoLimpiarCita.setBackground(new Color(95, 122, 219));
+    }//GEN-LAST:event_btnLimpiarCitaMouseExited
 
-    private void btnMostrarTodoMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnMostrarTodoMouseExited
-        fondoMostrarTodo.setBackground(new Color(95, 122, 219));
-    }//GEN-LAST:event_btnMostrarTodoMouseExited
-
-    private void btnVerRecetaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnVerRecetaMouseClicked
-        try {
-            Conexion con = new Conexion();
-            Statement stmt = con.createStatement();
-            ResultSet rs = stmt.executeQuery("SELECT Recetas.id_receta, Recetas.id_cita, Citas.id_paciente, Pacientes.nombres, Pacientes.apellidos, Recetas.id_doctor, Doctores.nombres_doctor, Doctores.apellidos_doctor, Recetas.fecha, Recetas.hora FROM Recetas JOIN Citas ON Recetas.id_cita = Citas.id_cita JOIN Pacientes ON Citas.id_paciente = Pacientes.id_paciente JOIN Doctores ON Recetas.id_doctor = Doctores.id_doctor");
-
-            DefaultTableModel model = new DefaultTableModel(new Object[]{"ID_Receta", "ID_Cita", "ID_Paciente", "Nombres_Paciente", "Apellidos_Paciente", "ID_Doctor", "Nombres_Doctor", "Apellidos_Doctor", "Fecha", "Hora"}, 0);
-            while (rs.next()) {
-                model.addRow(new Object[]{rs.getInt("id_receta"), rs.getInt("id_cita"), rs.getInt("id_paciente"), rs.getString("nombres"), rs.getString("apellidos"), rs.getInt("id_doctor"), rs.getString("nombres_doctor"), rs.getString("apellidos_doctor"), rs.getDate("fecha"), rs.getTime("hora")});
-            }
-            tableRecetas.setModel(model);
-        } catch (ClassNotFoundException | SQLException e) {
-            e.printStackTrace();
-        }
-    }//GEN-LAST:event_btnVerRecetaMouseClicked
+    private void btnLimpiarRecetaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnLimpiarRecetaMouseClicked
+        boxIdCita.setText("");
+        comboBoxIdDoctorRe.setSelectedIndex(0);
+        boxDescripcion.setText("");
+    }//GEN-LAST:event_btnLimpiarRecetaMouseClicked
 
     private void btnBuscarRecetaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnBuscarRecetaMouseClicked
         // TODO add your handling code here:
@@ -660,29 +804,71 @@ public class Citas extends javax.swing.JPanel {
         }
     }//GEN-LAST:event_btnCrearRecetaMouseClicked
 
+    private void btnModificarCitaMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnModificarCitaMouseEntered
+        fondoMofificarCita.setBackground(new Color(46, 50, 57));
+    }//GEN-LAST:event_btnModificarCitaMouseEntered
+
+    private void btnModificarCitaMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnModificarCitaMouseExited
+        fondoMofificarCita.setBackground(new Color(95, 122, 219));
+    }//GEN-LAST:event_btnModificarCitaMouseExited
+
+    private void btnBorrarCitaMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnBorrarCitaMouseEntered
+        fondoBorraCita.setBackground(new Color(46, 50, 57));
+    }//GEN-LAST:event_btnBorrarCitaMouseEntered
+
+    private void btnBorrarCitaMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnBorrarCitaMouseExited
+        fondoBorraCita.setBackground(new Color(95, 122, 219));
+    }//GEN-LAST:event_btnBorrarCitaMouseExited
+
+    private void btnBorrarRecetaMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnBorrarRecetaMouseEntered
+        fondoBorraReceta.setBackground(new Color(46, 50, 57));
+    }//GEN-LAST:event_btnBorrarRecetaMouseEntered
+
+    private void btnBorrarRecetaMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnBorrarRecetaMouseExited
+        fondoBorraReceta.setBackground(new Color(95, 122, 219));
+    }//GEN-LAST:event_btnBorrarRecetaMouseExited
+
+    private void btnModificarRecetaMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnModificarRecetaMouseEntered
+        fondoMofificarReceta.setBackground(new Color(46, 50, 57));
+    }//GEN-LAST:event_btnModificarRecetaMouseEntered
+
+    private void btnModificarRecetaMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnModificarRecetaMouseExited
+        fondoMofificarReceta.setBackground(new Color(95, 122, 219));
+    }//GEN-LAST:event_btnModificarRecetaMouseExited
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel bg;
     private javax.swing.JTextField boxDescripcion;
     private javax.swing.JTextField boxIDPaciente;
     private javax.swing.JTextField boxIdCita;
+    private javax.swing.JLabel btnBorrarCita;
+    private javax.swing.JLabel btnBorrarReceta;
     private javax.swing.JLabel btnBuscar;
     private javax.swing.JLabel btnBuscarReceta;
     private javax.swing.JLabel btnCrear;
     private javax.swing.JLabel btnCrearReceta;
-    private javax.swing.JLabel btnMostrarTodo;
-    private javax.swing.JLabel btnVerReceta;
+    private javax.swing.JLabel btnLimpiarCita;
+    private javax.swing.JLabel btnLimpiarReceta;
+    private javax.swing.JLabel btnModificarCita;
+    private javax.swing.JLabel btnModificarCita1;
+    private javax.swing.JLabel btnModificarReceta;
     private javax.swing.JComboBox<String> comboBoxHora;
     private javax.swing.JComboBox<String> comboBoxIdDoctor;
     private javax.swing.JComboBox<String> comboBoxIdDoctorRe;
     private javax.swing.JComboBox<String> comboBoxMin;
     private com.toedter.calendar.JDateChooser dateChooser;
+    private javax.swing.JPanel fondoBorraCita;
+    private javax.swing.JPanel fondoBorraReceta;
     private javax.swing.JPanel fondoBuscar;
     private javax.swing.JPanel fondoBuscarReceta;
     private javax.swing.JPanel fondoCrear;
     private javax.swing.JPanel fondoCrearReceta;
-    private javax.swing.JPanel fondoMostrarTodo;
-    private javax.swing.JPanel fondoVerRecetas;
+    private javax.swing.JPanel fondoLimpiarCita;
+    private javax.swing.JPanel fondoLimpiarReceta;
+    private javax.swing.JPanel fondoMofificarCita;
+    private javax.swing.JPanel fondoMofificarCita1;
+    private javax.swing.JPanel fondoMofificarReceta;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JTable tableCita;
