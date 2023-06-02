@@ -12,7 +12,6 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.sql.Time;
 import java.text.SimpleDateFormat;
-import java.util.Calendar;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
@@ -27,13 +26,18 @@ public class Citas extends javax.swing.JPanel {
      */
     public Citas() {
         initComponents();
-        try {
+            try {
             Conexion con = new Conexion();
             Statement stmt = con.createStatement();
 
             // Cargar datos en tableCita
             ResultSet rs = stmt.executeQuery("SELECT Citas.id_cita, Citas.id_paciente, Pacientes.nombres, Pacientes.apellidos, Citas.id_doctor, Doctores.nombres_doctor, Doctores.apellidos_doctor, Citas.fecha, Citas.hora FROM Citas JOIN Pacientes ON Citas.id_paciente = Pacientes.id_paciente JOIN Doctores ON Citas.id_doctor = Doctores.id_doctor");
-            DefaultTableModel modelCita = new DefaultTableModel(new Object[]{"ID_Cita", "ID_Paciente", "Nombres_Paciente", "Apellidos_Paciente", "ID_Doctor", "Nombres_Doctor", "Apellidos_Doctor", "Fecha", "Hora"}, 0);
+            DefaultTableModel modelCita = new DefaultTableModel(new Object[]{"ID_Cita", "ID_Paciente", "Nombres_Paciente", "Apellidos_Paciente", "ID_Doctor", "Nombres_Doctor", "Apellidos_Doctor", "Fecha", "Hora"}, 0) {
+                @Override
+                public boolean isCellEditable(int row, int column) {
+                    return false;
+                }
+            };
             while (rs.next()) {
                 modelCita.addRow(new Object[]{rs.getInt("id_cita"), rs.getInt("id_paciente"), rs.getString("nombres"), rs.getString("apellidos"), rs.getInt("id_doctor"), rs.getString("nombres_doctor"), rs.getString("apellidos_doctor"), rs.getDate("fecha"), rs.getTime("hora")});
             }
@@ -41,7 +45,12 @@ public class Citas extends javax.swing.JPanel {
 
             // Cargar datos en tableRecetas
             rs = stmt.executeQuery("SELECT Recetas.id_receta, Recetas.id_cita, Citas.id_paciente, Pacientes.nombres, Pacientes.apellidos, Recetas.id_doctor, Doctores.nombres_doctor, Doctores.apellidos_doctor, Recetas.fecha, Recetas.hora, Recetas.descripcion FROM Recetas JOIN Citas ON Recetas.id_cita = Citas.id_cita JOIN Pacientes ON Citas.id_paciente = Pacientes.id_paciente JOIN Doctores ON Recetas.id_doctor = Doctores.id_doctor");
-            DefaultTableModel modelRecetas = new DefaultTableModel(new Object[]{"ID_Receta", "ID_Cita", "ID_Paciente", "Nombres_Paciente", "Apellidos_Paciente", "ID_Doctor", "Nombres_Doctor", "Apellidos_Doctor", "Fecha", "Hora", "Descripción"}, 0);
+            DefaultTableModel modelRecetas = new DefaultTableModel(new Object[]{"ID_Receta", "ID_Cita", "ID_Paciente", "Nombres_Paciente", "Apellidos_Paciente", "ID_Doctor", "Nombres_Doctor", "Apellidos_Doctor", "Fecha", "Hora", "Descripción"}, 0) {
+                @Override
+                public boolean isCellEditable(int row, int column) {
+                    return false;
+                }
+            };
             while (rs.next()) {
                 modelRecetas.addRow(new Object[]{rs.getInt("id_receta"), rs.getInt("id_cita"), rs.getInt("id_paciente"), rs.getString("nombres"), rs.getString("apellidos"), rs.getInt("id_doctor"), rs.getString("nombres_doctor"), rs.getString("apellidos_doctor"), rs.getDate("fecha"), rs.getTime("hora"), rs.getString("descripcion")});
             }
@@ -348,7 +357,7 @@ public class Citas extends javax.swing.JPanel {
             }
         ) {
             boolean[] canEdit = new boolean [] {
-                false, false, false, false, false, false, false, false, false, false, true
+                false, false, false, false, false, false, false, false, false, false, false
             };
 
             public boolean isCellEditable(int rowIndex, int columnIndex) {
@@ -373,6 +382,7 @@ public class Citas extends javax.swing.JPanel {
             tableRecetas.getColumnModel().getColumn(7).setResizable(false);
             tableRecetas.getColumnModel().getColumn(8).setResizable(false);
             tableRecetas.getColumnModel().getColumn(9).setResizable(false);
+            tableRecetas.getColumnModel().getColumn(10).setResizable(false);
         }
 
         fondoLimpiarCita.setBackground(new java.awt.Color(95, 122, 219));
@@ -414,7 +424,8 @@ public class Citas extends javax.swing.JPanel {
         txtDescripcion.setForeground(new java.awt.Color(38, 41, 43));
         txtDescripcion.setText("Descripción: ");
 
-        boxDescripcion.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        boxDescripcion.setHorizontalAlignment(javax.swing.JTextField.LEFT);
+        boxDescripcion.setCursor(new java.awt.Cursor(java.awt.Cursor.TEXT_CURSOR));
 
         fondoBuscarReceta.setBackground(new java.awt.Color(95, 122, 219));
 
@@ -687,7 +698,7 @@ public class Citas extends javax.swing.JPanel {
                         .addGroup(bgLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(txtDescripcion, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(boxDescripcion, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(18, 18, 18)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addGroup(bgLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                             .addComponent(fondoLimpiarReceta, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(fondoBuscarReceta, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -696,7 +707,7 @@ public class Citas extends javax.swing.JPanel {
                         .addGroup(bgLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(fondoMofificarReceta, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(fondoBorraReceta, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addContainerGap(46, Short.MAX_VALUE))
+                        .addContainerGap(52, Short.MAX_VALUE))
                     .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)))
         );
 
