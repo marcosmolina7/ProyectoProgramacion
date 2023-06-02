@@ -786,6 +786,9 @@
           </Properties>
         </Component>
         <Component class="javax.swing.JTextField" name="boxDescripcion">
+          <Properties>
+            <Property name="horizontalAlignment" type="int" value="0"/>
+          </Properties>
         </Component>
         <Container class="javax.swing.JPanel" name="fondoBuscarReceta">
           <Properties>

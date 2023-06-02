@@ -39,98 +39,46 @@
               <Group type="102" alignment="0" attributes="0">
                   <EmptySpace min="-2" pref="34" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="0" attributes="0">
+                      <Component id="tituloAgregarPaciente" pref="904" max="32767" attributes="0"/>
                       <Group type="102" attributes="0">
-                          <Component id="tituloAgregarPaciente" max="32767" attributes="0"/>
-                          <EmptySpace max="32767" attributes="0"/>
-                          <Component id="tituloAgregarPaciente1" max="32767" attributes="0"/>
-                      </Group>
-                      <Group type="102" attributes="0">
-                          <Group type="103" groupAlignment="0" attributes="0">
-                              <Group type="102" attributes="0">
-                                  <Component id="fondoBtnAgregar" min="-2" max="-2" attributes="0"/>
-                                  <EmptySpace min="-2" pref="62" max="-2" attributes="0"/>
-                                  <Component id="fondoBtnMostrar" min="-2" max="-2" attributes="0"/>
-                              </Group>
-                              <Group type="102" attributes="0">
-                                  <Group type="103" groupAlignment="1" max="-2" attributes="0">
-                                      <Component id="dpi" max="32767" attributes="0"/>
-                                      <Component id="nombres" alignment="0" max="32767" attributes="0"/>
-                                      <Component id="apellidos" alignment="0" pref="77" max="32767" attributes="0"/>
-                                      <Component id="edad" alignment="0" max="32767" attributes="0"/>
-                                      <Component id="sexo" alignment="0" max="32767" attributes="0"/>
-                                      <Component id="dirección" alignment="0" max="32767" attributes="0"/>
-                                      <Component id="telefono" alignment="0" max="32767" attributes="0"/>
-                                      <Component id="email" alignment="0" max="32767" attributes="0"/>
-                                  </Group>
-                                  <EmptySpace type="separate" min="-2" max="-2" attributes="0"/>
-                                  <Group type="103" groupAlignment="0" attributes="0">
-                                      <Component id="boxDPI" max="32767" attributes="0"/>
-                                      <Component id="boxNombres" max="32767" attributes="0"/>
-                                      <Component id="boxApellidos" alignment="0" max="32767" attributes="0"/>
-                                      <Component id="boxEdad" alignment="0" max="32767" attributes="0"/>
-                                      <Component id="boxDireccion" alignment="0" max="32767" attributes="0"/>
-                                      <Group type="102" alignment="0" attributes="0">
-                                          <Component id="boxTelefono" pref="153" max="32767" attributes="0"/>
-                                          <EmptySpace min="112" pref="112" max="-2" attributes="0"/>
-                                      </Group>
-                                      <Component id="boxEmail" alignment="0" max="32767" attributes="0"/>
-                                      <Group type="102" alignment="0" attributes="0">
-                                          <Component id="comboBoxSexo" min="-2" pref="116" max="-2" attributes="0"/>
-                                          <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
-                                      </Group>
-                                  </Group>
-                              </Group>
+                          <Group type="103" groupAlignment="1" max="-2" attributes="0">
+                              <Component id="dpi" max="32767" attributes="0"/>
+                              <Component id="nombres" alignment="0" max="32767" attributes="0"/>
+                              <Component id="apellidos" alignment="0" pref="77" max="32767" attributes="0"/>
+                              <Component id="edad" alignment="0" max="32767" attributes="0"/>
+                              <Component id="sexo" alignment="0" max="32767" attributes="0"/>
+                              <Component id="dirección" alignment="0" max="32767" attributes="0"/>
+                              <Component id="telefono" alignment="0" max="32767" attributes="0"/>
+                              <Component id="email" alignment="0" max="32767" attributes="0"/>
                           </Group>
-                          <EmptySpace min="-2" pref="39" max="-2" attributes="0"/>
+                          <EmptySpace type="separate" min="-2" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="0" attributes="0">
                               <Group type="102" alignment="0" attributes="0">
-                                  <Component id="fondoBtnGuardar" min="-2" max="-2" attributes="0"/>
-                                  <EmptySpace min="-2" pref="73" max="-2" attributes="0"/>
-                                  <Component id="fondoBtnEliminar" min="-2" max="-2" attributes="0"/>
-                                  <EmptySpace max="32767" attributes="0"/>
+                                  <Group type="103" groupAlignment="1" max="-2" attributes="0">
+                                      <Component id="boxEmail" alignment="0" pref="276" max="32767" attributes="0"/>
+                                      <Component id="comboBoxSexo" alignment="0" min="-2" pref="116" max="-2" attributes="0"/>
+                                      <Component id="boxTelefono" alignment="0" max="32767" attributes="0"/>
+                                  </Group>
+                                  <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
                               </Group>
-                              <Group type="102" alignment="1" attributes="0">
-                                  <Group type="103" groupAlignment="0" attributes="0">
-                                      <Component id="telefonoM" alignment="0" max="32767" attributes="0"/>
-                                      <Component id="direcciónM" alignment="0" max="32767" attributes="0"/>
-                                      <Component id="apellidosM" alignment="0" max="32767" attributes="0"/>
-                                      <Component id="nombresM" alignment="0" max="32767" attributes="0"/>
-                                      <Group type="102" attributes="0">
-                                          <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                                              <Component id="id_Paciente" pref="98" max="32767" attributes="0"/>
-                                              <Component id="edadM" alignment="0" max="32767" attributes="0"/>
-                                              <Component id="sexoM" alignment="0" max="32767" attributes="0"/>
-                                              <Component id="emailM" alignment="0" max="32767" attributes="0"/>
-                                          </Group>
-                                          <EmptySpace min="0" pref="3" max="32767" attributes="0"/>
-                                      </Group>
-                                      <Component id="dpiM" max="32767" attributes="0"/>
-                                  </Group>
-                                  <EmptySpace type="unrelated" min="-2" max="-2" attributes="0"/>
+                              <Group type="102" attributes="0">
                                   <Group type="103" groupAlignment="0" attributes="0">
                                       <Group type="102" attributes="0">
-                                          <Component id="boxID" pref="133" max="32767" attributes="0"/>
-                                          <EmptySpace min="-2" pref="259" max="-2" attributes="0"/>
-                                      </Group>
-                                      <Group type="102" attributes="0">
-                                          <Group type="103" groupAlignment="0" attributes="0">
-                                              <Component id="boxDPIModi" alignment="0" max="32767" attributes="0"/>
-                                              <Component id="boxEmailModi" alignment="0" max="32767" attributes="0"/>
-                                              <Component id="boxTelefonoModi" alignment="0" max="32767" attributes="0"/>
-                                              <Component id="boxDireccionModi" alignment="0" max="32767" attributes="0"/>
-                                              <Component id="boxEdadModi" alignment="0" max="32767" attributes="0"/>
-                                              <Component id="boxApellidosModi" alignment="0" max="32767" attributes="0"/>
-                                              <Component id="boxNombresModi" alignment="0" max="32767" attributes="0"/>
-                                          </Group>
-                                          <EmptySpace min="-2" pref="30" max="-2" attributes="0"/>
+                                          <Component id="fondoBtnAgregar" min="-2" max="-2" attributes="0"/>
+                                          <EmptySpace min="-2" pref="96" max="-2" attributes="0"/>
+                                          <Component id="fondoBtnMostrar" min="-2" max="-2" attributes="0"/>
+                                          <EmptySpace min="-2" pref="51" max="-2" attributes="0"/>
                                           <Component id="fondoBtnBuscar" min="-2" pref="85" max="-2" attributes="0"/>
-                                          <EmptySpace min="-2" pref="32" max="-2" attributes="0"/>
                                       </Group>
-                                      <Group type="102" alignment="0" attributes="0">
-                                          <Component id="comboBoxSexoModi" min="-2" pref="129" max="-2" attributes="0"/>
-                                          <EmptySpace max="32767" attributes="0"/>
+                                      <Group type="103" groupAlignment="1" max="-2" attributes="0">
+                                          <Component id="boxDireccion" alignment="0" pref="276" max="32767" attributes="0"/>
+                                          <Component id="boxEdad" alignment="0" max="32767" attributes="0"/>
+                                          <Component id="boxDPI" alignment="0" min="-2" pref="187" max="-2" attributes="0"/>
+                                          <Component id="boxApellidos" alignment="0" max="32767" attributes="0"/>
+                                          <Component id="boxNombres" alignment="0" max="32767" attributes="0"/>
                                       </Group>
                                   </Group>
+                                  <EmptySpace max="32767" attributes="0"/>
                               </Group>
                           </Group>
                       </Group>
@@ -143,90 +91,38 @@
           <Group type="103" groupAlignment="0" attributes="0">
               <Group type="102" attributes="0">
                   <EmptySpace min="-2" max="-2" attributes="0"/>
-                  <Group type="103" groupAlignment="3" attributes="0">
-                      <Component id="tituloAgregarPaciente" alignment="3" max="32767" attributes="0"/>
-                      <Component id="tituloAgregarPaciente1" alignment="3" max="32767" attributes="0"/>
-                  </Group>
+                  <Component id="tituloAgregarPaciente" max="32767" attributes="0"/>
                   <EmptySpace min="-2" pref="32" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Group type="102" alignment="0" attributes="0">
                           <EmptySpace min="1" pref="1" max="-2" attributes="0"/>
                           <Component id="boxDPI" min="-2" max="-2" attributes="0"/>
                       </Group>
-                      <Group type="103" groupAlignment="3" attributes="0">
-                          <Component id="dpi" alignment="3" min="-2" pref="23" max="-2" attributes="0"/>
-                          <Component id="id_Paciente" alignment="3" max="32767" attributes="0"/>
-                          <Component id="boxID" alignment="3" min="-2" max="-2" attributes="0"/>
-                      </Group>
+                      <Component id="dpi" min="-2" pref="23" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace min="-2" max="-2" attributes="0"/>
+                  <Group type="103" groupAlignment="3" attributes="0">
+                      <Component id="nombres" alignment="3" max="32767" attributes="0"/>
+                      <Component id="boxNombres" alignment="3" max="32767" attributes="0"/>
+                  </Group>
+                  <EmptySpace type="unrelated" min="-2" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="0" attributes="0">
-                      <Group type="102" alignment="0" attributes="0">
-                          <EmptySpace min="-2" pref="12" max="-2" attributes="0"/>
-                          <Group type="103" groupAlignment="3" attributes="0">
-                              <Component id="dpiM" alignment="3" max="32767" attributes="0"/>
-                              <Component id="boxDPIModi" alignment="3" max="32767" attributes="0"/>
-                          </Group>
-                          <EmptySpace type="unrelated" min="-2" max="-2" attributes="0"/>
-                          <Group type="103" groupAlignment="3" attributes="0">
-                              <Component id="boxNombresModi" alignment="3" min="-2" max="-2" attributes="0"/>
-                              <Component id="nombresM" alignment="3" min="-2" pref="20" max="-2" attributes="0"/>
-                          </Group>
-                          <EmptySpace max="-2" attributes="0"/>
-                          <Group type="103" groupAlignment="1" attributes="0">
-                              <Group type="103" groupAlignment="3" attributes="0">
-                                  <Component id="boxApellidosModi" alignment="3" min="-2" max="-2" attributes="0"/>
-                                  <Component id="apellidosM" alignment="3" min="-2" max="-2" attributes="0"/>
-                              </Group>
-                              <Component id="fondoBtnBuscar" min="-2" max="-2" attributes="0"/>
-                          </Group>
-                          <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                          <Group type="103" groupAlignment="3" attributes="0">
-                              <Component id="edadM" alignment="3" min="-2" pref="17" max="-2" attributes="0"/>
-                              <Component id="boxEdadModi" alignment="3" max="32767" attributes="0"/>
-                          </Group>
-                          <EmptySpace type="separate" max="-2" attributes="0"/>
-                          <Group type="103" groupAlignment="3" attributes="0">
-                              <Component id="sexoM" alignment="3" max="32767" attributes="0"/>
-                              <Component id="comboBoxSexoModi" alignment="3" max="32767" attributes="0"/>
-                          </Group>
-                          <EmptySpace type="separate" max="-2" attributes="0"/>
-                          <Group type="103" groupAlignment="3" attributes="0">
-                              <Component id="direcciónM" alignment="3" max="32767" attributes="0"/>
-                              <Component id="boxDireccionModi" alignment="3" max="32767" attributes="0"/>
-                          </Group>
-                          <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                          <Group type="103" groupAlignment="3" attributes="0">
-                              <Component id="telefonoM" alignment="3" max="32767" attributes="0"/>
-                              <Component id="boxTelefonoModi" alignment="3" max="32767" attributes="0"/>
-                          </Group>
-                          <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                          <Group type="103" groupAlignment="3" attributes="0">
-                              <Component id="emailM" alignment="3" max="32767" attributes="0"/>
-                              <Component id="boxEmailModi" alignment="3" max="32767" attributes="0"/>
-                          </Group>
-                      </Group>
+                      <Component id="boxApellidos" alignment="0" max="32767" attributes="0"/>
+                      <Component id="apellidos" min="-2" max="-2" attributes="0"/>
+                  </Group>
+                  <EmptySpace min="-2" pref="12" max="-2" attributes="0"/>
+                  <Group type="103" groupAlignment="3" attributes="0">
+                      <Component id="edad" alignment="3" max="32767" attributes="0"/>
+                      <Component id="boxEdad" alignment="3" max="32767" attributes="0"/>
+                  </Group>
+                  <EmptySpace type="unrelated" min="-2" max="-2" attributes="0"/>
+                  <Group type="103" groupAlignment="3" attributes="0">
+                      <Component id="sexo" alignment="3" max="32767" attributes="0"/>
+                      <Component id="comboBoxSexo" alignment="3" max="32767" attributes="0"/>
+                  </Group>
+                  <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                  <Group type="103" groupAlignment="0" attributes="0">
                       <Group type="102" attributes="0">
-                          <Group type="103" groupAlignment="3" attributes="0">
-                              <Component id="nombres" alignment="3" max="32767" attributes="0"/>
-                              <Component id="boxNombres" alignment="3" max="32767" attributes="0"/>
-                          </Group>
-                          <EmptySpace type="unrelated" min="-2" max="-2" attributes="0"/>
-                          <Group type="103" groupAlignment="0" attributes="0">
-                              <Component id="boxApellidos" alignment="0" max="32767" attributes="0"/>
-                              <Component id="apellidos" min="-2" max="-2" attributes="0"/>
-                          </Group>
-                          <EmptySpace min="-2" pref="12" max="-2" attributes="0"/>
-                          <Group type="103" groupAlignment="3" attributes="0">
-                              <Component id="edad" alignment="3" max="32767" attributes="0"/>
-                              <Component id="boxEdad" alignment="3" max="32767" attributes="0"/>
-                          </Group>
-                          <EmptySpace type="unrelated" min="-2" max="-2" attributes="0"/>
-                          <Group type="103" groupAlignment="3" attributes="0">
-                              <Component id="sexo" alignment="3" max="32767" attributes="0"/>
-                              <Component id="comboBoxSexo" alignment="3" max="32767" attributes="0"/>
-                          </Group>
-                          <EmptySpace type="unrelated" min="-2" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="3" attributes="0">
                               <Component id="dirección" alignment="3" max="32767" attributes="0"/>
                               <Component id="boxDireccion" alignment="3" max="32767" attributes="0"/>
@@ -241,18 +137,19 @@
                               <Component id="email" alignment="3" max="32767" attributes="0"/>
                               <Component id="boxEmail" alignment="3" max="32767" attributes="0"/>
                           </Group>
-                          <EmptySpace min="-2" pref="76" max="-2" attributes="0"/>
+                          <EmptySpace min="-2" pref="43" max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="1" attributes="0">
+                              <Component id="fondoBtnMostrar" min="-2" max="-2" attributes="0"/>
+                              <Component id="fondoBtnAgregar" min="-2" max="-2" attributes="0"/>
+                          </Group>
+                      </Group>
+                      <Group type="102" attributes="0">
+                          <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
+                          <Component id="fondoBtnBuscar" min="-2" max="-2" attributes="0"/>
                       </Group>
                   </Group>
-                  <EmptySpace min="-2" pref="18" max="-2" attributes="0"/>
-                  <Group type="103" groupAlignment="0" attributes="0">
-                      <Component id="fondoBtnAgregar" alignment="0" min="-2" max="-2" attributes="0"/>
-                      <Component id="fondoBtnMostrar" alignment="0" min="-2" max="-2" attributes="0"/>
-                      <Component id="fondoBtnGuardar" min="-2" max="-2" attributes="0"/>
-                      <Component id="fondoBtnEliminar" alignment="0" min="-2" max="-2" attributes="0"/>
-                  </Group>
-                  <EmptySpace type="unrelated" min="-2" max="-2" attributes="0"/>
-                  <Component id="jScrollPane1" pref="259" max="32767" attributes="0"/>
+                  <EmptySpace type="separate" max="-2" attributes="0"/>
+                  <Component id="jScrollPane1" min="-2" pref="304" max="-2" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
@@ -267,28 +164,6 @@
               <Color blue="2b" green="29" red="26" type="rgb"/>
             </Property>
             <Property name="text" type="java.lang.String" value="AGREGAR PACIENTE"/>
-          </Properties>
-        </Component>
-        <Component class="javax.swing.JLabel" name="tituloAgregarPaciente1">
-          <Properties>
-            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-              <Font name="Roboto Black" size="24" style="0"/>
-            </Property>
-            <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-              <Color blue="2b" green="29" red="26" type="rgb"/>
-            </Property>
-            <Property name="text" type="java.lang.String" value="MODIFICAR / ELIMINAR PACIENTES"/>
-          </Properties>
-        </Component>
-        <Component class="javax.swing.JLabel" name="id_Paciente">
-          <Properties>
-            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-              <Font name="Roboto Medium" size="14" style="0"/>
-            </Property>
-            <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-              <Color blue="2b" green="29" red="26" type="rgb"/>
-            </Property>
-            <Property name="text" type="java.lang.String" value="ID_Paciente:"/>
           </Properties>
         </Component>
         <Component class="javax.swing.JLabel" name="dpi">
@@ -466,94 +341,6 @@
             </Component>
           </SubComponents>
         </Container>
-        <Component class="javax.swing.JLabel" name="telefonoM">
-          <Properties>
-            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-              <Font name="Roboto Medium" size="14" style="0"/>
-            </Property>
-            <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-              <Color blue="2b" green="29" red="26" type="rgb"/>
-            </Property>
-            <Property name="text" type="java.lang.String" value="Tel&#xe9;fono:"/>
-          </Properties>
-        </Component>
-        <Component class="javax.swing.JLabel" name="dpiM">
-          <Properties>
-            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-              <Font name="Roboto Medium" size="14" style="0"/>
-            </Property>
-            <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-              <Color blue="2b" green="29" red="26" type="rgb"/>
-            </Property>
-            <Property name="text" type="java.lang.String" value="DPI: "/>
-          </Properties>
-        </Component>
-        <Component class="javax.swing.JLabel" name="nombresM">
-          <Properties>
-            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-              <Font name="Roboto Medium" size="14" style="0"/>
-            </Property>
-            <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-              <Color blue="2b" green="29" red="26" type="rgb"/>
-            </Property>
-            <Property name="text" type="java.lang.String" value="Nombres: "/>
-          </Properties>
-        </Component>
-        <Component class="javax.swing.JLabel" name="apellidosM">
-          <Properties>
-            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-              <Font name="Roboto Medium" size="14" style="0"/>
-            </Property>
-            <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-              <Color blue="2b" green="29" red="26" type="rgb"/>
-            </Property>
-            <Property name="text" type="java.lang.String" value="Apellidos: "/>
-          </Properties>
-        </Component>
-        <Component class="javax.swing.JLabel" name="edadM">
-          <Properties>
-            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-              <Font name="Roboto Medium" size="14" style="0"/>
-            </Property>
-            <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-              <Color blue="2b" green="29" red="26" type="rgb"/>
-            </Property>
-            <Property name="text" type="java.lang.String" value="Edad:"/>
-          </Properties>
-        </Component>
-        <Component class="javax.swing.JLabel" name="sexoM">
-          <Properties>
-            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-              <Font name="Roboto Medium" size="14" style="0"/>
-            </Property>
-            <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-              <Color blue="2b" green="29" red="26" type="rgb"/>
-            </Property>
-            <Property name="text" type="java.lang.String" value="Sexo:"/>
-          </Properties>
-        </Component>
-        <Component class="javax.swing.JLabel" name="direcci&#xf3;nM">
-          <Properties>
-            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-              <Font name="Roboto Medium" size="14" style="0"/>
-            </Property>
-            <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-              <Color blue="2b" green="29" red="26" type="rgb"/>
-            </Property>
-            <Property name="text" type="java.lang.String" value="Direcci&#xf3;n:"/>
-          </Properties>
-        </Component>
-        <Component class="javax.swing.JLabel" name="emailM">
-          <Properties>
-            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-              <Font name="Roboto Medium" size="14" style="0"/>
-            </Property>
-            <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-              <Color blue="2b" green="29" red="26" type="rgb"/>
-            </Property>
-            <Property name="text" type="java.lang.String" value="Email:"/>
-          </Properties>
-        </Component>
         <Container class="javax.swing.JPanel" name="fondoBtnAgregar">
           <Properties>
             <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
@@ -644,100 +431,6 @@
             </Component>
           </SubComponents>
         </Container>
-        <Container class="javax.swing.JPanel" name="fondoBtnGuardar">
-          <Properties>
-            <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-              <Color blue="db" green="7a" red="5f" type="rgb"/>
-            </Property>
-          </Properties>
-
-          <Layout>
-            <DimensionLayout dim="0">
-              <Group type="103" groupAlignment="0" attributes="0">
-                  <Group type="102" alignment="1" attributes="0">
-                      <EmptySpace max="32767" attributes="0"/>
-                      <Component id="btnGuardar" min="-2" pref="108" max="-2" attributes="0"/>
-                      <EmptySpace max="-2" attributes="0"/>
-                  </Group>
-              </Group>
-            </DimensionLayout>
-            <DimensionLayout dim="1">
-              <Group type="103" groupAlignment="0" attributes="0">
-                  <Component id="btnGuardar" alignment="1" min="-2" pref="33" max="-2" attributes="0"/>
-              </Group>
-            </DimensionLayout>
-          </Layout>
-          <SubComponents>
-            <Component class="javax.swing.JLabel" name="btnGuardar">
-              <Properties>
-                <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                  <Font name="Roboto Black" size="12" style="0"/>
-                </Property>
-                <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                  <Color blue="ff" green="ff" red="ff" type="rgb"/>
-                </Property>
-                <Property name="horizontalAlignment" type="int" value="0"/>
-                <Property name="text" type="java.lang.String" value="GUARDAR"/>
-                <Property name="cursor" type="java.awt.Cursor" editor="org.netbeans.modules.form.editors2.CursorEditor">
-                  <Color id="Hand Cursor"/>
-                </Property>
-              </Properties>
-              <Events>
-                <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="btnGuardarMouseClicked"/>
-                <EventHandler event="mouseEntered" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="btnGuardarMouseEntered"/>
-                <EventHandler event="mouseExited" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="btnGuardarMouseExited"/>
-              </Events>
-            </Component>
-          </SubComponents>
-        </Container>
-        <Container class="javax.swing.JPanel" name="fondoBtnEliminar">
-          <Properties>
-            <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-              <Color blue="db" green="7a" red="5f" type="rgb"/>
-            </Property>
-          </Properties>
-
-          <Layout>
-            <DimensionLayout dim="0">
-              <Group type="103" groupAlignment="0" attributes="0">
-                  <Group type="102" alignment="0" attributes="0">
-                      <EmptySpace max="-2" attributes="0"/>
-                      <Component id="btnEliminar" min="-2" pref="108" max="-2" attributes="0"/>
-                      <EmptySpace max="32767" attributes="0"/>
-                  </Group>
-              </Group>
-            </DimensionLayout>
-            <DimensionLayout dim="1">
-              <Group type="103" groupAlignment="0" attributes="0">
-                  <Group type="102" alignment="1" attributes="0">
-                      <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
-                      <Component id="btnEliminar" min="-2" pref="33" max="-2" attributes="0"/>
-                  </Group>
-              </Group>
-            </DimensionLayout>
-          </Layout>
-          <SubComponents>
-            <Component class="javax.swing.JLabel" name="btnEliminar">
-              <Properties>
-                <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                  <Font name="Roboto Black" size="12" style="0"/>
-                </Property>
-                <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                  <Color blue="ff" green="ff" red="ff" type="rgb"/>
-                </Property>
-                <Property name="horizontalAlignment" type="int" value="0"/>
-                <Property name="text" type="java.lang.String" value="ELIMINAR"/>
-                <Property name="cursor" type="java.awt.Cursor" editor="org.netbeans.modules.form.editors2.CursorEditor">
-                  <Color id="Hand Cursor"/>
-                </Property>
-              </Properties>
-              <Events>
-                <EventHandler event="mouseEntered" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="btnEliminarMouseEntered"/>
-                <EventHandler event="mouseExited" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="btnEliminarMouseExited"/>
-              </Events>
-            </Component>
-          </SubComponents>
-        </Container>
         <Container class="javax.swing.JPanel" name="fondoBtnMostrar">
           <Properties>
             <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
@@ -770,7 +463,7 @@
                   <Color blue="ff" green="ff" red="ff" type="rgb"/>
                 </Property>
                 <Property name="horizontalAlignment" type="int" value="0"/>
-                <Property name="text" type="java.lang.String" value="MOSTRAR TODO"/>
+                <Property name="text" type="java.lang.String" value="VER PACIENTES"/>
                 <Property name="cursor" type="java.awt.Cursor" editor="org.netbeans.modules.form.editors2.CursorEditor">
                   <Color id="Hand Cursor"/>
                 </Property>
@@ -810,36 +503,6 @@
         <Component class="javax.swing.JTextField" name="boxTelefono">
         </Component>
         <Component class="javax.swing.JTextField" name="boxEmail">
-        </Component>
-        <Component class="javax.swing.JTextField" name="boxID">
-        </Component>
-        <Component class="javax.swing.JTextField" name="boxDPIModi">
-        </Component>
-        <Component class="javax.swing.JTextField" name="boxNombresModi">
-        </Component>
-        <Component class="javax.swing.JTextField" name="boxApellidosModi">
-        </Component>
-        <Component class="javax.swing.JTextField" name="boxEdadModi">
-        </Component>
-        <Component class="javax.swing.JTextField" name="boxDireccionModi">
-        </Component>
-        <Component class="javax.swing.JComboBox" name="comboBoxSexoModi">
-          <Properties>
-            <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
-              <StringArray count="3">
-                <StringItem index="0" value="Femenino"/>
-                <StringItem index="1" value="Masculino"/>
-                <StringItem index="2" value="S/E"/>
-              </StringArray>
-            </Property>
-          </Properties>
-          <AuxValues>
-            <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
-          </AuxValues>
-        </Component>
-        <Component class="javax.swing.JTextField" name="boxTelefonoModi">
-        </Component>
-        <Component class="javax.swing.JTextField" name="boxEmailModi">
         </Component>
       </SubComponents>
     </Container>

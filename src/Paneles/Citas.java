@@ -311,6 +311,8 @@ public class Citas extends javax.swing.JPanel {
         txtDescripcion.setForeground(new java.awt.Color(38, 41, 43));
         txtDescripcion.setText("Descripción: ");
 
+        boxDescripcion.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+
         fondoBuscarReceta.setBackground(new java.awt.Color(95, 122, 219));
 
         btnBuscarReceta.setFont(new java.awt.Font("Roboto Black", 0, 12)); // NOI18N
