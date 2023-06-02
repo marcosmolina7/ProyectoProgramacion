@@ -76,7 +76,7 @@ public class Citas extends javax.swing.JPanel {
 
             },
             new String [] {
-                "ID_Cita", "ID_Paciente", "Nombres_Paciente", "Apellidos Paciente", "ID_Doctor", "Nombres_Doctor", "Apellidos_Doctor", "Fecha", "Hora"
+                "ID_Cita", "ID_Paciente", "Nombres_Paciente", "Apellidos_Paciente", "ID_Doctor", "Nombres_Doctor", "Apellidos_Doctor", "Fecha", "Hora"
             }
         ) {
             boolean[] canEdit = new boolean [] {
@@ -613,11 +613,11 @@ public class Citas extends javax.swing.JPanel {
         try {
             Conexion con = new Conexion();
             Statement stmt = con.createStatement();
-            ResultSet rs = stmt.executeQuery("SELECT Recetas.id_receta, Recetas.id_cita, Pacientes.nombres, Pacientes.apellidos, Recetas.id_doctor, Doctores.nombres_doctor, Doctores.apellidos_doctor, Recetas.fecha, Recetas.hora FROM Recetas JOIN Citas ON Recetas.id_cita = Citas.id_cita JOIN Pacientes ON Citas.id_paciente = Pacientes.id_paciente JOIN Doctores ON Recetas.id_doctor = Doctores.id_doctor");
+            ResultSet rs = stmt.executeQuery("SELECT Recetas.id_receta, Recetas.id_cita, Citas.id_paciente, Pacientes.nombres, Pacientes.apellidos, Recetas.id_doctor, Doctores.nombres_doctor, Doctores.apellidos_doctor, Recetas.fecha, Recetas.hora FROM Recetas JOIN Citas ON Recetas.id_cita = Citas.id_cita JOIN Pacientes ON Citas.id_paciente = Pacientes.id_paciente JOIN Doctores ON Recetas.id_doctor = Doctores.id_doctor");
 
-            DefaultTableModel model = new DefaultTableModel(new Object[]{"ID_Receta", "ID_Cita", "Nombres_Paciente", "Apellidos_Paciente", "ID_Doctor", "Nombres_Doctor", "Apellidos_Doctor", "Fecha", "Hora"}, 0);
+            DefaultTableModel model = new DefaultTableModel(new Object[]{"ID_Receta", "ID_Cita", "ID_Paciente", "Nombres_Paciente", "Apellidos_Paciente", "ID_Doctor", "Nombres_Doctor", "Apellidos_Doctor", "Fecha", "Hora"}, 0);
             while (rs.next()) {
-                model.addRow(new Object[]{rs.getInt("id_receta"), rs.getInt("id_cita"), rs.getString("nombres"), rs.getString("apellidos"), rs.getInt("id_doctor"), rs.getString("nombres_doctor"), rs.getString("apellidos_doctor"), rs.getDate("fecha"), rs.getTime("hora")});
+                model.addRow(new Object[]{rs.getInt("id_receta"), rs.getInt("id_cita"), rs.getInt("id_paciente"), rs.getString("nombres"), rs.getString("apellidos"), rs.getInt("id_doctor"), rs.getString("nombres_doctor"), rs.getString("apellidos_doctor"), rs.getDate("fecha"), rs.getTime("hora")});
             }
             tableRecetas.setModel(model);
         } catch (ClassNotFoundException | SQLException e) {

@@ -212,7 +212,7 @@
                     <Column editable="false" title="ID_Cita" type="java.lang.Object"/>
                     <Column editable="false" title="ID_Paciente" type="java.lang.Object"/>
                     <Column editable="false" title="Nombres_Paciente" type="java.lang.Object"/>
-                    <Column editable="false" title="Apellidos Paciente" type="java.lang.Object"/>
+                    <Column editable="false" title="Apellidos_Paciente" type="java.lang.Object"/>
                     <Column editable="false" title="ID_Doctor" type="java.lang.Object"/>
                     <Column editable="false" title="Nombres_Doctor" type="java.lang.Object"/>
                     <Column editable="false" title="Apellidos_Doctor" type="java.lang.Object"/>
