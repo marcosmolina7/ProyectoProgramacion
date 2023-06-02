@@ -277,7 +277,7 @@ public class Citas extends javax.swing.JPanel {
         btnMostrarTodo.setFont(new java.awt.Font("Roboto Black", 0, 12)); // NOI18N
         btnMostrarTodo.setForeground(new java.awt.Color(255, 255, 255));
         btnMostrarTodo.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        btnMostrarTodo.setText("MOSTRAR CITAS");
+        btnMostrarTodo.setText("VER CITAS");
         btnMostrarTodo.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btnMostrarTodo.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -297,7 +297,7 @@ public class Citas extends javax.swing.JPanel {
             fondoMostrarTodoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(fondoMostrarTodoLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(btnMostrarTodo)
+                .addComponent(btnMostrarTodo, javax.swing.GroupLayout.PREFERRED_SIZE, 93, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         fondoMostrarTodoLayout.setVerticalGroup(
