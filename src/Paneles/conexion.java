@@ -22,7 +22,4 @@ class Conexion {
         return conexion.prepareStatement(query);
     }
 
-    PreparedStatement prepareStatement(String query, int RETURN_GENERATED_KEYS) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
-    }
 }

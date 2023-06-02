@@ -23,7 +23,7 @@ public class Dashboard extends javax.swing.JFrame {
      */
     public Dashboard() {
         initComponents();
-        setSize(1280, 820); // establecer el tamaño de la ventana
+        setSize(1280, 720); // establecer el tamaño de la ventana
         initContent();
     }
 

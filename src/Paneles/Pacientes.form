@@ -157,7 +157,7 @@
                       </Group>
                       <Component id="boxID" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
-                  <EmptySpace max="-2" attributes="0"/>
+                  <EmptySpace min="-2" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Group type="102" alignment="0" attributes="0">
                           <EmptySpace min="-2" pref="12" max="-2" attributes="0"/>
@@ -242,15 +242,15 @@
                           <EmptySpace min="-2" pref="76" max="-2" attributes="0"/>
                       </Group>
                   </Group>
-                  <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                  <EmptySpace min="-2" pref="18" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Component id="fondoBtnAgregar" alignment="0" min="-2" max="-2" attributes="0"/>
                       <Component id="fondoBtnMostrar" alignment="0" min="-2" max="-2" attributes="0"/>
                       <Component id="fondoBtnGuardar" min="-2" max="-2" attributes="0"/>
                       <Component id="fondoBtnEliminar" alignment="0" min="-2" max="-2" attributes="0"/>
                   </Group>
-                  <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                  <Component id="jScrollPane1" min="-2" pref="276" max="-2" attributes="0"/>
+                  <EmptySpace type="unrelated" min="-2" max="-2" attributes="0"/>
+                  <Component id="jScrollPane1" pref="263" max="32767" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
