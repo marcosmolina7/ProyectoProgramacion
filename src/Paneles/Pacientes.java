@@ -379,7 +379,7 @@ public class Pacientes extends javax.swing.JPanel {
                         .addContainerGap()
                         .addComponent(fondoBtnLimpiar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(498, 498, 498)))
-                .addContainerGap(79, Short.MAX_VALUE))
+                .addContainerGap(84, Short.MAX_VALUE))
         );
         bgLayout.setVerticalGroup(
             bgLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
