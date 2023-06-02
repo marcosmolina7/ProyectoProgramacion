@@ -518,7 +518,7 @@ public class Citas extends javax.swing.JPanel {
             Conexion con = new Conexion();
             String idPaciente = boxIDPaciente.getText();
             String idDoctor = comboBoxIdDoctor.getSelectedItem().toString();
-            SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+            SimpleDateFormat sdf = new SimpleDateFormat("dd-MM-yyyy");
             String fecha = sdf.format(dateChooser.getDate());
             String hora = comboBoxHora.getSelectedItem().toString();
             String min = comboBoxMin.getSelectedItem().toString();
