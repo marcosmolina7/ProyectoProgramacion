@@ -5,6 +5,12 @@
 package Paneles;
 
 import java.awt.Color;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
+import java.text.SimpleDateFormat;
+import javax.swing.table.DefaultTableModel;
 
 /**
  *
@@ -64,18 +70,20 @@ public class Citas extends javax.swing.JPanel {
         jScrollPane2 = new javax.swing.JScrollPane();
         jTable1 = new javax.swing.JTable();
         jLabel1 = new javax.swing.JLabel();
+        fondoMostrarTodo = new javax.swing.JPanel();
+        btnMostrarTodo = new javax.swing.JLabel();
 
         bg.setBackground(new java.awt.Color(255, 255, 255));
 
         tableCita.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null}
+                {null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null}
             },
             new String [] {
-                "ID_Cita", "ID_Paciente", "ID_Doctor", "Fecha", "Hora"
+                "ID_Cita", "ID_Paciente", "Nombres_Paciente", "Apellidos Paciente", "ID_Doctor", "Nombres_Doctor", "Apellidos_Doctor", "Fecha", "Hora"
             }
         ));
         jScrollPane1.setViewportView(tableCita);
@@ -100,7 +108,7 @@ public class Citas extends javax.swing.JPanel {
         txtHora.setForeground(new java.awt.Color(38, 41, 43));
         txtHora.setText("Hora:");
 
-        comboBoxIdDoctor.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "1  Roberto", "2  Juan", "3  Paola", "4  Sofía" }));
+        comboBoxIdDoctor.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "1", "2", "3", "4" }));
 
         comboBoxHora.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13", "14", "15", "16", "17", "18", "19", "20", "21", "22", "23", "24" }));
 
@@ -114,6 +122,9 @@ public class Citas extends javax.swing.JPanel {
         btnCrear.setText("CREAR");
         btnCrear.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btnCrear.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnCrearMouseClicked(evt);
+            }
             public void mouseEntered(java.awt.event.MouseEvent evt) {
                 btnCrearMouseEntered(evt);
             }
@@ -126,13 +137,14 @@ public class Citas extends javax.swing.JPanel {
         fondoCrear.setLayout(fondoCrearLayout);
         fondoCrearLayout.setHorizontalGroup(
             fondoCrearLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(btnCrear, javax.swing.GroupLayout.PREFERRED_SIZE, 97, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, fondoCrearLayout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(btnCrear, javax.swing.GroupLayout.PREFERRED_SIZE, 97, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
         );
         fondoCrearLayout.setVerticalGroup(
             fondoCrearLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, fondoCrearLayout.createSequentialGroup()
-                .addGap(0, 0, Short.MAX_VALUE)
-                .addComponent(btnCrear, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
+            .addComponent(btnCrear, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 30, Short.MAX_VALUE)
         );
 
         tituloCrearCita1.setFont(new java.awt.Font("Roboto Black", 0, 24)); // NOI18N
@@ -147,7 +159,7 @@ public class Citas extends javax.swing.JPanel {
         txtIdPacientesModi.setForeground(new java.awt.Color(38, 41, 43));
         txtIdPacientesModi.setText("ID_Doctor:");
 
-        comboBoxIdDoctorModi.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "1  Roberto", "2  Juan", "3  Paola", "4  Sofía" }));
+        comboBoxIdDoctorModi.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "1", "2", "3", "4" }));
 
         txtFechaModi.setFont(new java.awt.Font("Roboto Medium", 0, 14)); // NOI18N
         txtFechaModi.setForeground(new java.awt.Color(38, 41, 43));
@@ -277,6 +289,41 @@ public class Citas extends javax.swing.JPanel {
         jLabel1.setForeground(new java.awt.Color(38, 41, 43));
         jLabel1.setText("Por rango");
 
+        fondoMostrarTodo.setBackground(new java.awt.Color(95, 122, 219));
+
+        btnMostrarTodo.setFont(new java.awt.Font("Roboto Black", 0, 12)); // NOI18N
+        btnMostrarTodo.setForeground(new java.awt.Color(255, 255, 255));
+        btnMostrarTodo.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        btnMostrarTodo.setText("MOSTRAR TODO");
+        btnMostrarTodo.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnMostrarTodo.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnMostrarTodoMouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                btnMostrarTodoMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                btnMostrarTodoMouseExited(evt);
+            }
+        });
+
+        javax.swing.GroupLayout fondoMostrarTodoLayout = new javax.swing.GroupLayout(fondoMostrarTodo);
+        fondoMostrarTodo.setLayout(fondoMostrarTodoLayout);
+        fondoMostrarTodoLayout.setHorizontalGroup(
+            fondoMostrarTodoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(fondoMostrarTodoLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(btnMostrarTodo, javax.swing.GroupLayout.PREFERRED_SIZE, 97, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+        fondoMostrarTodoLayout.setVerticalGroup(
+            fondoMostrarTodoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, fondoMostrarTodoLayout.createSequentialGroup()
+                .addGap(0, 0, Short.MAX_VALUE)
+                .addComponent(btnMostrarTodo, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
+        );
+
         javax.swing.GroupLayout bgLayout = new javax.swing.GroupLayout(bg);
         bg.setLayout(bgLayout);
         bgLayout.setHorizontalGroup(
@@ -298,14 +345,9 @@ public class Citas extends javax.swing.JPanel {
                                         .addComponent(txtFecha, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)))
                                 .addGap(18, 18, 18)
                                 .addGroup(bgLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addGroup(bgLayout.createSequentialGroup()
-                                        .addComponent(comboBoxHora, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addGap(26, 26, 26)
-                                        .addComponent(comboBoxMin, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                                     .addComponent(boxIDPaciente, javax.swing.GroupLayout.PREFERRED_SIZE, 228, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addComponent(dateChooser, javax.swing.GroupLayout.PREFERRED_SIZE, 228, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(comboBoxIdDoctor, javax.swing.GroupLayout.PREFERRED_SIZE, 228, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(fondoCrear, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                    .addComponent(comboBoxIdDoctor, javax.swing.GroupLayout.PREFERRED_SIZE, 228, javax.swing.GroupLayout.PREFERRED_SIZE)))
                             .addGroup(bgLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                                 .addComponent(tituloCrearCita1, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 351, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGroup(bgLayout.createSequentialGroup()
@@ -335,11 +377,23 @@ public class Citas extends javax.swing.JPanel {
                                                 .addComponent(comboBoxIdDoctorModi, 0, 240, Short.MAX_VALUE)
                                                 .addComponent(dateChooserModi, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                                 .addComponent(boxIdCita))))))
-                            .addComponent(tituloHistorialDeCitas, javax.swing.GroupLayout.PREFERRED_SIZE, 248, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 72, Short.MAX_VALUE)))
+                            .addComponent(tituloHistorialDeCitas, javax.swing.GroupLayout.PREFERRED_SIZE, 248, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(bgLayout.createSequentialGroup()
+                                .addGroup(bgLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(bgLayout.createSequentialGroup()
+                                        .addGap(98, 98, 98)
+                                        .addComponent(comboBoxHora, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addGap(26, 26, 26))
+                                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, bgLayout.createSequentialGroup()
+                                        .addComponent(fondoCrear, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addGap(49, 49, 49)))
+                                .addGroup(bgLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(fondoMostrarTodo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(comboBoxMin, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 63, Short.MAX_VALUE)))
                 .addGroup(bgLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jScrollPane1)
-                    .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 493, Short.MAX_VALUE)))
+                    .addComponent(jScrollPane2)
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 532, Short.MAX_VALUE)))
         );
         bgLayout.setVerticalGroup(
             bgLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -352,7 +406,7 @@ public class Citas extends javax.swing.JPanel {
                         .addGroup(bgLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addGroup(bgLayout.createSequentialGroup()
                                 .addComponent(txtId_Pacientes, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 34, Short.MAX_VALUE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 28, Short.MAX_VALUE)
                                 .addComponent(txtId_Doctor, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(18, 18, 18)
                                 .addComponent(txtFecha))
@@ -369,9 +423,14 @@ public class Citas extends javax.swing.JPanel {
                             .addGroup(bgLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                                 .addComponent(comboBoxHora, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addComponent(comboBoxMin, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addGap(35, 35, 35)
-                        .addComponent(fondoCrear, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(9, 9, 9))
+                        .addGroup(bgLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(bgLayout.createSequentialGroup()
+                                .addGap(32, 32, 32)
+                                .addComponent(fondoMostrarTodo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, bgLayout.createSequentialGroup()
+                                .addGap(26, 26, 26)
+                                .addComponent(fondoCrear, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGap(24, 24, 24))
                     .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE))
                 .addComponent(tituloCrearCita1)
                 .addGap(23, 23, 23)
@@ -394,7 +453,7 @@ public class Citas extends javax.swing.JPanel {
                             .addComponent(txtHoraModi, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(comboBoxHoraModi, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(comboBoxMinModi, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 18, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 12, Short.MAX_VALUE)
                         .addComponent(fondoBuscar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(25, 25, 25)
                         .addComponent(tituloHistorialDeCitas)
@@ -454,6 +513,60 @@ public class Citas extends javax.swing.JPanel {
         fondoVerTodo.setBackground(new Color(95, 122, 219));
     }//GEN-LAST:event_btnVerTodoMouseExited
 
+    private void btnCrearMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnCrearMouseClicked
+        try {
+            Conexion con = new Conexion();
+            String idPaciente = boxIDPaciente.getText();
+            String idDoctor = comboBoxIdDoctor.getSelectedItem().toString();
+            SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+            String fecha = sdf.format(dateChooser.getDate());
+            String hora = comboBoxHora.getSelectedItem().toString();
+            String min = comboBoxMin.getSelectedItem().toString();
+            String horaCita = hora + ":" + min;
+
+            String query = "INSERT INTO Citas (id_paciente, id_doctor, fecha, hora) VALUES (?, ?, ?, ?)";
+
+            PreparedStatement preparedStatement = con.prepareStatement(query);
+            preparedStatement.setString(1, idPaciente);
+            preparedStatement.setString(2, idDoctor);
+            preparedStatement.setString(3, fecha);
+            preparedStatement.setString(4, horaCita);
+
+            preparedStatement.executeUpdate();
+            boxIDPaciente.setText("");
+            comboBoxIdDoctor.setSelectedIndex(0);
+            dateChooser.setDate(null);
+            comboBoxHora.setSelectedIndex(0);
+            comboBoxMin.setSelectedIndex(0);
+        } catch (ClassNotFoundException | SQLException e) {
+            e.printStackTrace();
+        }
+    }//GEN-LAST:event_btnCrearMouseClicked
+
+    private void btnMostrarTodoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnMostrarTodoMouseClicked
+        try {
+            Conexion con = new Conexion();
+            Statement stmt = con.createStatement();
+            ResultSet rs = stmt.executeQuery("SELECT Citas.id_cita, Citas.id_paciente, Pacientes.nombres, Pacientes.apellidos, Citas.id_doctor, Doctores.nombres_doctor, Doctores.apellidos_doctor, Citas.fecha, Citas.hora FROM Citas JOIN Pacientes ON Citas.id_paciente = Pacientes.id_paciente JOIN Doctores ON Citas.id_doctor = Doctores.id_doctor");
+
+            DefaultTableModel model = new DefaultTableModel(new Object[]{"ID_Cita", "ID_Paciente", "Nombres_Paciente", "Apellidos_Paciente", "ID_Doctor", "Nombres_Doctor", "Apellidos_Doctor", "Fecha", "Hora"}, 0);
+            while (rs.next()) {
+                model.addRow(new Object[]{rs.getInt("id_cita"), rs.getInt("id_paciente"), rs.getString("nombres"), rs.getString("apellidos"), rs.getInt("id_doctor"), rs.getString("nombres_doctor"), rs.getString("apellidos_doctor"), rs.getDate("fecha"), rs.getTime("hora")});
+            }
+            tableCita.setModel(model);
+        } catch (ClassNotFoundException | SQLException e) {
+            e.printStackTrace();
+        }
+    }//GEN-LAST:event_btnMostrarTodoMouseClicked
+
+    private void btnMostrarTodoMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnMostrarTodoMouseEntered
+        fondoMostrarTodo.setBackground(new Color(46, 50, 57));
+    }//GEN-LAST:event_btnMostrarTodoMouseEntered
+
+    private void btnMostrarTodoMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnMostrarTodoMouseExited
+        fondoMostrarTodo.setBackground(new Color(95, 122, 219));
+    }//GEN-LAST:event_btnMostrarTodoMouseExited
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel bg;
@@ -461,6 +574,7 @@ public class Citas extends javax.swing.JPanel {
     private javax.swing.JTextField boxIdCita;
     private javax.swing.JLabel btnBuscar;
     private javax.swing.JLabel btnCrear;
+    private javax.swing.JLabel btnMostrarTodo;
     private javax.swing.JLabel btnVer;
     private javax.swing.JLabel btnVerTodo;
     private javax.swing.JComboBox<String> comboBoxHora;
@@ -474,6 +588,7 @@ public class Citas extends javax.swing.JPanel {
     private com.toedter.calendar.JDateChooser dateChooserModi;
     private javax.swing.JPanel fondoBuscar;
     private javax.swing.JPanel fondoCrear;
+    private javax.swing.JPanel fondoMostrarTodo;
     private javax.swing.JPanel fondoVer;
     private javax.swing.JPanel fondoVerTodo;
     private javax.swing.JLabel jLabel1;

@@ -148,14 +148,16 @@
                       <Component id="tituloAgregarPaciente1" alignment="3" max="32767" attributes="0"/>
                   </Group>
                   <EmptySpace min="-2" pref="32" max="-2" attributes="0"/>
-                  <Group type="103" groupAlignment="3" attributes="0">
-                      <Component id="dpi" alignment="3" min="-2" pref="23" max="-2" attributes="0"/>
-                      <Component id="id_Paciente" alignment="3" max="32767" attributes="0"/>
-                      <Group type="102" alignment="3" attributes="0">
+                  <Group type="103" groupAlignment="0" attributes="0">
+                      <Group type="102" alignment="0" attributes="0">
                           <EmptySpace min="1" pref="1" max="-2" attributes="0"/>
                           <Component id="boxDPI" min="-2" max="-2" attributes="0"/>
                       </Group>
-                      <Component id="boxID" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="3" attributes="0">
+                          <Component id="dpi" alignment="3" min="-2" pref="23" max="-2" attributes="0"/>
+                          <Component id="id_Paciente" alignment="3" max="32767" attributes="0"/>
+                          <Component id="boxID" alignment="3" min="-2" max="-2" attributes="0"/>
+                      </Group>
                   </Group>
                   <EmptySpace min="-2" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="0" attributes="0">
@@ -210,9 +212,9 @@
                               <Component id="boxNombres" alignment="3" max="32767" attributes="0"/>
                           </Group>
                           <EmptySpace type="unrelated" min="-2" max="-2" attributes="0"/>
-                          <Group type="103" groupAlignment="3" attributes="0">
-                              <Component id="apellidos" alignment="3" max="32767" attributes="0"/>
+                          <Group type="103" groupAlignment="0" attributes="0">
                               <Component id="boxApellidos" alignment="0" max="32767" attributes="0"/>
+                              <Component id="apellidos" min="-2" max="-2" attributes="0"/>
                           </Group>
                           <EmptySpace min="-2" pref="12" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="3" attributes="0">
