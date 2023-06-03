@@ -767,20 +767,23 @@ public class Pacientes extends javax.swing.JPanel {
                         String DPI2 = rs.getString("DPI");
                         String nombres2 = rs.getString("nombres");
                         String apellidos2 = rs.getString("apellidos");
-                        int edad = rs.getInt("edad");
-                        String sexo = rs.getString("sexo");
-                        String direccion = rs.getString("direccion");
-                        String telefono = rs.getString("telefono");
-                        String email = rs.getString("email");
-                        Date fecha_registro = rs.getDate("fecha_registro");
+                        int edad=rs.getInt("edad");
+                        String sexo=rs.getString("sexo");
+                        String direccion=rs.getString("direccion");
+                        String telefono=rs.getString("telefono");
+                        String email=rs.getString("email");
+                        Date fecha_registro=rs.getDate("fecha_registro");
 
-                        model.addRow(new Object[]{id_paciente, DPI2, nombres2, apellidos2, edad, sexo, direccion, telefono, email, fecha_registro});
-                    }
-                } catch (Exception e) {
+                        model.addRow(new Object[]{id_paciente,DPI2,nombres2,
+                                apellidos2,edad,sexo,direccion,
+                                telefono,email,fecha_registro});
+                     }
+                } catch (ClassNotFoundException | SQLException e) {
+                     e.printStackTrace();
                 }
             }
         } else {
-            JOptionPane.showMessageDialog(this, "Por favor seleccione una fila en la tabla para eliminar.");
+            JOptionPane.showMessageDialog(this,"Por favor seleccione una fila en la tabla para eliminar.");
         }
     }//GEN-LAST:event_btnBorrarMouseClicked
 
