@@ -546,7 +546,7 @@ public class Pacientes extends javax.swing.JPanel {
 
     private void btnBuscarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnBuscarMouseClicked
         String input = JOptionPane.showInputDialog(this, "Ingrese DPI:");
-        if (input != null) {
+        if (input != null && !input.isEmpty()) {
             try {
                 Conexion con = new Conexion();
                 DefaultTableModel model = (DefaultTableModel) tablaGeneral.getModel();
@@ -564,14 +564,16 @@ public class Pacientes extends javax.swing.JPanel {
                     String DPI = rs.getString("DPI");
                     String nombres = rs.getString("nombres");
                     String apellidos = rs.getString("apellidos");
-                    int edad = rs.getInt("edad");
-                    String sexo = rs.getString("sexo");
-                    String direccion = rs.getString("direccion");
-                    String telefono = rs.getString("telefono");
-                    String email = rs.getString("email");
-                    Date fecha_registro = rs.getDate("fecha_registro");
+                    int edad=rs.getInt("edad");
+                    String sexo=rs.getString("sexo");
+                    String direccion=rs.getString("direccion");
+                    String telefono=rs.getString("telefono");
+                    String email=rs.getString("email");
+                    Date fecha_registro=rs.getDate("fecha_registro");
 
-                    model.addRow(new Object[]{id_paciente, DPI, nombres, apellidos, edad, sexo, direccion, telefono, email, fecha_registro});
+                    model.addRow(new Object[]{id_paciente,DPI,nombres,
+                            apellidos,edad,sexo,direccion,
+                            telefono,email,fecha_registro});
 
                     boxDPI.setText(DPI);
                     boxNombres.setText(nombres);
@@ -581,18 +583,42 @@ public class Pacientes extends javax.swing.JPanel {
                     boxDireccion.setText(direccion);
                     boxTelefono.setText(telefono);
                     boxEmail.setText(email);
-                }
+                 }
 
-                if (found) {
-                    // Seleccionar automáticamente la primera fila del JTable
-                    tablaGeneral.setRowSelectionInterval(0, 0);
-                } else {
+                if (!found) {
                     // Mostrar un mensaje de error si no se encontró ningún registro
-                    JOptionPane.showMessageDialog(this, "DPI NO ENCONTRADO");
+                    JOptionPane.showMessageDialog(this,"DPI NO ENCONTRADO.");
+
+                    // Volver a cargar todos los datos en la tabla General
+                    query = "SELECT * FROM Pacientes";
+                    preparedStatement = con.prepareStatement(query);
+                    rs = preparedStatement.executeQuery();
+
+                    while (rs.next()) {
+                        int id_paciente = rs.getInt("id_paciente");
+                        String DPI = rs.getString("DPI");
+                        String nombres = rs.getString("nombres");
+                        String apellidos = rs.getString("apellidos");
+                        int edad=rs.getInt("edad");
+                        String sexo=rs.getString("sexo");
+                        String direccion=rs.getString("direccion");
+                        String telefono=rs.getString("telefono");
+                        String email=rs.getString("email");
+                        Date fecha_registro=rs.getDate("fecha_registro");
+
+                        model.addRow(new Object[]{id_paciente,DPI,nombres,
+                                apellidos,edad,sexo,direccion,
+                                telefono,email,fecha_registro});
+                     }
+                } else {
+                    // Seleccionar automáticamente la primera fila después de agregar los resultados de la búsqueda
+                    tablaGeneral.setRowSelectionInterval(0, 0);
                 }
-            } catch (Exception e) {
-                e.printStackTrace();
+            } catch (ClassNotFoundException | SQLException e) {
+                 e.printStackTrace();
             }
+        } else {
+            JOptionPane.showMessageDialog(this,"Debe ingresar un DPI.");
         }
     }//GEN-LAST:event_btnBuscarMouseClicked
 

@@ -858,16 +858,45 @@ public class Citas extends javax.swing.JPanel {
                     int id_doctor2 = rs.getInt("id_doctor");
                     String nombres_doctor = rs.getString("nombres_doctor");
                     String apellidos_doctor = rs.getString("apellidos_doctor");
-                    Date fecha2 = rs.getDate("fecha");
-                    Time hora2 = rs.getTime("hora");
-                    String descripcion = rs.getString("descripcion");
+                    Date fecha2=rs.getDate("fecha");
+                    Time hora2=rs.getTime("hora");
+                    String descripcion=rs.getString("descripcion");
 
-                    model.addRow(new Object[]{id_receta, id_cita2, id_paciente2, nombres_paciente, apellidos_paciente, id_doctor2, nombres_doctor, apellidos_doctor, fecha2, hora2, descripcion});
-                }
+                    model.addRow(new Object[]{id_receta,id_cita2,id_paciente2,nombres_paciente,
+                            apellidos_paciente,id_doctor2,nombres_doctor,
+                            apellidos_doctor,
+                            fecha2,hora2,
+                            descripcion});
+                 }
 
                 if (!found) {
                     // Mostrar un mensaje de error si no se encontró ningún registro
-                    JOptionPane.showMessageDialog(this, "No se encontraron recetas con el ID_Cita especificado.");
+                    JOptionPane.showMessageDialog(this,"No se encontraron recetas con el ID_Cita especificado.");
+
+                    // Volver a cargar todos los datos en la tabla Recetas
+                    query = "SELECT r.id_receta, r.id_cita, c.id_paciente, p.nombres AS nombres_paciente, p.apellidos AS apellidos_paciente, r.id_doctor, d.nombres_doctor AS nombres_doctor, d.apellidos_doctor AS apellidos_doctor, r.fecha, r.hora, r.descripcion FROM Recetas r JOIN Citas c ON r.id_cita = c.id_cita JOIN Pacientes p ON c.id_paciente = p.id_paciente JOIN Doctores d ON r.id_doctor = d.id_doctor";
+                    preparedStatement = con.prepareStatement(query);
+                    rs = preparedStatement.executeQuery();
+
+                    while (rs.next()) {
+                        int id_receta = rs.getInt("id_receta");
+                        int id_cita2 = rs.getInt("id_cita");
+                        int id_paciente2 = rs.getInt("id_paciente");
+                        String nombres_paciente = rs.getString("nombres_paciente");
+                        String apellidos_paciente = rs.getString("apellidos_paciente");
+                        int id_doctor2 = rs.getInt("id_doctor");
+                        String nombres_doctor = rs.getString("nombres_doctor");
+                        String apellidos_doctor = rs.getString("apellidos_doctor");
+                        Date fecha2=rs.getDate("fecha");
+                        Time hora2=rs.getTime("hora");
+                        String descripcion=rs.getString("descripcion");
+
+                        model.addRow(new Object[]{id_receta,id_cita2,id_paciente2,nombres_paciente,
+                                apellidos_paciente,id_doctor2,nombres_doctor,
+                                apellidos_doctor,
+                                fecha2,hora2,
+                                descripcion});
+                     }
                 } else {
                     // Seleccionar automáticamente la primera fila después de agregar los resultados de la búsqueda
                     tableRecetas.setRowSelectionInterval(0, 0);
@@ -878,11 +907,11 @@ public class Citas extends javax.swing.JPanel {
                     comboBoxIdDoctorRe.setSelectedItem(model.getValueAt(selectedRow, 5).toString());
                     boxDescripcion.setText(model.getValueAt(selectedRow, 10).toString());
                 }
-            } catch (Exception e) {
-                e.printStackTrace();
+            } catch (ClassNotFoundException | SQLException e) {
+                 e.printStackTrace();
             }
         } else {
-            JOptionPane.showMessageDialog(this, "Debe ingresar un ID_Cita.");
+            JOptionPane.showMessageDialog(this,"Debe ingresar un ID_Cita.");
         }
     }//GEN-LAST:event_btnBuscarRecetaMouseClicked
 
@@ -1000,43 +1029,68 @@ public class Citas extends javax.swing.JPanel {
                     int id_doctor2 = rs.getInt("id_doctor");
                     String nombres_doctor = rs.getString("nombres_doctor");
                     String apellidos_doctor = rs.getString("apellidos_doctor");
-                    Date fecha2 = rs.getDate("fecha");
-                    Time hora2 = rs.getTime("hora");
+                    Date fecha2=rs.getDate("fecha");
+                    Time hora2=rs.getTime("hora");
 
-                    model.addRow(new Object[]{id_cita, id_paciente2, nombres_paciente, apellidos_paciente, id_doctor2, nombres_doctor, apellidos_doctor, fecha2, hora2});
-                }
+                    model.addRow(new Object[]{id_cita,id_paciente2,nombres_paciente,
+                            apellidos_paciente,id_doctor2,nombres_doctor,
+                            apellidos_doctor,
+                            fecha2,hora2});
+                 }
 
                 if (!found) {
                     // Mostrar un mensaje de error si no se encontró ningún registro
-                    JOptionPane.showMessageDialog(this, "No se encontraron citas con el ID_Paciente especificado.");
+                    JOptionPane.showMessageDialog(this,"No se encontraron citas con el ID_Paciente especificado.");
+
+                    // Volver a cargar todos los datos en la tabla Citas
+                    query = "SELECT c.id_cita, c.id_paciente, p.nombres AS nombres_paciente, p.apellidos AS apellidos_paciente, c.id_doctor, d.nombres_doctor AS nombres_doctor, d.apellidos_doctor AS apellidos_doctor, c.fecha, c.hora FROM Citas c JOIN Pacientes p ON c.id_paciente = p.id_paciente JOIN Doctores d ON c.id_doctor = d.id_doctor";
+                    preparedStatement = con.prepareStatement(query);
+                    rs = preparedStatement.executeQuery();
+
+                    while (rs.next()) {
+                        int id_cita = rs.getInt("id_cita");
+                        int id_paciente2 = rs.getInt("id_paciente");
+                        String nombres_paciente = rs.getString("nombres_paciente");
+                        String apellidos_paciente = rs.getString("apellidos_paciente");
+                        int id_doctor2 = rs.getInt("id_doctor");
+                        String nombres_doctor = rs.getString("nombres_doctor");
+                        String apellidos_doctor = rs.getString("apellidos_doctor");
+                        Date fecha2=rs.getDate("fecha");
+                        Time hora2=rs.getTime("hora");
+
+                        model.addRow(new Object[]{id_cita,id_paciente2,nombres_paciente,
+                                apellidos_paciente,id_doctor2,nombres_doctor,
+                                apellidos_doctor,
+                                fecha2,hora2});
+                     }
                 } else {
                     // Seleccionar automáticamente la primera fila después de agregar los resultados de la búsqueda
                     tableCita.setRowSelectionInterval(0, 0);
 
-                    // Enviar los valores de la primera fila seleccionada a los componentes
+                    // Enviar los valores de la primera fila seleccionada a tus componentes
                     int selectedRow = tableCita.getSelectedRow();
                     boxIDPaciente.setText(model.getValueAt(selectedRow, 1).toString());
                     comboBoxIdDoctor.setSelectedItem(model.getValueAt(selectedRow, 4).toString());
 
                     // Enviar la fecha completa a dateChooser
-                    Date fecha = (Date) model.getValueAt(selectedRow, 7);
+                    Date fecha=(Date)model.getValueAt(selectedRow,7);
                     dateChooser.setDate(fecha);
 
                     // Dividir la hora en sus componentes individuales y enviarlos a comboBoxHora y comboBoxMin
-                    Time hora = (Time) model.getValueAt(selectedRow, 8);
-                    Calendar calendar = Calendar.getInstance();
+                    Time hora=(Time)model.getValueAt(selectedRow,8);
+                    Calendar calendar=Calendar.getInstance();
                     calendar.setTime(hora);
-                    int hour = calendar.get(Calendar.HOUR_OF_DAY);
-                    int minute = calendar.get(Calendar.MINUTE);
+                    int hour=calendar.get(Calendar.HOUR_OF_DAY);
+                    int minute=calendar.get(Calendar.MINUTE);
 
                     comboBoxHora.setSelectedItem(hour);
                     comboBoxMin.setSelectedItem(minute);
                 }
-            } catch (Exception e) {
-                e.printStackTrace();
+            } catch (ClassNotFoundException | SQLException e) {
+                 e.printStackTrace();
             }
         } else {
-            JOptionPane.showMessageDialog(this, "Debe ingresar un ID_Paciente.");
+            JOptionPane.showMessageDialog(this,"Debe ingresar un ID_Paciente.");
         }
     }//GEN-LAST:event_btnBuscarMouseClicked
 
@@ -1151,11 +1205,16 @@ public class Citas extends javax.swing.JPanel {
                 try {
                     Conexion con = new Conexion();
 
-                    String query = "DELETE FROM Citas WHERE id_cita=?";
-
+                    // Eliminar filas relacionadas en la tabla Recetas
+                    String query = "DELETE FROM Recetas WHERE id_cita=?";
                     PreparedStatement preparedStatement = con.prepareStatement(query);
                     preparedStatement.setInt(1, id_cita);
+                    preparedStatement.executeUpdate();
 
+                    // Eliminar fila de la tabla Citas
+                    query = "DELETE FROM Citas WHERE id_cita=?";
+                    preparedStatement = con.prepareStatement(query);
+                    preparedStatement.setInt(1, id_cita);
                     preparedStatement.executeUpdate();
 
                     // Limpiar los campos de texto y cuadros combinados en la interfaz de usuario
@@ -1165,9 +1224,9 @@ public class Citas extends javax.swing.JPanel {
                     comboBoxHora.setSelectedIndex(0);
                     comboBoxMin.setSelectedIndex(0);
 
-                    // Volver a cargar los datos en la tabla
-                    DefaultTableModel model = (DefaultTableModel) tableCita.getModel();
-                    model.setRowCount(0);
+                    // Volver a cargar los datos en la tabla Citas
+                    DefaultTableModel modelCitas = (DefaultTableModel) tableCita.getModel();
+                    modelCitas.setRowCount(0);
 
                     query = "SELECT c.id_cita, c.id_paciente, p.nombres AS nombres_paciente, p.apellidos AS apellidos_paciente, c.id_doctor, d.nombres_doctor AS nombres_doctor, d.apellidos_doctor AS apellidos_doctor, c.fecha, c.hora FROM Citas c JOIN Pacientes p ON c.id_paciente = p.id_paciente JOIN Doctores d ON c.id_doctor = d.id_doctor";
                     preparedStatement = con.prepareStatement(query);
@@ -1184,14 +1243,42 @@ public class Citas extends javax.swing.JPanel {
                         Date fecha2 = rs.getDate("fecha");
                         Time hora2 = rs.getTime("hora");
 
-                        model.addRow(new Object[]{id_cita2, id_paciente2, nombres_paciente2, apellidos_paciente2, id_doctor2, nombres_doctor2, apellidos_doctor2, fecha2, hora2});
+                        modelCitas.addRow(new Object[]{id_cita2, id_paciente2, nombres_paciente2, apellidos_paciente2, id_doctor2, nombres_doctor2, apellidos_doctor2, fecha2, hora2});
                     }
+
+                    // Volver a cargar los datos en la tabla Recetas
+                    DefaultTableModel modelRecetas = (DefaultTableModel) tableRecetas.getModel();
+                    modelRecetas.setRowCount(0);
+
+                    query = "SELECT Recetas.id_receta, Recetas.id_cita, Citas.id_paciente, Pacientes.nombres AS nombres_paciente, Pacientes.apellidos AS apellidos_paciente, Recetas.id_doctor, Doctores.nombres_doctor AS nombres_doctor, Doctores.apellidos_doctor AS apellidos_doctor, Recetas.fecha, Recetas.hora, Recetas.descripcion FROM Recetas JOIN Citas ON Recetas.id_cita = Citas.id_cita JOIN Pacientes ON Citas.id_paciente = Pacientes.id_paciente JOIN Doctores ON Recetas.id_doctor = Doctores.id_doctor";
+                    preparedStatement = con.prepareStatement(query);
+                    rs = preparedStatement.executeQuery();
+
+                    while (rs.next()) {
+                        int id_receta2 = rs.getInt("id_receta");
+                        int id_cita2 = rs.getInt("id_cita");
+                        int id_paciente2 = rs.getInt("id_paciente");
+                        String nombres_paciente2 = rs.getString("nombres_paciente");
+                        String apellidos_paciente2 = rs.getString("apellidos_paciente");
+                        int id_doctor2 = rs.getInt("id_doctor");
+                        String nombres_doctor2 = rs.getString("nombres_doctor");
+                        String apellidos_doctor2 = rs.getString("apellidos_doctor");
+                        Date fecha2=rs.getDate("fecha");
+                        Time hora2=rs.getTime("hora");
+                        String descripcion=rs.getString("descripcion");
+
+                        modelRecetas.addRow(new Object[]{id_receta2,id_cita2,id_paciente2,nombres_paciente2,
+                                apellidos_paciente2,id_doctor2,nombres_doctor2,
+                                apellidos_doctor2,
+                                fecha2,hora2,
+                                descripcion});
+                     }
                 } catch (ClassNotFoundException | SQLException e) {
-                    e.printStackTrace();
+                     e.printStackTrace();
                 }
             }
         } else {
-            JOptionPane.showMessageDialog(this, "Por favor seleccione una fila en la tabla para eliminar.");
+            JOptionPane.showMessageDialog(this,"Por favor seleccione una fila en la tabla para eliminar.");
         }
     }//GEN-LAST:event_btnBorrarCitaMouseClicked
 
@@ -1281,50 +1368,58 @@ public class Citas extends javax.swing.JPanel {
     }//GEN-LAST:event_btnModificarRecetaMouseClicked
 
     private void btnBorrarRecetaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnBorrarRecetaMouseClicked
-        String input = JOptionPane.showInputDialog(this, "Ingrese ID_Cita:");
-        if (input != null && !input.isEmpty()) {
-            try {
-                Conexion con = new Conexion();
-                DefaultTableModel model = (DefaultTableModel) tableRecetas.getModel();
-                model.setRowCount(0);
+        int selectedRow = tableRecetas.getSelectedRow();
+        if (selectedRow != -1) {
+            int id_cita = (int) tableRecetas.getValueAt(selectedRow, 1);
+            String nombres_paciente = tableRecetas.getValueAt(selectedRow, 3).toString();
+            String apellidos_paciente = tableRecetas.getValueAt(selectedRow, 4).toString();
+            String nombres_doctor = tableRecetas.getValueAt(selectedRow, 6).toString();
+            String apellidos_doctor = tableRecetas.getValueAt(selectedRow, 7).toString();
 
-                String query = "SELECT r.id_receta, r.id_cita, c.id_paciente, p.nombres AS nombres_paciente, p.apellidos AS apellidos_paciente, r.id_doctor, d.nombres_doctor AS nombres_doctor, d.apellidos_doctor AS apellidos_doctor, r.fecha, r.hora, r.descripcion FROM Recetas r JOIN Citas c ON r.id_cita = c.id_cita JOIN Pacientes p ON c.id_paciente = p.id_paciente JOIN Doctores d ON r.id_doctor = d.id_doctor WHERE r.id_cita = ?";
-                PreparedStatement preparedStatement = con.prepareStatement(query);
-                preparedStatement.setString(1, input);
-                ResultSet rs = preparedStatement.executeQuery();
+            int confirm = JOptionPane.showConfirmDialog(this, "¿Está seguro de eliminar la receta de " + nombres_paciente + " " + apellidos_paciente + " con el doctor " + nombres_doctor + " " + apellidos_doctor + "?", "Confirmar eliminación", JOptionPane.YES_NO_OPTION);
+            if (confirm == JOptionPane.YES_OPTION) {
+                try {
+                    Conexion con = new Conexion();
 
-                boolean found = false;
-                while (rs.next()) {
-                    found = true;
-                    int id_receta = rs.getInt("id_receta");
-                    int id_cita2 = rs.getInt("id_cita");
-                    int id_paciente2 = rs.getInt("id_paciente");
-                    String nombres_paciente = rs.getString("nombres_paciente");
-                    String apellidos_paciente = rs.getString("apellidos_paciente");
-                    int id_doctor2 = rs.getInt("id_doctor");
-                    String nombres_doctor = rs.getString("nombres_doctor");
-                    String apellidos_doctor = rs.getString("apellidos_doctor");
-                    Date fecha2 = rs.getDate("fecha");
-                    Time hora2 = rs.getTime("hora");
-                    String descripcion = rs.getString("descripcion");
+                    // Eliminar fila de la tabla Recetas
+                    String query = "DELETE FROM Recetas WHERE id_cita=?";
+                    PreparedStatement preparedStatement = con.prepareStatement(query);
+                    preparedStatement.setInt(1, id_cita);
+                    preparedStatement.executeUpdate();
 
-                    model.addRow(new Object[]{id_receta, id_cita2, id_paciente2, nombres_paciente, apellidos_paciente, id_doctor2, nombres_doctor, apellidos_doctor, fecha2, hora2, descripcion});
+                    // Volver a cargar los datos en la tabla Recetas
+                    DefaultTableModel model = (DefaultTableModel) tableRecetas.getModel();
+                    model.setRowCount(0);
+
+                    query = "SELECT r.id_receta, r.id_cita, c.id_paciente, p.nombres AS nombres_paciente, p.apellidos AS apellidos_paciente, r.id_doctor, d.nombres_doctor AS nombres_doctor, d.apellidos_doctor AS apellidos_doctor, r.fecha, r.hora, r.descripcion FROM Recetas r JOIN Citas c ON r.id_cita = c.id_cita JOIN Pacientes p ON c.id_paciente = p.id_paciente JOIN Doctores d ON r.id_doctor = d.id_doctor";
+                    preparedStatement = con.prepareStatement(query);
+                    ResultSet rs = preparedStatement.executeQuery();
+
+                    while (rs.next()) {
+                        int id_receta = rs.getInt("id_receta");
+                        int id_cita2 = rs.getInt("id_cita");
+                        int id_paciente2 = rs.getInt("id_paciente");
+                        String nombres_paciente2 = rs.getString("nombres_paciente");
+                        String apellidos_paciente2 = rs.getString("apellidos_paciente");
+                        int id_doctor2 = rs.getInt("id_doctor");
+                        String nombres_doctor2 = rs.getString("nombres_doctor");
+                        String apellidos_doctor2 = rs.getString("apellidos_doctor");
+                        Date fecha2=rs.getDate("fecha");
+                        Time hora2=rs.getTime("hora");
+                        String descripcion=rs.getString("descripcion");
+
+                        model.addRow(new Object[]{id_receta,id_cita2,id_paciente2,nombres_paciente2,
+                                apellidos_paciente2,id_doctor2,nombres_doctor2,
+                                apellidos_doctor2,
+                                fecha2,hora2,
+                                descripcion});
+                     }
+                } catch (ClassNotFoundException | SQLException e) {
+                     e.printStackTrace();
                 }
-
-                if (!found) {
-                    // Mostrar un mensaje de error si no se encontró ningún registro
-                    JOptionPane.showMessageDialog(this, "No se encontraron recetas con el ID_Cita especificado.");
-                } else {
-                    // Enviar los valores de la primera fila a tus componentes
-                    boxIdCita.setText(model.getValueAt(0, 1).toString());
-                    comboBoxIdDoctorRe.setSelectedItem(model.getValueAt(0, 5).toString());
-                    boxDescripcion.setText(model.getValueAt(0, 10).toString());
-                }
-            } catch (Exception e) {
-                e.printStackTrace();
             }
         } else {
-            JOptionPane.showMessageDialog(this, "Debe ingresar un ID_Cita.");
+            JOptionPane.showMessageDialog(this,"Por favor seleccione una fila en la tabla para eliminar.");
         }
     }//GEN-LAST:event_btnBorrarRecetaMouseClicked
 
