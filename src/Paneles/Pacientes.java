@@ -741,12 +741,24 @@ public class Pacientes extends javax.swing.JPanel {
 
                     int id_Pacientes = (int) tablaGeneral.getValueAt(selectedRow, 0);
 
-                    String query = "DELETE FROM Pacientes WHERE id_paciente=?";
-
+                    // Eliminar filas relacionadas en la tabla Recetas
+                    String query = "DELETE FROM Recetas WHERE id_cita IN (SELECT id_cita FROM Citas WHERE id_paciente=?)";
                     PreparedStatement preparedStatement = con.prepareStatement(query);
                     preparedStatement.setInt(1, id_Pacientes);
-
                     preparedStatement.executeUpdate();
+
+                    // Eliminar filas relacionadas en la tabla Citas
+                    query = "DELETE FROM Citas WHERE id_paciente=?";
+                    preparedStatement = con.prepareStatement(query);
+                    preparedStatement.setInt(1, id_Pacientes);
+                    preparedStatement.executeUpdate();
+
+                    // Eliminar fila de la tabla Pacientes
+                    query = "DELETE FROM Pacientes WHERE id_paciente=?";
+                    preparedStatement = con.prepareStatement(query);
+                    preparedStatement.setInt(1, id_Pacientes);
+                    preparedStatement.executeUpdate();
+
                     boxDPI.setText("");
                     boxNombres.setText("");
                     boxApellidos.setText("");
@@ -755,6 +767,7 @@ public class Pacientes extends javax.swing.JPanel {
                     boxTelefono.setText("");
                     boxEmail.setText("");
 
+                    // Volver a cargar los datos en la tabla General
                     DefaultTableModel model = (DefaultTableModel) tablaGeneral.getModel();
                     model.setRowCount(0);
 
